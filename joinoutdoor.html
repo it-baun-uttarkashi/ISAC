@@ -115,6 +115,69 @@
         line-height: 1.2;
       }
 
+
+
+
+
+
+      
+
+       /* Team Section */
+      .team-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 30px;
+      }
+
+      .team-card {
+        background: var(--card-bg);
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        text-align: center;
+        transition: all 0.3s ease;
+        border: 1px solid var(--card-border);
+        backdrop-filter: blur(10px);
+      }
+
+      .team-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+      }
+
+      .team-img {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 4rem;
+        color: var(--accent-gold);
+      }
+
+      .team-img img {
+        height: 250px;
+        width: 100%;
+        object-fit: cover;
+      }
+
+      .team-info {
+        padding: 20px;
+      }
+
+      .team-role {
+        color: var(--accent-gold);
+        font-weight: 600;
+        margin-bottom: 10px;
+        font-size: 1.1rem;
+      }
+
+
+
+      
+
+
+
+      
+
       /* Navigation */
       nav ul {
         display: flex;
@@ -542,6 +605,86 @@
         </nav>
       </div>
     </header>
+
+
+
+
+     <section id="team">
+      <div class="container">
+        <h2 class="section-title fade-in">ISAC Head</h2>
+        <p class="section-subtitle fade-in">
+          Meet the leaders who make campus life vibrant
+        </p>
+
+        <div class="team-grid">
+          <!-- President -->
+          <div class="team-card fade-in">
+            <div class="team-img">
+              <img src="director.jpeg" alt="director img" />
+            </div>
+            <div class="team-info">
+              <h3>Dr. H. S. Bhadauriya</h3>
+              <div class="team-role">Director IT Baun</div>
+              <p>Patron</p>
+            </div>
+          </div>
+
+          <!-- chairman -->
+          <div class="team-card fade-in">
+            <div class="team-img">
+              <img src="header-logo IT baun.png" alt="img" />
+            </div>
+            <div class="team-info">
+              <h3>Lorem ipsum</h3>
+              <div class="team-role">Chairman</div>
+              <p>Assistant professor</p>
+            </div>
+          </div>
+          <!-- Member -->
+          <div class="team-card fade-in">
+            <div class="team-img">
+              <img src="header-logo IT baun.png" alt="director.jpeg" />
+            </div>
+            <div class="team-info">
+              <h3>Lorem, ipsum.</h3>
+              <div class="team-role">Member</div>
+              <p>Assistant professor</p>
+            </div>
+          </div>
+          <!-- Member -->
+          <div class="team-card fade-in">
+            <div class="team-img">
+              <img src="header-logo IT baun.png" alt="director.jpeg" />
+            </div>
+            <div class="team-info">
+              <h3>Lorem, ipsum.</h3>
+              <div class="team-role">Member</div>
+              <p>Assistant professor</p>
+            </div>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px">
+          <p class="section-subtitle">
+            ISAC is supported by faculty advisors from all departments and
+            hundreds of student volunteers.
+          </p>
+        </div>
+      </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+    
 
     <!-- Form Section -->
     <section class="form-section fade-in">
