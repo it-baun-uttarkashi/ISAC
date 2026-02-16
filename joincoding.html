@@ -398,6 +398,17 @@
         border: 1px solid rgba(40, 167, 69, 0.3);
         color: #75b798;
       }
+      .tab-btn {
+            padding: 12px 24px;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            color: var(--accent-gold);
+            backdrop-filter: blur(10px);
+        }
 
       .alert-danger {
         background-color: rgba(220, 53, 69, 0.2);
@@ -604,14 +615,26 @@
 
          <section id="team">
       <div class="container">
-        <h2 class="section-title fade-in">Meet Our Team</h2>
+        <center>
+          <h1 style="color: var(--accent-gold); margin-bottom: 20px;">Disciplines</h1>
+          <div class="resources-tabs fade-in">
+            <button class="tab-btn" data-tab="projects">	Hackathons 	</button>
+            <button class="tab-btn" data-tab="practice">	Coding Contests</button>
+            <button class="tab-btn active" data-tab="platforms">	App Development (Native & hybrid) </button>
+            <button class="tab-btn" data-tab="algorithms">Open-Source Contribution</button>
+            <button class="tab-btn" data-tab="algorithms">	Web 3.0</button>
+            <button class="tab-btn" data-tab="algorithms">Machine Learning & Artificial Intelligence</button>
+            <button class="tab-btn" data-tab="algorithms">Software Development</button>
+
+          </center><br><br>
+        <h2 class="section-title fade-in">Meet Programming Club Team</h2>
         <br><br>
 
         <div class="team-grid">
           <!-- President -->
           <div class="team-card fade-in">
             <div class="team-img">
-              <img src="coordinator.jpeg" alt="Coordinator img" />
+              <img src="IMG\IMG CULTURAL\img.png" alt="Coordinator img" />
             </div>
             <div class="team-info">
               <h3>Ayush Bhatt</h3>
@@ -623,7 +646,7 @@
           <!-- chairman -->
           <div class="team-card fade-in">
             <div class="team-img">
-              <img src="coordinator.jpeg" alt="img" />
+              <img src="IMG\IMG CULTURAL\img.png" alt="img" />
             </div>
             <div class="team-info">
               <h3>Trilok Rana</h3>
