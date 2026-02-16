@@ -155,6 +155,19 @@
         border-radius: 15px;
       }
 
+      .tab-btn {
+            padding: 12px 24px;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            color: var(--accent-gold);
+            backdrop-filter: blur(10px);
+        }
+
+      
       .team-info {
         padding: 20px;
       }
@@ -609,14 +622,24 @@
 
          <section id="team">
       <div class="container">
-        <h2 class="section-title fade-in">Meet Our Team</h2>
+
+        <center>
+          <h1 style="color: var(--accent-gold); margin-bottom: 20px;">Disciplines</h1>
+          <div class="resources-tabs fade-in">
+            <button class="tab-btn" data-tab="projects">	Trekking</button>
+            <button class="tab-btn" data-tab="practice">	Cycling</button>
+            <button class="tab-btn active" data-tab="platforms">Marathons</button>
+            <button class="tab-btn" data-tab="algorithms">Rock Climbing</button>
+          </center><br><br>
+
+        <h2 class="section-title fade-in">Meet Adventures Sports Club Team</h2>
         <br><br>
 
         <div class="team-grid">
           <!-- President -->
           <div class="team-card fade-in">
             <div class="team-img">
-              <img src="header-logo IT baun.png" alt="Coordinator img" />
+              <img src="" alt="Coordinator img" />
             </div>
             <div class="team-info">
               <h3>Suraj Painuly</h3>
@@ -632,30 +655,30 @@
             </div>
             <div class="team-info">
               <h3>Rohan Rawat</h3>
-              <div class="team-role">Deputy Coordinator </div>
+              <div class="team-role">Coordinator </div>
               <p>2nd Year CSE(AI/ML)</p>
             </div>
           </div>
           <!-- Member -->
           <div class="team-card fade-in">
             <div class="team-img">
-              <img src="header-logo IT baun.png" alt="director.jpeg" />
+              <img src="" alt="img" />
             </div>
             <div class="team-info">
               <h3>Alok Rana </h3>
-              <div class="team-role">Deputy Coordinator</div>
+              <div class="team-role">Coordinator</div>
               <p>2nd Year BCA</p>
             </div>
           </div>
           <!-- Member -->
           <div class="team-card fade-in">
             <div class="team-img">
-              <img src="IMG\Team\abbu.png" alt="director.jpeg" />
+              <img src="IMG\Team\abbu.png" alt="img.jpeg" />
             </div>
             <div class="team-info">
               <h3>Abhishek Rana</h3>
-              <div class="team-role">Deputy Coordinator</div>
-              <p>1st Year CSE(AI/ML)</p>
+              <div class="team-role">Coordinator</div>
+              <p>1st Year CSE (AI&ML)</p>
             </div>
           </div>
         </div>
@@ -759,7 +782,7 @@
             </div>
 
             <div class="form-group">
-              <label for="message">Why do you want to join ISAC? (Optional)</label>
+              <label for="message">Why do you want to join Club? (Optional)</label>
               <textarea
                 id="message"
                 class="form-control"
