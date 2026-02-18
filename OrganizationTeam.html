@@ -16,6 +16,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
     <style>
+      /* ========== RESET & VARIABLES ========== */
       * {
         margin: 0;
         padding: 0;
@@ -54,7 +55,7 @@
         padding: 0 20px;
       }
 
-      /* Dynamic Header Styles - FIXED */
+      /* ========== HEADER (fixed, responsive) ========== */
       header {
         background: linear-gradient(
           180deg,
@@ -102,7 +103,7 @@
       }
 
       .council-name h1 {
-        font-size: 1.8rem;
+        font-size: clamp(1rem, 4vw, 1.8rem);
         background: linear-gradient(to right, var(--accent-gold), #f0e68c);
         -webkit-background-clip: text;
         background-clip: text;
@@ -112,7 +113,7 @@
       }
 
       .council-name span {
-        font-size: 0.9rem;
+        font-size: clamp(0.7rem, 2.5vw, 0.9rem);
         color: var(--accent-blue);
         line-height: 1.2;
       }
@@ -154,7 +155,7 @@
         width: 100%;
       }
 
-      /* Mobile Toggle Button - FIXED */
+      /* Mobile toggle button */
       .mobile-toggle {
         display: none;
         font-size: 1.8rem;
@@ -179,11 +180,6 @@
       .header-scrolled {
         padding: 12px 0;
         box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
-        background: linear-gradient(
-          180deg,
-          rgba(10, 26, 45, 0.98) 0%,
-          rgba(26, 43, 60, 0.97) 100%
-        );
       }
 
       .header-scrolled .logo-img {
@@ -191,10 +187,10 @@
       }
 
       .header-scrolled .council-name h1 {
-        font-size: 1.5rem;
+        font-size: clamp(0.9rem, 3.5vw, 1.5rem);
       }
 
-      /* Hero Section - RESPONSIVE FIXES */
+      /* Hero */
       .hero {
         background: linear-gradient(
             rgba(10, 26, 45, 0.85),
@@ -208,132 +204,17 @@
         padding: 180px 20px 100px;
         position: relative;
         overflow: hidden;
-        margin-top: 83px; /* Account for fixed header */
+        margin-top: 83px;
       }
 
-      .hero:before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: radial-gradient(
-          circle at center,
-          transparent 0%,
-          rgba(26, 43, 60, 0.5) 100%
-        );
-        pointer-events: none;
-      }
-
-      .hero-content h1 {
-        font-size: 4rem;
-        margin-bottom: 20px;
-        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
-        color: #fff;
-        position: relative;
-        z-index: 2;
-        letter-spacing: 2px;
-      }
-
-      .hero-content h2 {
-        font-size: 2.5rem;
-        color: var(--accent-gold);
-        margin-bottom: 25px;
-        position: relative;
-        z-index: 2;
-        font-weight: 300;
-      }
-
-      .hero-content p {
-        font-size: 1.3rem;
-        max-width: 800px;
-        margin: 0 auto 30px;
-        position: relative;
-        z-index: 2;
-        color: var(--medium-text);
-      }
-
-      .hero-btns {
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-        margin-top: 40px;
-        position: relative;
-        z-index: 2;
-      }
-
-      /* Activity Display */
-      .activity-display {
-        background: var(--secondary-dark);
-        border-radius: 10px;
-        padding: 30px;
-        margin: 50px auto;
-        max-width: 800px;
-        text-align: center;
-        box-shadow: var(--shadow);
-        border-left: 5px solid var(--accent-gold);
-        border-right: 5px solid var(--accent-blue);
-      }
-
-      .activity-header {
-        display: flex;
-        justify-content: center;
-        margin-bottom: 20px;
-        color: #fff;
-        font-size: 1.2rem;
-      }
-
-      .activity-content {
-        color: #f8f8f2;
-        font-size: 1.1rem;
-        line-height: 1.5;
-      }
-
-      .activity-highlight {
-        display: flex;
-        justify-content: space-around;
-        flex-wrap: wrap;
-        margin-top: 20px;
-        gap: 20px;
-      }
-
-      .highlight-item {
-        text-align: center;
-        padding: 15px;
-        flex: 1;
-        min-width: 120px;
-      }
-
-      .highlight-item i {
-        font-size: 2.5rem;
-        color: var(--accent-gold);
-        margin-bottom: 10px;
-      }
-
-      /* Sections */
+      /* ========== TEAM SECTION – FULLY RESPONSIVE FLEXBOX ========== */
       section {
         padding: 80px 0;
         position: relative;
       }
 
-      section:before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 5px;
-        background: linear-gradient(
-          to right,
-          transparent,
-          var(--accent-gold),
-          transparent
-        );
-      }
-
       .section-title {
-        font-size: 3rem;
+        font-size: clamp(2rem, 6vw, 3rem);
         margin-bottom: 15px;
         position: relative;
         display: inline-block;
@@ -359,252 +240,23 @@
       }
 
       .section-subtitle {
-        font-size: 1.3rem;
+        font-size: clamp(1rem, 3vw, 1.3rem);
         color: var(--medium-text);
         margin-bottom: 50px;
         text-align: center;
         max-width: 800px;
         margin-left: auto;
         margin-right: auto;
+        padding: 0 15px;
       }
 
-      /* About Section */
-      .about-content {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 50px;
-        align-items: center;
-      }
-
-      .about-stats {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
-        margin-top: 40px;
-      }
-
-      .stat-box {
-        background: var(--card-bg);
-        border-radius: 12px;
-        padding: 25px;
-        text-align: center;
-        box-shadow: var(--shadow);
-        transition: all 0.4s ease;
-        border: 1px solid var(--card-border);
-        backdrop-filter: blur(10px);
-      }
-
-      .stat-box:hover {
-        transform: translateY(-10px);
-        border-color: rgba(212, 175, 55, 0.3);
-      }
-
-      .stat-box i {
-        font-size: 2.5rem;
-        color: var(--accent-gold);
-        margin-bottom: 15px;
-      }
-
-      .stat-box h3 {
-        font-size: 2.5rem;
-        color: var(--light-text);
-        margin-bottom: 5px;
-      }
-
-      /* Events Section */
-      .events-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 30px;
-        margin-top: 40px;
-      }
-
-      .event-card {
-        background: var(--card-bg);
-        border-radius: 15px;
-        padding: 35px 25px;
-        box-shadow: var(--shadow);
-        transition: all 0.4s ease;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        border: 1px solid var(--card-border);
-        position: relative;
-        overflow: hidden;
-        backdrop-filter: blur(10px);
-      }
-
-      .event-card:before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 5px;
-        background: linear-gradient(
-          to right,
-          var(--accent-gold),
-          var(--accent-blue),
-          var(--accent-red)
-        );
-      }
-
-      .event-card:hover {
-        transform: translateY(-15px);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-        border-color: rgba(212, 175, 55, 0.3);
-      }
-
-      .event-icon {
-        font-size: 4rem;
-        color: var(--accent-gold);
-        margin-bottom: 25px;
-        transition: all 0.3s ease;
-      }
-
-      .event-card:hover .event-icon {
-        transform: scale(1.2);
-        color: #f0e68c;
-      }
-
-      .event-card h3 {
-        font-size: 1.8rem;
-        color: var(--light-text);
-        margin-bottom: 15px;
-      }
-
-      .event-card p {
-        color: var(--medium-text);
-        margin-bottom: 25px;
-        flex-grow: 1;
-        line-height: 1.7;
-      }
-
-      .event-tag {
-        display: inline-block;
-        background: rgba(212, 175, 55, 0.2);
-        color: var(--accent-gold);
-        padding: 8px 20px;
-        border-radius: 20px;
-        font-weight: 600;
-        font-size: 0.95rem;
-        border: 1px solid rgba(212, 175, 55, 0.3);
-      }
-
-      /* Clubs Section */
-      .clubs-tabs {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-        margin-bottom: 40px;
-        flex-wrap: wrap;
-      }
-
-      .tab-btn {
-        padding: 12px 24px;
-        background: var(--card-bg);
-        border: 1px solid var(--card-border);
-        border-radius: 30px;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.3s;
-        color: var(--medium-text);
-        backdrop-filter: blur(10px);
-      }
-
-      .tab-btn.active {
-        background: linear-gradient(to right, var(--accent-gold), #b8941f);
-        color: var(--dark-text);
-        border-color: var(--accent-gold);
-      }
-
-      .tab-content {
-        display: none;
-      }
-
-      .tab-content.active {
-        display: block;
-      }
-
-      .clubs-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        gap: 25px;
-      }
-
-      .club-card {
-        background: var(--card-bg);
-        padding: 30px;
-        border-radius: 15px;
-        box-shadow: var(--shadow);
-        transition: all 0.3s ease;
-        border: 1px solid var(--card-border);
-        backdrop-filter: blur(10px);
-        text-align: center;
-      }
-
-      .club-card:hover {
-        transform: translateY(-10px);
-        border-color: rgba(212, 175, 55, 0.3);
-      }
-
-      .club-card i {
-        font-size: 2.5rem;
-        color: var(--accent-gold);
-        margin-bottom: 15px;
-      }
-
-      /* Gallery Section */
-      .gallery-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-        gap: 20px;
-        margin-top: 40px;
-      }
-
-      .gallery-item {
-        border-radius: 10px;
-        overflow: hidden;
-        height: 200px;
-        position: relative;
-        cursor: pointer;
-      }
-
-      .gallery-item img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.5s ease;
-      }
-
-      .gallery-item:hover img {
-        transform: scale(1.1);
-      }
-
-      .gallery-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(10, 26, 45, 0.7);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-      }
-
-      .gallery-item:hover .gallery-overlay {
-        opacity: 1;
-      }
-
-      /* Team Section */
+      /* ✅ TEAM GRID – FLEXBOX WITH CENTERED CARDS */
       .team-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
         gap: 30px;
+        margin-top: 40px;
       }
 
       .team-card {
@@ -616,6 +268,10 @@
         transition: all 0.3s ease;
         border: 1px solid var(--card-border);
         backdrop-filter: blur(10px);
+        display: flex;
+        flex-direction: column;
+        width: 280px; /* fixed width on desktop */
+        flex: 0 0 280px; /* prevents stretching */
       }
 
       .team-card:hover {
@@ -627,98 +283,52 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 4rem;
-        color: var(--accent-gold);
+        background: rgba(0,0,0,0.2);
+        padding: 20px 20px 0;
       }
 
       .team-img img {
-        height: 299px;
-        margin: 8px;
-        border-radius: 50px;
-        border: 4px solid #b8941f;
+        width: 100%;
+        max-width: 250px;
+        height: auto;
+        aspect-ratio: 1/1;
+        object-fit: cover;
+        border-radius: 15px;
+        border: 3px solid var(--accent-gold);
+        transition: transform 0.3s;
+      }
+
+      .team-card:hover .team-img img {
+        transform: scale(1.02);
       }
 
       .team-info {
         padding: 20px;
       }
 
+      .team-info h3 {
+        font-size: 1.3rem;
+        margin-bottom: 5px;
+        color: var(--light-text);
+      }
+
+      .team-info p {
+        color: var(--medium-text);
+        font-size: 0.95rem;
+        margin-bottom: 5px;
+      }
+
       .team-role {
         color: var(--accent-gold);
         font-weight: 600;
-        margin-bottom: 10px;
-        font-size: 1.1rem;
-      }
-
-      /* Contact Section */
-      .contact-container {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 50px;
-      }
-
-      .contact-info {
-        display: flex;
-        flex-direction: column;
-        gap: 25px;
-      }
-
-      .contact-item {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-      }
-
-      .contact-item i {
-        font-size: 1.5rem;
-        color: var(--accent-gold);
-        width: 40px;
-      }
-
-      option {
-        background-color: #1a2a3a;
-        color: white;
-      }
-
-      .contact-form {
-        background: var(--card-bg);
-        padding: 30px;
-        border-radius: 15px;
-        box-shadow: var(--shadow);
-        border: 1px solid var(--card-border);
-        backdrop-filter: blur(10px);
-      }
-
-      .form-group {
-        margin-bottom: 20px;
-      }
-
-      .form-group label {
-        display: block;
-        margin-bottom: 8px;
-        font-weight: 500;
-        color: var(--light-text);
-      }
-
-      .form-control {
-        width: 100%;
-        padding: 12px 15px;
-        background: rgba(255, 255, 255, 0.1);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        border-radius: 8px;
-        color: var(--light-text);
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        transition: all 0.3s;
-        font-size: 16px; /* Prevents zoom on iOS */
-      }
-
-      .form-control:focus {
-        outline: none;
-        border-color: var(--accent-gold);
-        box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+        margin-top: 8px;
+        font-size: 1rem;
+        border-top: 1px solid rgba(212,175,55,0.3);
+        padding-top: 8px;
       }
 
       /* Buttons */
-      .btn {
+      .tab-btn-team {
         padding: 15px 35px;
         font-size: 1.1rem;
         font-weight: 600;
@@ -731,52 +341,15 @@
         justify-content: center;
         gap: 10px;
         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-        position: relative;
-        overflow: hidden;
         text-decoration: none;
-        color: inherit;
+        color: #0a1f3a;
+        background-color: #b8941f;
+        margin: 10px;
       }
 
-      .btn:after {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-          90deg,
-          transparent,
-          rgba(255, 255, 255, 0.2),
-          transparent
-        );
-        transition: left 0.7s;
-      }
-
-      .btn:hover:after {
-        left: 100%;
-      }
-
-      .btn-primary {
-        background: linear-gradient(to right, var(--accent-gold), #b8941f);
-        color: var(--dark-text);
-        border: 2px solid var(--accent-gold);
-      }
-
-      .btn-primary:hover {
-        transform: translateY(-8px) scale(1.05);
-        box-shadow: 0 15px 30px rgba(212, 175, 55, 0.4);
-      }
-
-      .btn-secondary {
-        background: linear-gradient(to right, var(--accent-blue), #1a7c8b);
-        color: white;
-        border: 2px solid var(--accent-blue);
-      }
-
-      .btn-secondary:hover {
-        transform: translateY(-8px) scale(1.05);
-        box-shadow: 0 15px 30px rgba(26, 124, 139, 0.4);
+      .tab-btn-team:hover {
+        background-color: #d4af37;
+        transform: translateY(-3px);
       }
 
       /* Footer */
@@ -793,32 +366,11 @@
         border-top: 3px solid var(--accent-gold);
       }
 
-      footer:before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 10px;
-        background: linear-gradient(
-          to right,
-          transparent,
-          var(--accent-gold),
-          transparent
-        );
-      }
-
       .footer-content {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: 30px;
         margin-bottom: 30px;
-      }
-
-      .footer-column {
-        flex: 1;
-        min-width: 250px;
       }
 
       .footer-column h3 {
@@ -860,6 +412,7 @@
         display: flex;
         gap: 15px;
         margin-top: 20px;
+        flex-wrap: wrap;
       }
 
       .social-links a {
@@ -888,7 +441,214 @@
         color: rgba(255, 255, 255, 0.6);
       }
 
-      /* Modal */
+      /* ========== RESPONSIVE MEDIA QUERIES ========== */
+
+      /* Tablet: adjust card width if needed */
+      @media (max-width: 992px) {
+        .team-card {
+          width: 260px;
+          flex: 0 0 260px;
+        }
+
+        .hero {
+          padding: 160px 20px 80px;
+          margin-top: 75px;
+        }
+      }
+
+      /* Mobile: cards stack vertically and take full width */
+      @media (max-width: 768px) {
+        /* Header adjustments */
+        .logo-container {
+          max-width: 75%;
+        }
+
+        .council-name h1 {
+          font-size: 1.2rem;
+        }
+
+        .council-name span {
+          font-size: 0.75rem;
+        }
+
+        /* Mobile toggle visible */
+        .mobile-toggle {
+          display: block;
+        }
+
+        /* Navigation menu - slide from right */
+        nav ul {
+          position: fixed;
+          top: 0;
+          right: 0;
+          width: 80%;
+          max-width: 300px;
+          height: 100vh;
+          background: rgba(10, 26, 45, 0.98);
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          padding: 80px 20px 40px;
+          transform: translateX(100%);
+          opacity: 0;
+          transition: transform 0.4s ease, opacity 0.4s ease;
+          z-index: 1001;
+          backdrop-filter: blur(20px);
+          overflow-y: auto;
+          box-shadow: -5px 0 20px rgba(0,0,0,0.5);
+        }
+
+        nav ul.active {
+          transform: translateX(0);
+          opacity: 1;
+        }
+
+        nav ul li {
+          margin: 15px 0;
+          width: 100%;
+          text-align: center;
+        }
+
+        nav ul li a {
+          font-size: 1.2rem;
+          padding: 15px;
+          display: block;
+          white-space: normal;
+        }
+
+        nav ul li a.btn {
+          padding: 12px 25px;
+          display: inline-block;
+          width: auto;
+        }
+
+        /* Hero */
+        .hero {
+          padding: 140px 15px 60px;
+          margin-top: 70px;
+        }
+
+        .hero-content h1 {
+          font-size: 2rem;
+        }
+
+        .hero-content h2 {
+          font-size: 1.5rem;
+        }
+
+        /* Team cards: stack vertically, full width with max-width */
+        .team-grid {
+          gap: 20px;
+        }
+
+        .team-card {
+          width: 100%;
+          max-width: 350px;
+          flex: 0 0 auto; /* allow shrinking */
+          margin: 0 auto; /* center the card itself */
+        }
+
+        .team-img img {
+          max-width: 200px;
+        }
+
+        /* Buttons full width on small screens */
+        .tab-btn-team {
+          width: 90%;
+          padding: 12px 20px;
+          font-size: 1rem;
+        }
+
+        /* Footer columns stacked */
+        .footer-content {
+          grid-template-columns: 1fr;
+          text-align: center;
+        }
+
+        .footer-column h3:after {
+          left: 50%;
+          transform: translateX(-50%);
+        }
+
+        .contact-list li {
+          justify-content: center;
+        }
+
+        .social-links {
+          justify-content: center;
+        }
+      }
+
+      /* Small mobile */
+      @media (max-width: 480px) {
+        .hero-content h1 {
+          font-size: 1.8rem;
+        }
+
+        .hero-content h2 {
+          font-size: 1.3rem;
+        }
+
+        .logo-img {
+          height: 45px;
+        }
+
+        .council-name h1 {
+          font-size: 1rem;
+        }
+
+        .council-name span {
+          font-size: 0.7rem;
+        }
+
+        .section-title {
+          font-size: 1.8rem;
+        }
+
+        .team-card {
+          max-width: 300px;
+        }
+      }
+
+      /* Landscape mode adjustments */
+      @media (max-height: 600px) and (orientation: landscape) {
+        .hero {
+          padding: 120px 20px 50px;
+        }
+
+        nav ul {
+          padding: 40px 20px;
+          justify-content: flex-start;
+        }
+
+        nav ul li {
+          margin: 8px 0;
+        }
+      }
+
+      /* ========== UTILITY CLASSES ========== */
+      .fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.8s, transform 0.8s;
+      }
+
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .btn:active {
+        animation: buttonClick 0.2s ease;
+      }
+
+      @keyframes buttonClick {
+        0% { transform: scale(1); }
+        50% { transform: scale(0.95); }
+        100% { transform: scale(1); }
+      }
+
+      /* Modal (unchanged) */
       .modal {
         display: none;
         position: fixed;
@@ -922,24 +682,14 @@
         font-size: 2.5rem;
         color: var(--accent-gold);
         cursor: pointer;
-        transition: all 0.3s ease;
         background: none;
         border: none;
         z-index: 1001;
       }
 
-      .close-modal:hover {
-        color: #f0e68c;
-        transform: rotate(90deg);
-      }
-
       @keyframes fadeIn {
-        from {
-          opacity: 0;
-        }
-        to {
-          opacity: 1;
-        }
+        from { opacity: 0; }
+        to { opacity: 1; }
       }
 
       @keyframes slideUp {
@@ -952,505 +702,6 @@
           transform: translateY(0);
         }
       }
-
-      /* ============================
-           RESPONSIVE DESIGN - IMPROVED
-           ============================ */
-
-      /* Large Tablets */
-      @media (max-width: 1024px) {
-        .hero-content h1 {
-          font-size: 3.2rem;
-        }
-
-        .hero-content h2 {
-          font-size: 2.2rem;
-        }
-
-        .section-title {
-          font-size: 2.6rem;
-        }
-
-        .about-content {
-          grid-template-columns: 1fr;
-          gap: 40px;
-        }
-
-        .contact-container {
-          grid-template-columns: 1fr;
-          gap: 40px;
-        }
-
-        nav ul {
-          gap: 20px;
-        }
-
-        .council-name h1 {
-          font-size: 1.6rem;
-        }
-      }
-
-      /* Tablets */
-      @media (max-width: 992px) {
-        .hero-content h1 {
-          font-size: 2.8rem;
-        }
-
-        .hero-content h2 {
-          font-size: 1.8rem;
-        }
-
-        .hero-content p {
-          font-size: 1.1rem;
-        }
-
-        .section-title {
-          font-size: 2.4rem;
-        }
-
-        .section-subtitle {
-          font-size: 1.1rem;
-        }
-
-        .logo-img {
-          height: 50px;
-        }
-
-        .council-name h1 {
-          font-size: 1.4rem;
-        }
-      }
-
-      /* Mobile Devices - MAIN FIXES */
-      @media (max-width: 768px) {
-        /* Header fixes */
-        .header-container {
-          padding: 0 15px;
-        }
-
-        .logo-container {
-          max-width: 80%;
-        }
-
-        .council-name h1 {
-          font-size: 1.3rem;
-          line-height: 1.1;
-        }
-
-        .council-name span {
-          font-size: 0.8rem;
-          line-height: 1.1;
-        }
-
-        /* Mobile Toggle - FIXED */
-        .mobile-toggle {
-          display: block;
-          position: relative;
-          z-index: 1003;
-        }
-
-        /* Navigation Menu - FIXED */
-        nav ul {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100vh;
-          background: rgba(10, 26, 45, 0.98);
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          padding: 80px 20px 40px;
-          transform: translateX(100%);
-          opacity: 0;
-          transition: transform 0.4s ease, opacity 0.4s ease;
-          z-index: 1001;
-          backdrop-filter: blur(20px);
-          overflow-y: auto;
-        }
-
-        nav ul.active {
-          transform: translateX(0);
-          opacity: 1;
-        }
-
-        nav ul li {
-          margin: 15px 0;
-          width: 100%;
-          text-align: center;
-        }
-
-        nav ul li a {
-          font-size: 1.2rem;
-          padding: 15px;
-          display: block;
-          width: 100%;
-        }
-
-        nav ul li a.btn {
-          padding: 15px 30px;
-          display: inline-flex;
-          width: auto;
-          max-width: 250px;
-          margin-top: 20px;
-        }
-
-        /* Hero Section fixes */
-        .hero {
-          padding: 150px 15px 80px;
-          margin-top: 70px;
-        }
-
-        .hero-content h1 {
-          font-size: 2.2rem;
-          line-height: 1.2;
-        }
-
-        .hero-content h2 {
-          font-size: 1.6rem;
-          line-height: 1.3;
-        }
-
-        .hero-content p {
-          font-size: 1rem;
-          line-height: 1.5;
-        }
-
-        .hero-btns {
-          flex-direction: column;
-          align-items: center;
-          gap: 15px;
-        }
-
-        .btn {
-          width: 100%;
-          max-width: 280px;
-          padding: 14px 25px;
-          font-size: 1rem;
-        }
-
-        /* Activity Display */
-        .activity-display {
-          padding: 25px 20px;
-          margin: 40px auto;
-        }
-
-        .activity-highlight {
-          flex-direction: column;
-          gap: 15px;
-        }
-
-        .highlight-item {
-          min-width: 100%;
-        }
-
-        /* Sections */
-        section {
-          padding: 60px 0;
-        }
-
-        .section-title {
-          font-size: 2rem;
-        }
-
-        .section-subtitle {
-          font-size: 1rem;
-          padding: 0 15px;
-        }
-
-        /* About Stats */
-        .about-stats {
-          grid-template-columns: 1fr;
-          gap: 15px;
-        }
-
-        /* Events and Clubs */
-        .events-container,
-        .clubs-grid {
-          grid-template-columns: 1fr;
-          gap: 20px;
-        }
-
-        .event-card,
-        .club-card {
-          padding: 25px 20px;
-        }
-
-        /* Gallery */
-        .gallery-container {
-          grid-template-columns: repeat(2, 1fr);
-          gap: 15px;
-        }
-
-        .gallery-item {
-          height: 180px;
-        }
-
-        /* Team */
-        .team-grid {
-          grid-template-columns: repeat(2, 1fr);
-          gap: 20px;
-        }
-
-        .team-img img {
-          height: 200px;
-        }
-
-        /* Footer */
-        .footer-content {
-          flex-direction: column;
-          gap: 30px;
-        }
-
-        .footer-column {
-          width: 100%;
-        }
-      }
-
-      /* Small Mobile Devices */
-      @media (max-width: 576px) {
-        .hero {
-          padding: 120px 10px 60px;
-        }
-
-        .hero-content h1 {
-          font-size: 1.8rem;
-        }
-
-        .hero-content h2 {
-          font-size: 1.3rem;
-        }
-
-        .section-title {
-          font-size: 1.8rem;
-        }
-
-        .logo-img {
-          height: 45px;
-        }
-
-        .council-name h1 {
-          font-size: 1.1rem;
-        }
-
-        .activity-display {
-          padding: 20px 15px;
-          margin: 30px auto;
-        }
-
-        .event-card {
-          padding: 20px 15px;
-        }
-
-        .club-card {
-          padding: 20px 15px;
-        }
-
-        .gallery-container {
-          grid-template-columns: 1fr;
-        }
-
-        .team-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .team-img img {
-          height: 220px;
-        }
-
-        .contact-form {
-          padding: 20px;
-        }
-
-        .form-control {
-          font-size: 16px; /* Prevents iOS zoom */
-          padding: 14px 12px;
-        }
-
-        /* Fix for very small screens */
-        @media (max-width: 350px) {
-          .logo-container {
-            gap: 8px;
-          }
-
-          .logo-img {
-            height: 40px;
-          }
-
-          .council-name h1 {
-            font-size: 1rem;
-          }
-
-          .council-name span {
-            font-size: 0.7rem;
-          }
-
-          .hero-content h1 {
-            font-size: 1.6rem;
-          }
-
-          .hero-content h2 {
-            font-size: 1.1rem;
-          }
-        }
-      }
-
-      /* Landscape mode fixes */
-      @media (max-height: 600px) and (orientation: landscape) {
-        .hero {
-          padding: 120px 20px 60px;
-          margin-top: 60px;
-        }
-
-        .hero-content h1 {
-          font-size: 2rem;
-          margin-bottom: 10px;
-        }
-
-        .hero-content h2 {
-          font-size: 1.4rem;
-          margin-bottom: 15px;
-        }
-
-        .hero-content p {
-          font-size: 0.9rem;
-          margin-bottom: 20px;
-        }
-
-        nav ul {
-          padding: 60px 20px 30px;
-          justify-content: flex-start;
-        }
-
-        nav ul li {
-          margin: 8px 0;
-        }
-      }
-
-      /* Animation for buttons on click */
-      @keyframes buttonClick {
-        0% {
-          transform: scale(1);
-        }
-        50% {
-          transform: scale(0.95);
-        }
-        100% {
-          transform: scale(1);
-        }
-      }
-
-      .btn:active {
-        animation: buttonClick 0.2s ease;
-      }
-
-      /* Gold shimmer effect */
-      @keyframes shimmer {
-        0% {
-          background-position: -500px 0;
-        }
-        100% {
-          background-position: 500px 0;
-        }
-      }
-
-      .shimmer-effect {
-        background: linear-gradient(
-          90deg,
-          var(--accent-gold) 0%,
-          #f0d36e 25%,
-          var(--accent-gold) 50%,
-          #f0d36e 75%,
-          var(--accent-gold) 100%
-        );
-        background-size: 1000px 100%;
-        animation: shimmer 3s infinite linear;
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-      }
-
-      /* Animation for elements */
-      .fade-in {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: opacity 0.8s, transform 0.8s;
-      }
-
-      .fade-in.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      /* Calendar Styles */
-      .calendar-container {
-        background: var(--card-bg);
-        border-radius: 15px;
-        padding: 30px;
-        box-shadow: var(--shadow);
-        margin-top: 40px;
-        border: 1px solid var(--card-border);
-        backdrop-filter: blur(10px);
-      }
-
-      .calendar-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 20px;
-        color: var(--accent-gold);
-      }
-
-      .calendar-grid {
-        display: grid;
-        grid-template-columns: repeat(7, 1fr);
-        gap: 10px;
-      }
-
-      .calendar-day {
-        padding: 10px;
-        text-align: center;
-        border-radius: 5px;
-        background: rgba(255, 255, 255, 0.05);
-      }
-
-      .calendar-day.event-day {
-        background: rgba(212, 175, 55, 0.2);
-        border: 1px solid rgba(212, 175, 55, 0.3);
-        color: var(--accent-gold);
-        font-weight: bold;
-        cursor: pointer;
-      }
-
-      .calendar-day.event-day:hover {
-        background: rgba(212, 175, 55, 0.3);
-      }
-
-      .calendar-day.header {
-        font-weight: bold;
-        color: var(--accent-blue);
-        border-bottom: 2px solid var(--accent-blue);
-        background: transparent;
-      }
-
-      .calendar-day.empty {
-        background: transparent;
-      }
-
-      /* Prevent text selection on mobile */
-      .mobile-toggle,
-      .btn {
-        -webkit-tap-highlight-color: transparent;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-      }
-
-      /* Smooth scrolling */
-      html {
-        scroll-behavior: smooth;
-      }
     </style>
   </head>
   <body>
@@ -1458,8 +709,7 @@
     <header id="mainHeader">
       <div class="container header-container">
         <div class="logo-container">
-          <img src="IMG\IMG CULTURAL\logo ISAC 1.png" alt="ISAC Logo" class="logo-img">
-          
+          <img src="IMG\IMG CULTURAL\logo ISAC 1.png" alt="ISAC Logo" class="logo-img" />
           <div class="council-name">
             <h1>Institute Student Activity Council</h1>
             <span>Institute of Technology Baun, Uttarkashi</span>
@@ -1487,60 +737,77 @@
         </nav>
       </div>
     </header>
-    <br /><br />
 
-    <!-- Team Section -->
+    <br><br>
+
+    <!-- Team Section (content exactly as before) -->
     <section id="team">
       <div class="container">
-        <h2 class="section-title fade-in">Meet Organization of Inter-Society events</h2>
-        <p class="section-subtitle fade-in">
-          who make campus events more vibrant.
-        </p>
+        <h2 class="section-title fade-in">Meet the Organizational Team of Inter-Society Events</h2>
+        <p class="section-subtitle fade-in">who make campus Events more vibrant.</p>
 
+        <h6 class="section-title fade-in">Chief Student Coordinators: (taken from student members of the governing committee) </h6>
         <div class="team-grid">
-          <!-- President -->
           <div class="team-card fade-in">
             <div class="team-img">
-              <img src="IMG\Team\priyanshu pandey.jpeg" alt="director img" />
+              <img src="IMG\Team\priyanshu pandey.jpeg" alt="jpeg" />
             </div>
             <div class="team-info">
               <h3>Priyanshu Pandey</h3>
               <p>(2nd Year CSE)</p>
-              <div class="team-role">Chief Student Coordinator</div>
+              
             </div>
           </div>
 
-          <!-- chairman -->
           <div class="team-card fade-in">
             <div class="team-img">
               <img src="IMG\Team\piyush.jpeg" alt="img" />
             </div>
             <div class="team-info">
-              <h3>Piyush Nautiyal </h3>
+              <h3>Piyush Nautiyal</h3>
               <p>(2nd Year CSE)</p>
-              <div class="team-role">Chief Student Coordinator</div>
+             
             </div>
           </div>
-          <!-- Member -->
+        </div>
+
+
+        <h6 class="section-title fade-in">Cultural part: ( S-i-C and secretary Cultural Society) </h6>
+        <div class="team-grid">
           <div class="team-card fade-in">
             <div class="team-img">
-              <img src="IMG\Team\Srishti.jpeg" alt="kaushal.jpeg" />
+              <img src="IMG\Team\Srishti.jpeg" alt="jpeg" />
             </div>
             <div class="team-info">
               <h3>Shristi Aswal</h3>
-              <p>)(2nd Year BCA)</p>
-              <div class="team-role">Cultural</div>
+              <p>(2nd Year BCA)</p>
+              
             </div>
           </div>
-          <!-- Member -->
+
           <div class="team-card fade-in">
             <div class="team-img">
-              <img src="" alt="sumit"/>
+              <img src="IMG\IMG CULTURAL\sumit.png" alt="img" />
             </div>
             <div class="team-info">
               <h3>Sumit</h3>
-              <p>(1st Year CSE (AI&ML))</p>
-              <div class="team-role">Cultural</div>
+              <p>(1st Year CSE(AI&ML))</p>
+             
+            </div>
+          </div>
+        </div>
+
+        <!-- 3 -->
+        <h6 class="section-title fade-in">Technical Support(flyers, digital media etc)</h6>
+        <div class="team-grid">
+          <div class="team-card fade-in">
+            <div class="team-img">
+              <img src="IMG\IMG Technical\nautiyal.jpeg" alt="jpeg" />
+            </div>
+            <div class="team-info">
+              <h3>Ashutosh Nautiyal</h3>
+              <p>(3rd Year CSE)</p>
+              
             </div>
           </div>
 
@@ -1551,119 +818,206 @@
             <div class="team-info">
               <h3>Utkarsh Singh</h3>
               <p>(1st Year CSE)</p>
-              <div class="team-role">Technical Support</div>
+             
             </div>
           </div>
-          <!-- Member -->
-          <div class="team-card fade-in">
-            <div class="team-img">
-              <img src="IMG\Team\divyansh.jpeg" alt="director.jpeg" />
-            </div>
-            <div class="team-info">
-              <h3>Divyansh Rana </h3>
-              <p>(1st Year CSE(AI&ML)</p>
-              <div class="team-role">Technical Support</div>
-            </div>
-          </div>
-          <div class="team-card fade-in">
-            <div class="team-img">
-              <img src="IMG\Team\ansh.jpeg" alt="ansh.jpeg" />
-            </div>
-            <div class="team-info">
-              <h3>Ansh Giri</h3>
-              <p>(1st Year CSE)</p>
-              <div class="team-role">Technical Support</div>
-            </div>
-          </div>
-          <!-- Member -->
+        </div>
+<!-- 4 -->
+<h6 class="section-title fade-in">Press Report, Anchoring, Photography& videography etc</h6>
+<div class="team-grid">
+  <div class="team-card fade-in">
+    <div class="team-img">
+      <img src="IMG\IMG CULTURAL\img.png" alt="jpeg" />
+    </div>
+    <div class="team-info">
+      <h3>Vaibhav Kandpal</h3>
+      <p>(2nd Year CSE(AI&ML))</p>
+      
+    </div>
+  </div>
+
+  <div class="team-card fade-in">
+    <div class="team-img">
+      <img src="IMG\IMG CULTURAL\img.png" alt="img" />
+    </div>
+    <div class="team-info">
+      <h3>Varsha Bhatt </h3>
+      <p>(1st Year CSE(AI&ML))</p>
+     
+    </div>
+  </div>
+</div>
+<!-- 5 -->
+<h6 class="section-title fade-in">Food Committee: ( Students from Community and SDGs Society)</h6>
+        <div class="team-grid">
           <div class="team-card fade-in">
             <div class="team-img">
               <img src="IMG\IMG CULTURAL\img.png" alt="jpeg" />
             </div>
             <div class="team-info">
-              <h3>Vaibhav Kandpal</h3>
-              <p>(2nd Year CSE (AI&ML))</p>
-              <div class="team-role">Press Report</div>
-            </div>
-          </div>
-          <div class="team-card fade-in">
-            <div class="team-img">
-              <img src="IMG\IMG CULTURAL\img.png" alt="please send your picture" />
-            </div>
-            <div class="team-info">
-              <h3>Varsha Bhatt</h3>
-              <p>1st Year CSE(AI&ML)</p>
-              <div class="team-role">Press Report</div>
-            </div>
-          </div>
-          <!-- Member -->
-          <div class="team-card fade-in">
-            <div class="team-img">
-              <img src="IMG\IMG CULTURAL\img.png" alt="director.jpeg" />
-            </div>
-            <div class="team-info">
-              <h3>Sumit</h3>
-              <p>2nd Year CSE</p>
-              <div class="team-role">Food Committee</div>
-            </div>
-          </div>
-          <div class="team-card fade-in">
-            <div class="team-img">
-              <img src="IMG\Team\piyush.jpeg" alt="director.jpeg" />
-            </div>
-            <div class="team-info">
-              <h3>Piyush Nautiyal</h3>
-              <div class="team-role">Student Member Secretary</div>
-              <p>2nd Year CSE</p>
+              <h3>Lorem, ipsum.</h3>
+              <p>(2nd Year CSE)</p>
+              
             </div>
           </div>
 
+          <div class="team-card fade-in">
+            <div class="team-img">
+              <img src="IMG\IMG CULTURAL\img.png" alt="img" />
+            </div>
+            <div class="team-info">
+              <h3>Lorem, ipsum.</h3>
+              <p>(2nd Year CSE)</p>
+             
+            </div>
+          </div>
         </div>
+<!-- 6 -->
+<h6 class="section-title fade-in">Faculty members: Patron, Chairman , O-i-Cs cultural, Literary, and Technical Societies. </h6>
+<div class="team-grid">
+  <div class="team-card fade-in">
+    <div class="team-img">
+      <img src="director.jpeg" alt="jpeg" />
+    </div>
+    <div class="team-info">
+      <h3>Dr. H. S. Bhadauriya</h3>
+      <p>hon'ble Director</p>
+      
+    </div>
+  </div>
 
-        <div style="text-align: center; margin-top: 40px">
-          <p class="section-subtitle">
-            ISAC is supported by faculty advisors from all departments and
-            hundreds of student volunteers.
-          </p>
-        </div>
+  <div class="team-card fade-in">
+    <div class="team-img">
+      <img src="IMG\Team\mr. Rakesh Chandra Sir.jpeg" alt="img" />
+    </div>
+    <div class="team-info">
+      <h3>Mr. Rakesh Chandra</h3>
+      <p>(Assistant Professor)</p>
+      <p>Chairman ISAC</p>
+     
+    </div>
+  </div>
+  <div class="team-card fade-in">
+    <div class="team-img">
+      <img src="IMG\Team\SPANA.jpeg" alt="jpeg" />
+    </div>
+    <div class="team-info">
+      <h3>Dr. Sapna</h3>
+      <p>(Assistant Professor)</p>
+      <p>O-i-C Cultural</p>
+      
+    </div>
+  </div>
+
+  <div class="team-card fade-in">
+    <div class="team-img">
+      <img src="IMG\IMG Technical\anshul sir.jpeg" alt="jpeg" />
+    </div>
+    <div class="team-info">
+      <h3>Mr. Anshul Negi</h3>
+      <p>(Assistant Professor)</p>
+      <p>Deputy O-i-C Cultural</p>
+      
+    </div>
+  </div>
+
+  <div class="team-card fade-in">
+    <div class="team-img">
+      <img src="IMG\Team\himani ma'am.png" alt="jpeg" />
+    </div>
+    <div class="team-info">
+      <h3>Ms. Himani Kala</h3>
+      <p>(Assistant Professor)</p>
+      <p>O-i-C Literary</p>
+      
+    </div>
+  </div>
+  <div class="team-card fade-in">
+    <div class="team-img">
+      <img src="IMG\Team\deepak.jpeg" alt="jpeg" />
+    </div>
+    <div class="team-info">
+      <h3>Mr. Deepak Panwar</h3>
+      <p>(Assistant Professor)</p>
+      <p>Deputy O-i-C Literary</p>
+      
+    </div>
+  </div>
+  <div class="team-card fade-in">
+    <div class="team-img">
+      <img src="IMG\IMG Technical\ashu sir.jpg" alt="jpeg" />
+    </div>
+    <div class="team-info">
+      <h3>Dr. Ashutosh Kumar</h3>
+      <p>(Assistant Professor)</p>
+      <p>O-i-C Technical</p>
+      
+    </div>
+  </div>
+  <div class="team-card fade-in">
+    <div class="team-img">
+      <img src="IMG\IMG Technical\mayank sir.jpeg" alt="jpeg" />
+    </div>
+    <div class="team-info">
+      <h3>Mr. Mayank Joshi</h3>
+      <p>(Assistant Professor)</p>
+      <p>Deputy O-i-C Technical</p>
+      
+    </div>
+  </div>
+  <div class="team-card fade-in">
+    <div class="team-img">
+      <img src="IMG\IMG Technical\semwal.sir.jpeg" alt="jpeg" />
+    </div>
+    <div class="team-info">
+      <h3>Mr. Vikash Semwal</h3>
+      <p>In-charge IOT Lab</p>
+      <p>Deputy O-i-C Technical</p>
+      
+    </div>
+  </div>
+
+</div>
+
+
+       
+
+        
+        
       </div>
     </section>
 
+    <br><br>
+    <center>
+      <a href="ISAC.pdf" target="_blank" rel="noopener noreferrer">
+        <button class="tab-btn-team" data-tab="projects">Download the Organizational Structure of ISAC</button>
+      </a>
+    </center>
+
     <!-- Footer -->
     <footer>
-     
-
+      <div class="container">
+        
         <div class="copyright">
-          <p>
-            &copy; 2026 Institute Student Activity Council, Institute of
-            Technology Baun, Uttarkashi. All Rights Reserved.
-          </p>
+          <p>&copy; 2026 Institute Student Activity Council, Institute of Technology Baun, Uttarkashi. All Rights Reserved.</p>
           <p style="margin-top: 5px">
-            Developed with ❤️ and ☕ by <span style="color: var(--accent-gold)"
-              >Digital Media Club Members</span
-            >
+            Developed with ❤️ and ☕ by <span style="color: var(--accent-gold)">Digital Media Club Members</span>
           </p>
         </div>
       </div>
     </footer>
 
-    <!-- Modal for Event/Club Details -->
+    <!-- Modal -->
     <div id="eventModal" class="modal">
       <div class="modal-content">
         <button class="close-modal" id="closeModal">&times;</button>
-        <h2
-          id="modalTitle"
-          style="color: var(--accent-gold); margin-bottom: 20px"
-        ></h2>
-        <div
-          id="modalContent"
-          style="color: var(--medium-text); line-height: 1.8; font-size: 1.1rem"
-        ></div>
+        <h2 id="modalTitle" style="color: var(--accent-gold); margin-bottom: 20px"></h2>
+        <div id="modalContent" style="color: var(--medium-text); line-height: 1.8; font-size: 1.1rem"></div>
       </div>
     </div>
 
     <script>
-      // Enhanced Mobile Navigation Toggle - FIXED
+      // Mobile Navigation Toggle
       const mobileToggle = document.getElementById("mobileToggle");
       const navMenu = document.getElementById("navMenu");
 
@@ -1674,24 +1028,20 @@
         if (navMenu.classList.contains("active")) {
           icon.classList.remove("fa-bars");
           icon.classList.add("fa-times");
-          // Prevent body scroll when menu is open
           document.body.style.overflow = "hidden";
         } else {
           icon.classList.remove("fa-times");
           icon.classList.add("fa-bars");
-          // Restore body scroll
           document.body.style.overflow = "";
         }
       }
 
-      // Add multiple event listeners for better compatibility
       mobileToggle.addEventListener("click", toggleMobileMenu);
       mobileToggle.addEventListener("touchstart", function (e) {
         e.preventDefault();
         toggleMobileMenu();
       });
 
-      // Close mobile menu when clicking a link
       document.querySelectorAll("#navMenu a").forEach((link) => {
         link.addEventListener("click", () => {
           navMenu.classList.remove("active");
@@ -1701,7 +1051,6 @@
         });
       });
 
-      // Close menu when clicking outside on mobile
       document.addEventListener("click", (event) => {
         if (window.innerWidth <= 768) {
           const isClickInsideMenu = navMenu.contains(event.target);
@@ -1717,9 +1066,8 @@
         }
       });
 
-      // Dynamic Header Scroll Effect
+      // Header scroll effect
       const header = document.getElementById("mainHeader");
-
       window.addEventListener("scroll", function () {
         if (window.scrollY > 100) {
           header.classList.add("header-scrolled");
@@ -1728,63 +1076,17 @@
         }
       });
 
-      // Tab Switching for Clubs
-      const tabBtns = document.querySelectorAll(".tab-btn");
-      const tabContents = document.querySelectorAll(".tab-content");
-
-      tabBtns.forEach((btn) => {
-        btn.addEventListener("click", () => {
-          // Remove active class from all buttons and contents
-          tabBtns.forEach((b) => b.classList.remove("active"));
-          tabContents.forEach((c) => c.classList.remove("active"));
-
-          // Add active class to clicked button
-          btn.classList.add("active");
-
-          // Show corresponding content
-          const tabId = btn.getAttribute("data-tab");
-          document.getElementById(tabId).classList.add("active");
-        });
-      });
-
-      // Form Submission
-      const contactForm = document.getElementById("contactForm");
-      if (contactForm) {
-        contactForm.addEventListener("submit", (e) => {
-          e.preventDefault();
-
-          // Get form values
-          const name = document.getElementById("name").value;
-          const email = document.getElementById("email").value;
-          const branch = document.getElementById("branch").value;
-          const interest = document.getElementById("interest").value;
-
-          // In a real application, you would send this data to a server
-          // For this demo, we'll just show an alert
-          alert(
-            `Thank you, ${name}! Your interest in ${interest} has been registered. We'll contact you at ${email} soon.`
-          );
-
-          // Reset the form
-          contactForm.reset();
-        });
-      }
-
-      // Scroll Animation
+      // Fade-in animation
       const fadeElements = document.querySelectorAll(".fade-in");
-
       const fadeInOnScroll = () => {
         fadeElements.forEach((element) => {
           const elementTop = element.getBoundingClientRect().top;
           const windowHeight = window.innerHeight;
-
           if (elementTop < windowHeight - 100) {
             element.classList.add("visible");
           }
         });
       };
-
-      // Check on load and scroll
       window.addEventListener("load", fadeInOnScroll);
       window.addEventListener("scroll", fadeInOnScroll);
 
@@ -1815,96 +1117,14 @@
         }
       });
 
-      // Add visual feedback for button clicks
-      const buttons = document.querySelectorAll(".btn");
-      buttons.forEach((button) => {
-        button.addEventListener("click", function () {
-          this.style.boxShadow = "0 0 0 10px rgba(212, 175, 55, 0.3)";
-          setTimeout(() => {
-            this.style.boxShadow = "";
-          }, 400);
-        });
-      });
-
-      // Calendar Generation
-      function generateCalendar() {
-        const calendarDays = document.getElementById("calendarDays");
-        if (calendarDays) {
-          const daysInMonth = 31;
-          const startDay = 5; // Saturday, March 1, 2025
-          const eventDays = [3, 5, 8, 12, 15, 16, 17, 20, 22, 25, 28, 30];
-
-          let calendarHTML = "";
-
-          // Empty days at the start
-          for (let i = 0; i < startDay; i++) {
-            calendarHTML += `<div class="calendar-day empty"></div>`;
-          }
-
-          // Days of the month
-          for (let day = 1; day <= daysInMonth; day++) {
-            if (eventDays.includes(day)) {
-              calendarHTML += `<div class="calendar-day event-day" onclick="showEventModal('Event on March ${day}', '<p>There is an ISAC event scheduled for this day. Check the events section for details.</p>')">${day}</div>`;
-            } else {
-              calendarHTML += `<div class="calendar-day">${day}</div>`;
-            }
-          }
-
-          calendarDays.innerHTML = calendarHTML;
-        }
-      }
-
-      // Initialize on page load
+      // Dynamic year in footer
       document.addEventListener("DOMContentLoaded", function () {
-        generateCalendar();
-
-        // Update the year in the footer dynamically
         const year = new Date().getFullYear();
         const copyrightText = document.querySelector(".copyright p");
         if (copyrightText) {
-          copyrightText.innerHTML = copyrightText.innerHTML.replace(
-            "2025",
-            year
-          );
-        }
-
-        // Add touch support for mobile
-        if ("ontouchstart" in window) {
-          document.body.classList.add("touch-device");
-        }
-
-        // Fix for iOS viewport height
-        function setViewportHeight() {
-          let vh = window.innerHeight * 0.01;
-          document.documentElement.style.setProperty("--vh", `${vh}px`);
-        }
-
-        setViewportHeight();
-        window.addEventListener("resize", setViewportHeight);
-        window.addEventListener("orientationchange", setViewportHeight);
-      });
-
-      // Prevent form zoom on iOS
-      document.addEventListener("DOMContentLoaded", function () {
-        if (navigator.userAgent.match(/iPhone|iPad|iPod/i)) {
-          document.addEventListener(
-            "focus",
-            function (e) {
-              if (e.target.matches("input, select, textarea")) {
-                setTimeout(function () {
-                  e.target.scrollIntoView({
-                    behavior: "smooth",
-                    block: "center",
-                  });
-                }, 300);
-              }
-            },
-            true
-          );
+          copyrightText.innerHTML = copyrightText.innerHTML.replace("2026", year);
         }
       });
     </script>
   </body>
 </html>
-
-
