@@ -7,7 +7,8 @@
       content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes"
     />
     <title>
-      Join ISAC | Institute Student Activity Council | Institute of Technology Baun, Uttarkashi
+      Register in SPARK 1.0 | ISAC | Institute Student Activity Council | Institute of Technology
+      Baun, Uttarkashi
     </title>
     <link rel="icon" type="image/png" href="IMG\logo\logo ISAC 1.png" />
     <link
@@ -115,10 +116,7 @@
         line-height: 1.2;
       }
 
-
-
-
-         /* Team Section */
+      /* Team Section */
       .team-grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -166,16 +164,6 @@
         margin-bottom: 10px;
         font-size: 1.1rem;
       }
-
-
-
-
-
-
-      
-
-
-      
 
       /* Navigation */
       nav ul {
@@ -458,7 +446,7 @@
         .section-title {
           font-size: 2.6rem;
         }
-        
+
         .form-container {
           padding: 35px;
         }
@@ -558,8 +546,12 @@
 
       /* Animation */
       @keyframes fadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
       }
 
       .fade-in {
@@ -577,8 +569,12 @@
     <header id="mainHeader">
       <div class="container header-container">
         <div class="logo-container">
-          <img src="IMG\IMG CULTURAL\logo ISAC 1.png" alt="ISAC Logo" class="logo-img">
-          
+          <img
+            src="IMG\IMG CULTURAL\logo ISAC 1.png"
+            alt="ISAC Logo"
+            class="logo-img"
+          />
+
           <div class="council-name">
             <h1>Institute Student Activity Council</h1>
             <span>Institute of Technology Baun, Uttarkashi</span>
@@ -604,97 +600,50 @@
           </ul>
         </nav>
       </div>
-    </header><br><br><br><br><br><br><br><br><br>
-
-
-
-         <section id="team">
-      <div class="container">
-        <h2 class="section-title fade-in">Meet Our Team</h2>
-        <br><br>
-
-        <div class="team-grid">
-          <!-- President -->
-          <div class="team-card fade-in">
-            <div class="team-img">
-              <img src="coordinator.jpeg" alt="Coordinator img" />
-            </div>
-            <div class="team-info">
-              <h3>Genedy</h3>
-              <div class="team-role">Coordinator </div>
-              <p>xyz Year Students </p>
-            </div>
-          </div>
-
-          <!-- chairman -->
-          <div class="team-card fade-in">
-            <div class="team-img">
-              <img src="header-logo IT baun.png" alt="img" />
-            </div>
-            <div class="team-info">
-              <h3>Lorem ipsum</h3>
-              <div class="team-role">Deputy Coordinator </div>
-              <p>xyz Year Students</p>
-            </div>
-          </div>
-          <!-- Member -->
-          <div class="team-card fade-in">
-            <div class="team-img">
-              <img src="header-logo IT baun.png" alt="director.jpeg" />
-            </div>
-            <div class="team-info">
-              <h3>Lorem, ipsum.</h3>
-              <div class="team-role">Executive</div>
-              <p>xyz Year Students</p>
-            </div>
-          </div>
-          <!-- Member -->
-          <div class="team-card fade-in">
-            <div class="team-img">
-              <img src="header-logo IT baun.png" alt="director.jpeg" />
-            </div>
-            <div class="team-info">
-              <h3>Lorem, ipsum.</h3>
-              <div class="team-role">Executive </div>
-              <p>xyz Year Students</p>
-            </div>
-          </div>
-        </div>
-
-        <div style="text-align: center; margin-top: 40px">
-          <p class="section-subtitle">
-            
-          </p>
-        </div>
-      </div>
-    </section>   
-
-
-
+    </header>
     
-
     <!-- Form Section -->
     <section class="form-section fade-in">
       <div class="container">
-        <h2 class="section-title">Join Startup & Entrepreneurship Club </h2>
-        <p class="section-subtitle">Fill out the application form to become a member of our student council</p>
+        <h2 class="section-title">Register in SPARK 1.0</h2>
         
+        <ul class="section-subtitle" style="list-style-type: disc; padding-left: 1.8rem; text-align: left; margin-bottom: 2rem;">
+          <li>It's a Team Based Competition. A team can create a hardware Project related to <b>Robotics & IOT</b></li>
+          <li>A team must have exactly 4 members.</li>
+          <li>Individual & partial team registrations will not be accepted.</li>
+          <span style="color: #2a8c8b;">
+          <li><b>First Prize: INR 3000</b></li>
+          <li><b>Second Prize: INR 2000</b></li>
+          <li><b>Third Prize: INR 1000</b></li>
+        </span>
+          <li>Teams are required to finish a work-in-progress prototype rather than starting a new concept.</li>
+          <li>Teams may start a new project, but they must complete it within the given time period.</li>
+          <li>Participants are discouraged from pitching new ideas if they have a pending hardware project that requires final assembly, testing, or refinement.</li>
+          <li><span style="color: rgb(127, 38, 38); "><b>Last Date of Registration: Feb 24, 2026</b></span></li>
+        </ul>
+
         <div class="form-container">
           <form id="contactForm">
             <div class="form-row">
               <div class="form-group">
-                <label for="name">Full Name <span style="color: var(--accent-red);">*</span></label>
+                <label for="name"
+                  >Name
+                  <span style="color: var(--accent-red)">*</span></label
+                >
                 <input
                   type="text"
                   id="name"
                   class="form-control"
-                  placeholder="Enter your full name"
+                  placeholder="Team Leader, Contestent II, Contestent III, Contestent IV"
                   required
                 />
               </div>
 
               <div class="form-group">
-                <label for="roll">Roll Number <span style="color: var(--accent-red);">*</span></label>
+                <label for="roll"
+                  >Roll Number of Team Leader
+                  <span style="color: var(--accent-red)">*</span></label
+                >
                 <input
                   type="text"
                   id="roll"
@@ -709,23 +658,29 @@
 
             <div class="form-row">
               <div class="form-group">
-                <label for="email">Email Address <span style="color: var(--accent-red);">*</span></label>
+                <label for="theme"
+                  >Theme of Your Project
+                  <span style="color: var(--accent-red)">*</span></label
+                >
                 <input
-                  type="email"
-                  id="email"
+                  type="text"
+                  id="theme"
                   class="form-control"
-                  placeholder="Enter your email address"
+                  placeholder="Enter Theme of Your Project"
                   required
                 />
               </div>
 
               <div class="form-group">
-                <label for="mobile">Mobile Number <span style="color: var(--accent-red);">*</span></label>
+                <label for="mobile"
+                  >Mobile Number
+                  <span style="color: var(--accent-red)">*</span></label
+                >
                 <input
                   type="tel"
                   id="mobile"
                   class="form-control"
-                  placeholder="Enter your mobile number"
+                  placeholder="Enter Team Leader mobile number"
                   required
                   pattern="[0-9]{10}"
                   title="Please enter a valid 10-digit mobile number"
@@ -735,7 +690,9 @@
 
             <div class="form-row">
               <div class="form-group">
-                <label for="branch">Branch <span style="color: var(--accent-red);">*</span></label>
+                <label for="branch"
+                  >Branch <span style="color: var(--accent-red)">*</span></label
+                >
                 <select id="branch" class="form-control" required>
                   <option value="">Select your branch</option>
                   <option value="CSE">Computer Science & Engineering</option>
@@ -748,29 +705,33 @@
               </div>
 
               <div class="form-group">
-                <label for="year">Year <span style="color: var(--accent-red);">*</span></label>
+                <label for="year"
+                  >Year <span style="color: var(--accent-red)">*</span></label
+                >
                 <select id="year" class="form-control" required>
                   <option value="">Select your year</option>
                   <option value="1">1st Year</option>
                   <option value="2">2nd Year</option>
                   <option value="3">3rd Year</option>
-                  <option value="4">4th Year</option>
+                 
                 </select>
               </div>
             </div>
 
             <div class="form-group">
-              <label for="message">Why do you want to join ISAC? (Optional)</label>
+              <label for="message"
+                >Discribe Your Theme</label
+              >
               <textarea
                 id="message"
                 class="form-control"
                 rows="4"
-                placeholder="Tell us about your interests, skills, and what you hope to contribute..."
+                placeholder="Tell us about your Idea & Project"
               ></textarea>
             </div>
 
             <button type="submit" class="btn btn-primary" id="submitBtn">
-              <i class="fas fa-paper-plane"></i> Submit Application
+              <i class="fas fa-paper-plane"></i> Register Now
             </button>
 
             <div id="formMessage" class="mt-3" style="display: none"></div>
@@ -784,8 +745,9 @@
       <div class="container">
         <div class="copyright">
           <p>
-            &copy; <span id="currentYear"></span> Institute Student Activity Council, Institute of
-            Technology Baun, Uttarkashi. All Rights Reserved.
+            &copy; <span id="currentYear"></span> Institute Student Activity
+            Council, Institute of Technology Baun, Uttarkashi. All Rights
+            Reserved.
           </p>
           <p style="margin-top: 5px">
             Designed & Developed by
@@ -805,7 +767,7 @@
       function toggleMobileMenu() {
         navMenu.classList.toggle("active");
         const icon = mobileToggle.querySelector("i");
-        
+
         if (navMenu.classList.contains("active")) {
           icon.classList.remove("fa-bars");
           icon.classList.add("fa-times");
@@ -842,39 +804,44 @@
       // Form Submission
       document.addEventListener("DOMContentLoaded", function () {
         // Set current year in footer
-        document.getElementById("currentYear").textContent = new Date().getFullYear();
+        document.getElementById("currentYear").textContent =
+          new Date().getFullYear();
 
         const form = document.getElementById("contactForm");
         const formMessage = document.getElementById("formMessage");
         const submitBtn = document.getElementById("submitBtn");
 
         // Replace with your Google Apps Script URL
-        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzvHVMRsrQljv-ZO5jjTM4UIp72R6RJJPhpg-8ay_d65m3N8CDA_2S2ungKur4lHbCK/exec";
+        const SCRIPT_URL =
+          "https://script.google.com/macros/s/AKfycbz3A8Alb7Xj6_8j8JaFMhLR6Gh1iKlbAAYFxuOgF9ZA4PvzR7gcI6PT5kqA28Ox8qoa/exec";
 
         form.addEventListener("submit", function (e) {
           e.preventDefault();
 
           const originalBtnText = submitBtn.innerHTML;
           submitBtn.disabled = true;
-          submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+          submitBtn.innerHTML =
+            '<i class="fas fa-spinner fa-spin"></i> Submitting...';
 
           // Get form values
           const formData = {
             name: document.getElementById("name").value.trim(),
             roll: document.getElementById("roll").value.trim(),
-            email: document.getElementById("email").value.trim(),
+            theme: document.getElementById("theme").value.trim(),
             mobile: document.getElementById("mobile").value.trim(),
             branch: document.getElementById("branch").value,
             year: document.getElementById("year").value,
             message: document.getElementById("message").value.trim(),
-            timestamp: new Date().toLocaleString()
+            timestamp: new Date().toLocaleString(),
           };
 
           // Create URL encoded parameters
           const params = Object.keys(formData)
             .map(
               (key) =>
-                encodeURIComponent(key) + "=" + encodeURIComponent(formData[key])
+                encodeURIComponent(key) +
+                "=" +
+                encodeURIComponent(formData[key])
             )
             .join("&");
 
