@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes"
+    />
+    <title>
+      Upload Tech Meme | ISAC | Institute Student Activity Council | Institute of Technology
+      Baun, Uttarkashi
+    </title>
+    <link rel="icon" type="image/png" href="IMG\logo\logo ISAC 1.png" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- SweetAlert2 for nice popups -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      :root {
+        --primary-dark: #0a1a2d;
+        --secondary-dark: #1a2b3c;
+        --accent-gold: #d4af37;
+        --accent-blue: #2a8c8b;
+        --accent-red: #c53b3b;
+        --light-text: #f0f8ff;
+        --medium-text: #c9d6e6;
+        --dark-text: #051225;
+        --card-bg: rgba(255, 255, 255, 0.05);
+        --card-border: rgba(255, 255, 255, 0.1);
+        --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      }
+
+      body {
+        background: linear-gradient(180deg, #0a1a2d 0%, #1a2b3c 60%);
+        color: var(--light-text);
+        line-height: 1.6;
+        min-height: 100vh;
+        overflow-x: hidden;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* Header */
+      header {
+        background: linear-gradient(
+          180deg,
+          rgba(10, 26, 45, 0.98) 0%,
+          rgba(26, 43, 60, 0.97) 100%
+        );
+        color: var(--light-text);
+        padding: 20px 0;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        transition: all 0.4s ease;
+        border-bottom: 3px solid var(--accent-gold);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+      }
+
+      .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+      }
+
+      .logo-container {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        max-width: 70%;
+      }
+
+      .logo-img {
+        height: 60px;
+        width: auto;
+        object-fit: contain;
+        filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+        transition: all 0.3s ease;
+      }
+
+      .council-name {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .council-name h1 {
+        font-size: 1.8rem;
+        background: linear-gradient(to right, var(--accent-gold), #f0e68c);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        letter-spacing: 0.5px;
+        line-height: 1.2;
+      }
+
+      .council-name span {
+        font-size: 0.9rem;
+        color: var(--accent-blue);
+        line-height: 1.2;
+      }
+
+      /* Navigation */
+      nav ul {
+        display: flex;
+        list-style: none;
+        gap: 25px;
+        align-items: center;
+      }
+
+      nav a {
+        text-decoration: none;
+        color: var(--light-text);
+        font-weight: 500;
+        transition: all 0.3s;
+        padding: 5px 0;
+        position: relative;
+        white-space: nowrap;
+      }
+
+      nav a:hover {
+        color: var(--accent-gold);
+      }
+
+      nav a:after {
+        content: "";
+        position: absolute;
+        bottom: -3px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--accent-gold);
+        transition: width 0.3s;
+      }
+
+      nav a:hover:after {
+        width: 100%;
+      }
+
+      .mobile-toggle {
+        display: none;
+        font-size: 1.8rem;
+        cursor: pointer;
+        color: var(--accent-gold);
+        background: none;
+        border: none;
+        padding: 10px;
+        z-index: 1002;
+        transition: all 0.3s;
+      }
+
+      /* Form Section */
+      .form-section {
+        padding: 150px 0 80px;
+        margin-top: 60px;
+      }
+
+      .section-title {
+        font-size: 3rem;
+        margin-bottom: 15px;
+        position: relative;
+        display: inline-block;
+        color: var(--accent-gold);
+        width: 100%;
+        text-align: center;
+      }
+
+      .section-title:after {
+        content: "";
+        position: absolute;
+        width: 60%;
+        height: 4px;
+        background: linear-gradient(
+          to right,
+          transparent,
+          var(--accent-gold),
+          transparent
+        );
+        bottom: -15px;
+        left: 20%;
+        border-radius: 2px;
+      }
+
+      .section-subtitle {
+        font-size: 1.3rem;
+        color: var(--medium-text);
+        margin-bottom: 50px;
+        text-align: center;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      /* Form Container */
+      .form-container {
+        background: var(--card-bg);
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: var(--shadow);
+        border: 1px solid var(--card-border);
+        backdrop-filter: blur(10px);
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .form-group {
+        margin-bottom: 25px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+        color: var(--light-text);
+        font-size: 1.1rem;
+      }
+
+      .form-control {
+        width: 100%;
+        padding: 15px;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 8px;
+        color: var(--light-text);
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        transition: all 0.3s;
+        font-size: 16px;
+      }
+
+      .form-control:focus {
+        outline: none;
+        border-color: var(--accent-gold);
+        box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+      }
+
+      select.form-control {
+        appearance: none;
+        background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23d4af37' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+        background-repeat: no-repeat;
+        background-position: right 15px center;
+        background-size: 20px;
+        padding-right: 45px;
+      }
+
+      option {
+        background-color: #1a2a3a;
+        color: white;
+      }
+
+      /* Form Row for Responsive Layout */
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+
+      /* File info hint */
+      .file-info {
+        font-size: 0.85rem;
+        margin-top: 8px;
+        color: var(--medium-text);
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .file-name {
+        background: rgba(0, 0, 0, 0.3);
+        padding: 4px 12px;
+        border-radius: 30px;
+        font-size: 0.8rem;
+        display: inline-block;
+      }
+
+      /* Buttons */
+      .btn {
+        padding: 15px 35px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        position: relative;
+        overflow: hidden;
+        text-decoration: none;
+        color: inherit;
+        width: 100%;
+        margin-top: 20px;
+      }
+
+      .btn:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+        transition: left 0.7s;
+      }
+
+      .btn:hover:after {
+        left: 100%;
+      }
+
+      .btn-primary {
+        background: linear-gradient(to right, var(--accent-gold), #b8941f);
+        color: var(--dark-text);
+        border: 2px solid var(--accent-gold);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-5px) scale(1.02);
+        box-shadow: 0 15px 30px rgba(212, 175, 55, 0.4);
+      }
+
+      .btn-primary:disabled {
+        opacity: 0.7;
+        cursor: not-allowed;
+        transform: none;
+      }
+
+      /* Footer */
+      footer {
+        background: linear-gradient(
+          180deg,
+          rgba(10, 26, 45, 0.95),
+          rgba(8, 20, 36, 0.98)
+        );
+        color: var(--light-text);
+        padding: 40px 0 20px;
+        margin-top: 60px;
+        position: relative;
+        border-top: 3px solid var(--accent-gold);
+      }
+
+      footer:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 10px;
+        background: linear-gradient(
+          to right,
+          transparent,
+          var(--accent-gold),
+          transparent
+        );
+      }
+
+      .copyright {
+        text-align: center;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        font-size: 0.95rem;
+        color: rgba(255, 255, 255, 0.6);
+      }
+
+      /* Responsive Design */
+      @media (max-width: 1024px) {
+        .section-title {
+          font-size: 2.6rem;
+        }
+
+        .form-container {
+          padding: 35px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .header-container {
+          padding: 0 15px;
+        }
+
+        .logo-container {
+          max-width: 80%;
+        }
+
+        .council-name h1 {
+          font-size: 1.3rem;
+        }
+
+        .mobile-toggle {
+          display: block;
+        }
+
+        nav ul {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100vh;
+          background: rgba(10, 26, 45, 0.98);
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          padding: 80px 20px 40px;
+          transform: translateX(100%);
+          opacity: 0;
+          transition: transform 0.4s ease, opacity 0.4s ease;
+          z-index: 1001;
+          backdrop-filter: blur(20px);
+        }
+
+        nav ul.active {
+          transform: translateX(0);
+          opacity: 1;
+        }
+
+        .form-section {
+          padding: 120px 0 60px;
+          margin-top: 70px;
+        }
+
+        .section-title {
+          font-size: 2.2rem;
+        }
+
+        .section-subtitle {
+          font-size: 1.1rem;
+          padding: 0 15px;
+        }
+
+        .form-container {
+          padding: 25px 20px;
+          margin: 0 15px;
+        }
+
+        .form-row {
+          grid-template-columns: 1fr;
+          gap: 0;
+        }
+
+        .btn {
+          padding: 14px 25px;
+          font-size: 1rem;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .form-section {
+          padding: 100px 0 40px;
+        }
+
+        .section-title {
+          font-size: 1.8rem;
+        }
+
+        .section-subtitle {
+          font-size: 1rem;
+        }
+
+        .form-group label {
+          font-size: 1rem;
+        }
+
+        .form-control {
+          padding: 12px;
+        }
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      .fade-in {
+        animation: fadeIn 0.5s ease-in;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header (unchanged) -->
+    <header id="mainHeader">
+      <div class="container header-container">
+        <div class="logo-container">
+          <img
+            src="IMG\IMG CULTURAL\logo ISAC 1.png"
+            alt="ISAC Logo"
+            class="logo-img"
+          />
+
+          <div class="council-name">
+            <h1>Institute Student Activity Council</h1>
+            <span>Institute of Technology Baun, Uttarkashi</span>
+          </div>
+        </div>
+
+        <button
+          class="mobile-toggle"
+          id="mobileToggle"
+          aria-label="Toggle navigation menu"
+        >
+          <i class="fas fa-bars"></i>
+        </button>
+
+        <nav>
+          <ul id="navMenu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="society.html">Societies</a></li>
+            <li><a href="event.html">Events</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="team.html">Team</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Form Section with fields: name, branch, year, file upload -->
+    <section class="form-section fade-in">
+      <div class="container">
+        <h2 class="section-title">Upload Tech Meme</h2>
+        <ul class="section-subtitle" style="list-style-type: disc; padding-left: 1.8rem; text-align: left; margin-bottom: 2rem;">
+          <li>Upload relevant Tech Memes (max 10 MB)</li>
+        </ul>
+
+        <div class="form-container">
+          <form id="memeForm">
+            <!-- Full Name -->
+            <div class="form-group">
+              <label for="name">Full Name <span style="color: var(--accent-red)">*</span></label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                class="form-control"
+                placeholder="e.g., Ananya Sharma"
+                required
+              />
+            </div>
+
+            <div class="form-row">
+              <!-- Branch -->
+              <div class="form-group">
+                <label for="branch">Branch <span style="color: var(--accent-red)">*</span></label>
+                <select id="branch" name="branch" class="form-control" required>
+                  <option value="">Select your branch</option>
+                  <option value="CSE">Computer Science & Engineering</option>
+                  <option value="CSE_AI_ML">Computer Science & Engineering (AI&ML)</option>
+                  <option value="BCA">BCA</option>
+                  <option value="OTHER">Other</option>
+                </select>
+              </div>
+
+              <!-- Year -->
+              <div class="form-group">
+                <label for="year">Year <span style="color: var(--accent-red)">*</span></label>
+                <select id="year" name="year" class="form-control" required>
+                  <option value="">Select your year</option>
+                  <option value="1">1st Year</option>
+                  <option value="2">2nd Year</option>
+                  <option value="3">3rd Year</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- File Upload (max 10 MB) -->
+            <div class="form-group">
+              <label for="media">Upload File (Max 10 MB) 
+                <span style="font-size: 0.85rem; color: var(--medium-text);">(Optional but max 10MB)</span>
+              </label>
+              <input
+                type="file"
+                id="media"
+                name="media"
+                class="form-control"
+                accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.txt,.zip,.xlsx"
+                style="padding: 12px;"
+              />
+              <div class="file-info" id="fileInfo">
+                <span><i class="fas fa-info-circle"></i> No file selected</span>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary" id="submitBtn">
+              <i class="fas fa-paper-plane"></i> Upload Now
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer (unchanged) -->
+    <footer>
+      <div class="container">
+        <div class="copyright">
+          <p>
+            &copy; <span id="currentYear"></span> Institute Student Activity
+            Council, Institute of Technology Baun, Uttarkashi. All Rights
+            Reserved.
+          </p>
+          <p style="margin-top: 5px">
+            Designed & Developed by
+            <span style="color: var(--accent-gold)">Digital Media Club</span>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Mobile Navigation (unchanged)
+      const mobileToggle = document.getElementById("mobileToggle");
+      const navMenu = document.getElementById("navMenu");
+      function toggleMobileMenu() {
+        navMenu.classList.toggle("active");
+        const icon = mobileToggle.querySelector("i");
+        if (navMenu.classList.contains("active")) {
+          icon.classList.remove("fa-bars");
+          icon.classList.add("fa-times");
+          document.body.style.overflow = "hidden";
+        } else {
+          icon.classList.remove("fa-times");
+          icon.classList.add("fa-bars");
+          document.body.style.overflow = "";
+        }
+      }
+      mobileToggle.addEventListener("click", toggleMobileMenu);
+      document.querySelectorAll("#navMenu a").forEach((link) => {
+        link.addEventListener("click", () => {
+          navMenu.classList.remove("active");
+          const icon = mobileToggle.querySelector("i");
+          if (icon) {
+            icon.classList.remove("fa-times");
+            icon.classList.add("fa-bars");
+          }
+          document.body.style.overflow = "";
+        });
+      });
+
+      // Header scroll effect
+      const header = document.getElementById("mainHeader");
+      window.addEventListener("scroll", function () {
+        if (window.scrollY > 100) {
+          header.classList.add("header-scrolled");
+        } else {
+          header.classList.remove("header-scrolled");
+        }
+      });
+
+      // --------------------------------------------------------------
+      // FORM SUBMISSION USING FETCH + SWEETALERT (like page.html)
+      // --------------------------------------------------------------
+      document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById("currentYear").textContent = new Date().getFullYear();
+
+        const form = document.getElementById("memeForm");
+        const submitBtn = document.getElementById("submitBtn");
+        const fileInput = document.getElementById("media");
+        const fileInfoSpan = document.getElementById("fileInfo");
+        const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10 MB
+
+        // Replace with your deployed Google Apps Script URL (from the code.gs below)
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzE1vpUo18RFNf8VIBIi4LHi5sApspLj7xKGZTKkyUjNgYhiUqPSgmH-NcXA6EAoPbP/exec";
+
+        function updateFileInfo() {
+          const file = fileInput.files[0];
+          if (!file) {
+            fileInfoSpan.innerHTML = `<span><i class="fas fa-info-circle"></i> No file selected (max 10 MB)</span>`;
+            return true;
+          }
+          if (file.size > MAX_FILE_SIZE) {
+            fileInfoSpan.innerHTML = `<span style="color: var(--accent-red);"><i class="fas fa-exclamation-circle"></i> File exceeds 10 MB! Current: ${(file.size / (1024 * 1024)).toFixed(2)} MB</span>`;
+            return false;
+          }
+          const fileSizeMB = (file.size / (1024 * 1024)).toFixed(2);
+          fileInfoSpan.innerHTML = `<span style="color: #a5d6a5;"><i class="fas fa-check-circle"></i> ${file.name} (${fileSizeMB} MB) - ready</span>`;
+          return true;
+        }
+
+        fileInput.addEventListener("change", updateFileInfo);
+
+        form.addEventListener("submit", async (e) => {
+          e.preventDefault();
+
+          const name = document.getElementById("name").value.trim();
+          const branch = document.getElementById("branch").value;
+          const year = document.getElementById("year").value;
+          const file = fileInput.files[0];
+
+          // Client-side validation
+          if (!name) {
+            Swal.fire("Error", "Please enter your full name.", "error");
+            document.getElementById("name").focus();
+            return;
+          }
+          if (!branch) {
+            Swal.fire("Error", "Please select your branch.", "error");
+            document.getElementById("branch").focus();
+            return;
+          }
+          if (!year) {
+            Swal.fire("Error", "Please select your year.", "error");
+            document.getElementById("year").focus();
+            return;
+          }
+          if (file && file.size > MAX_FILE_SIZE) {
+            Swal.fire("Error", `File size exceeds 10 MB (${(file.size / (1024 * 1024)).toFixed(2)} MB). Please choose a smaller file.`, "error");
+            fileInput.focus();
+            return;
+          }
+
+          // Disable button and show loading state
+          const originalBtnText = submitBtn.innerHTML;
+          submitBtn.disabled = true;
+          submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+
+          // Prepare the form data (like page.html uses FormData)
+          const formData = new FormData();
+          formData.append("name", name);
+          formData.append("branch", branch);
+          formData.append("year", year);
+
+          // If a file is selected, convert to base64 and append
+          if (file) {
+            const reader = new FileReader();
+            reader.onload = async function (event) {
+              const base64Data = event.target.result.split(",")[1]; // remove data:...;base64,
+              formData.append("media", base64Data);
+
+              try {
+                const response = await fetch(SCRIPT_URL, {
+                  method: "POST",
+                  body: formData
+                });
+                const result = await response.json();
+
+                if (result.result === "success") {
+                  Swal.fire("Success!", `🎉 Meme uploaded successfully for ${name} (${branch}, Year ${year})`, "success");
+                  form.reset();
+                  updateFileInfo();
+                } else {
+                  throw new Error(result.error || "Unknown error");
+                }
+              } catch (err) {
+                console.error("Submission error:", err);
+                Swal.fire("Error", "Submission failed. Please try again later.", "error");
+              } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnText;
+              }
+            };
+
+            reader.onerror = function () {
+              Swal.fire("Error", "Failed to read file. Please try again.", "error");
+              submitBtn.disabled = false;
+              submitBtn.innerHTML = originalBtnText;
+            };
+
+            reader.readAsDataURL(file);
+          } else {
+            // No file – just send text fields
+            try {
+              const response = await fetch(SCRIPT_URL, {
+                method: "POST",
+                body: formData
+              });
+              const result = await response.json();
+
+              if (result.result === "success") {
+                Swal.fire("Success!", `🎉 Meme uploaded successfully for ${name} (${branch}, Year ${year})`, "success");
+                form.reset();
+                updateFileInfo();
+              } else {
+                throw new Error(result.error || "Unknown error");
+              }
+            } catch (err) {
+              console.error("Submission error:", err);
+              Swal.fire("Error", "Submission failed. Please try again later.", "error");
+            } finally {
+              submitBtn.disabled = false;
+              submitBtn.innerHTML = originalBtnText;
+            }
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
