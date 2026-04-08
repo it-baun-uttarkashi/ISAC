@@ -7,7 +7,7 @@
       content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes"
     />
     <title>
-      Register for SPARK 1.0 | ISAC | Institute Student Activity Council | Institute of Technology
+      Register for BGMI & FreeFire Showdown 2026 | ISAC | Institute Student Activity Council | Institute of Technology
       Baun, Uttarkashi
     </title>
     <link rel="icon" type="image/png" href="IMG\logo\logo ISAC 1.png" />
@@ -606,21 +606,23 @@
     <!-- Form Section -->
     <section class="form-section fade-in">
       <div class="container">
-        <h2 class="section-title">Register for SPARK 1.0</h2>
+        <h2 class="section-title">Register for BGMI & FreeFire Showdown 2026</h2>
         
         <ul class="section-subtitle" style="list-style-type: disc; padding-left: 1.8rem; text-align: left; margin-bottom: 2rem;">
-          <li>It's a Team Based Competition. A team can create a hardware Project related to <b>Robotics & IOT</b></li>
-          <li>A team must have exactly 4 members.</li>
-          <li>Individual & partial team registrations will not be accepted.</li>
-          <span style="color: #2a8c8b;">
-          <li><b>First Prize: INR 3000</b></li>
-          <li><b>Second Prize: INR 2000</b></li>
-          <li><b>Third Prize: INR 1000</b></li>
-        </span>
-          <li>Teams are required to finish a work-in-progress prototype rather than starting a new concept.</li>
-          <li>Teams may start a new project, but they must complete it within the given time period.</li>
-          <li>Participants are discouraged from pitching new ideas if they have a pending hardware project that requires final assembly, testing, or refinement.</li>
-          <li><span style="color: rgb(127, 38, 38); "><b>Last Date of Registration: Feb 24, 2026</b></span></li>
+          <li>Eligibility: All current students of the college</li>
+          
+
+          <li>BGMI: 2 players per team.</li>
+            
+            <li> Free Fire: 2 players per team.</li>
+          <li>Device & Platform: Mobile only (iOS/Android). No emulators (like Gameloop, Bluestacks) or PC clients allowed.</li>
+          <li>Internet: Players must use their own mobile data or college Wi-Fi. The event is not responsible for network fluctuations.</li>
+          <li>Fair Play: Any use of hacks, mods, glitches, or third-party apps (e.g., auto-headshot scripts, wallhacks) = Instant disqualification.</li>
+          <li>Sportsmanship: Toxic behavior, intentional team killing, or verbal abuse in chat/voice will lead to penalty or disqualification.</li>
+          <li>Rules & Regulation<a href="rules.pdf" target="_blank">view</a></li>
+          
+          
+          <li><span style="color: rgb(127, 38, 38); "><b>Last Date of Registration: April 09, 2026 Upto 11:59:59 PM</b></span></li>
         </ul>
 
         <div class="form-container">
@@ -635,7 +637,7 @@
                   type="text"
                   id="name"
                   class="form-control"
-                  placeholder="Team Leader, Contestent II, Contestent III, Contestent IV"
+                  placeholder="Team Leader, Contestent II"
                   required
                 />
               </div>
@@ -660,14 +662,14 @@
             <div class="form-row">
               <div class="form-group">
                 <label for="theme"
-                  >Theme of Your Project
+                  >Team Name
                   <span style="color: var(--accent-red)">*</span></label
                 >
                 <input
                   type="text"
                   id="theme"
                   class="form-control"
-                  placeholder="Enter Theme of Your Project"
+                  placeholder="Enter Name of Your Team"
                   required
                 />
               </div>
@@ -717,17 +719,29 @@
                  
                 </select>
               </div>
+              <div class="form-group">
+                <label for="sports"
+                  >E-sports <span style="color: var(--accent-red)">*</span></label
+                >
+                <select id="sports" class="form-control" required>
+                  <option value="">Select your E-sports</option>
+                  <option value="BGMI">BGMI</option>
+                  <option value="FreeFire">FreeFire</option>
+                  
+                 
+                </select>
+              </div>
             </div>
 
             <div class="form-group">
               <label for="message"
-                >Discribe Your Theme</label
+                >Discribe Your Team(optional)</label
               >
               <textarea
                 id="message"
                 class="form-control"
                 rows="4"
-                placeholder="Tell us about your Idea & Project"
+                placeholder="Tell us about your Team"
               ></textarea>
             </div>
 
@@ -814,7 +828,7 @@
 
         // Replace with your Google Apps Script URL
         const SCRIPT_URL =
-          "https://script.google.com/macros/s/AKfycbz3A8Alb7Xj6_8j8JaFMhLR6Gh1iKlbAAYFxuOgF9ZA4PvzR7gcI6PT5kqA28Ox8qoa/exec";
+          "https://script.google.com/macros/s/AKfycby0EA2EXUOK9kRZ0WGwbd3POJ5OswN4d_kCwvv0MkkKGbQEWtF_FsRSoGjEJ7j1wtW9/exec";
 
         form.addEventListener("submit", function (e) {
           e.preventDefault();
@@ -832,6 +846,7 @@
             mobile: document.getElementById("mobile").value.trim(),
             branch: document.getElementById("branch").value,
             year: document.getElementById("year").value,
+            sports: document.getElementById("sports").value,
             message: document.getElementById("message").value.trim(),
             timestamp: new Date().toLocaleString(),
           };
