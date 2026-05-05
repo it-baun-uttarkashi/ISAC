@@ -845,14 +845,14 @@
             <div class="form-row">
               <div class="form-group">
                 <label for="name"
-                  >Name
+                  >Name of Contestent I
                   <span style="color: var(--accent-red)">*</span></label
                 >
                 <input
                   type="text"
                   id="name"
                   class="form-control"
-                  placeholder="Contestent I, Contestent II"
+                  placeholder="Contestent I"
                   required
                 />
               </div>
@@ -873,6 +873,25 @@
                 />
               </div>
             </div>
+            <!-- two -->
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name2"
+                  >Name of Contestent II
+                  <span style="color: var(--accent-red)">*</span></label
+                >
+                <input
+                  type="text"
+                  id="name2"
+                  class="form-control"
+                  placeholder="Contestent II"
+                  required
+                />
+              </div>
+
+            
+            </div>
+
 
             <div class="form-row">
              
@@ -886,7 +905,27 @@
                   type="tel"
                   id="mobile"
                   class="form-control"
-                  placeholder="Enter Team Leader mobile number"
+                  placeholder="mobile number of Contestent I"
+                  required
+                  pattern="[0-9]{10}"
+                  title="Please enter a valid 10-digit mobile number"
+                />
+              </div>
+            </div>
+
+            <div class="form-row">
+             
+
+              <div class="form-group">
+                <label for="mobile2"
+                  >Mobile Number of Contestent II
+                  <span style="color: var(--accent-red)">*</span></label
+                >
+                <input
+                  type="tel"
+                  id="mobile2"
+                  class="form-control"
+                  placeholder="mobile number of Contestent II"
                   required
                   pattern="[0-9]{10}"
                   title="Please enter a valid 10-digit mobile number"
@@ -897,7 +936,7 @@
             <div class="form-row">
               <div class="form-group">
                 <label for="branch"
-                  >Branch <span style="color: var(--accent-red)">*</span></label
+                  >Branch of Contestent I<span style="color: var(--accent-red)">*</span></label
                 >
                 <select id="branch" class="form-control" required>
                   <option value="">Select your branch</option>
@@ -912,7 +951,7 @@
 
               <div class="form-group">
                 <label for="year"
-                  >Year <span style="color: var(--accent-red)">*</span></label
+                  >Year of Contestent I<span style="color: var(--accent-red)">*</span></label
                 >
                 <select id="year" class="form-control" required>
                   <option value="">Select your year</option>
@@ -923,15 +962,49 @@
                 </select>
               </div>
 
+              
+            </div>
+            
+            <div class="form-row">
               <div class="form-group">
-                <label>Choose Position (Side)<span class="required-star">*</span></label>
-                <select id="position" class="form-control" required>
-                  <option value="">Select Side</option>
-                  <option value="1">🟢 FOR: "Robotics will replace human engineers"</option>
-                  <option value="2">🔴 AGAINST: "Robotics will replace human engineers"</option>
-                  
+                <label for="branch2"
+                  >Branch of Contestent II<span style="color: var(--accent-red)">*</span></label
+                >
+                <select id="branch2" class="form-control" required>
+                  <option value="">Select your branch</option>
+                  <option value="CSE">Computer Science & Engineering</option>
+                  <option value="CSE_AI_ML">
+                    Computer Science & Engineering (AI&ML)
+                  </option>
+                  <option value="BCA">BCA</option>
+                  <option value="OTHER">Other</option>
                 </select>
               </div>
+
+              <div class="form-group">
+                <label for="year2"
+                  >Year of Contestent II<span style="color: var(--accent-red)">*</span></label
+                >
+                <select id="year2" class="form-control" required>
+                  <option value="">Select your year</option>
+                  <option value="1">1st Year</option>
+                  <option value="2">2nd Year</option>
+                  <option value="3">3rd Year</option>
+                 
+                </select>
+              </div>
+
+              
+            </div>
+
+            <div class="form-group">
+              <label>Choose Position (Side)<span class="required-star">*</span></label>
+              <select id="position" class="form-control" required>
+                <option value="">Select Side</option>
+                <option value="🟢 FOR">🟢 FOR: "Robotics will replace human engineers"</option>
+                <option value="🔴 AGAINST">🔴 AGAINST: "Robotics will replace human engineers"</option>
+                
+              </select>
             </div>
 
             <div class="form-group">
@@ -1019,7 +1092,7 @@
 
         // Replace with your Google Apps Script URL
         const SCRIPT_URL =
-          "https://script.google.com/macros/s/AKfycbw-SRiQBBh5f89o6ZyTLxLoUjs2pO3ETDv9LJ20bLiMSyMlo5cVSCNyoTy9tLS_cCD7/exec";
+          "https://script.google.com/macros/s/AKfycbxh8123x9zJK-3va3C1wi78abl2WPFpzz0o3ucFN_ouMfR4wqcvlGpjMXS_Krpd9Hx1_A/exec";
 
         form.addEventListener("submit", function (e) {
           e.preventDefault();
@@ -1036,6 +1109,12 @@
             mobile: document.getElementById("mobile").value.trim(),
             branch: document.getElementById("branch").value,
             year: document.getElementById("year").value,
+
+            name2: document.getElementById("name2").value.trim(),
+            mobile2: document.getElementById("mobile2").value.trim(),
+            branch2: document.getElementById("branch2").value,
+            year2: document.getElementById("year2").value,
+
             position: document.getElementById("position").value,
             message: document.getElementById("message").value.trim(),
             timestamp: new Date().toLocaleString(),
