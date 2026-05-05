@@ -1327,11 +1327,11 @@
 
         /* Auto-scroll every 4s */
         let autoIdx = 0;
-        const autoPlay = setInterval(() => {
-            autoIdx = (autoIdx + 1) % total;
-            scrollTo(autoIdx);
-            activeDot(autoIdx);
-        }, 20000);
+        // const autoPlay = setInterval(() => {
+        //     autoIdx = (autoIdx + 1) % total;
+        //     scrollTo(autoIdx);
+        //     activeDot(autoIdx);
+        // }, 20000);
 
         /* Pause on hover / touch */
         track.addEventListener('mouseenter', () => clearInterval(autoPlay));
