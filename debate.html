@@ -857,7 +857,7 @@
                 />
               </div>
 
-              <div class="form-group">
+              <!-- <div class="form-group">
                 <label for="roll"
                   >Roll Number
                   <span style="color: var(--accent-red)">*</span></label
@@ -871,7 +871,7 @@
                   pattern="[A-Za-z0-9]+"
                   title="Please enter a valid roll number"
                 />
-              </div>
+              </div> -->
             </div>
             <!-- two -->
             <div class="form-row">
@@ -1092,7 +1092,7 @@
 
         // Replace with your Google Apps Script URL
         const SCRIPT_URL =
-          "https://script.google.com/macros/s/AKfycbxh8123x9zJK-3va3C1wi78abl2WPFpzz0o3ucFN_ouMfR4wqcvlGpjMXS_Krpd9Hx1_A/exec";
+          "https://script.google.com/macros/s/AKfycbwPR8D1ySgphaJpiq9irudThPQejIDkj3mVes4FCHe116kPs-MeYj2PuPdmK9Oj-cbvmw/exec";
 
         form.addEventListener("submit", function (e) {
           e.preventDefault();
@@ -1105,7 +1105,7 @@
           // Get form values
           const formData = {
             name: document.getElementById("name").value.trim(),
-            roll: document.getElementById("roll").value.trim(),
+           
             mobile: document.getElementById("mobile").value.trim(),
             branch: document.getElementById("branch").value,
             year: document.getElementById("year").value,
