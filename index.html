@@ -981,7 +981,7 @@
                     </div>
 
                     <!-- event 1 -->
-                    <div class="hl-card upcoming">
+                    <div class="hl-card academic">
                         <!-- <span class="hl-badge"><span class="live-dot"></span> Upcoming</span> -->
                         <span class="hl-badge"><i class="fas fa-robot"></i> Workshops</span>
                         <div class="hl-icon-wrap"><i class="fas fa-chalkboard-teacher"></i></div>
@@ -1269,7 +1269,7 @@
     (function() {
         const frame = document.getElementById('isacVideoFrame');
         const placeholder = document.getElementById('videoPlaceholder');
-        if (frame && frame.src.includes('YOUR_YOUTUBE_VIDEO_ID')) {
+        if (frame && frame.src.includes('https://www.youtube.com/embed/zwBxU4WgLJw?rel=0&modestbranding=1&controls=1')) {
             frame.style.display = 'none';
             if (placeholder) placeholder.style.display = 'flex';
         }
@@ -1331,7 +1331,7 @@
             autoIdx = (autoIdx + 1) % total;
             scrollTo(autoIdx);
             activeDot(autoIdx);
-        }, 4000);
+        }, 20000);
 
         /* Pause on hover / touch */
         track.addEventListener('mouseenter', () => clearInterval(autoPlay));
