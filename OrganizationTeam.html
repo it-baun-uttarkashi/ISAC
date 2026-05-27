@@ -1,1111 +1,618 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes"
-    />
-    <title>
-      ISAC | Institute Student Activity Council | Institute of Technology Baun,
-      Uttarkashi
-    </title>
-    <link rel="icon" type="image/png" href="IMG\logo\logo ISAC 1.png" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Organizational Team | ISAC | Inter-Society Events | GIT Baun</title>
+    <link rel="icon" type="image/png" href="IMG/logo/logo ISAC 1.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-      /* ========== RESET & VARIABLES ========== */
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'DM Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
 
-      :root {
-        --primary-dark: #0a1a2d;
-        --secondary-dark: #1a2b3c;
-        --accent-gold: #d4af37;
-        --accent-blue: #2a8c8b;
-        --accent-red: #c53b3b;
-        --light-text: #f0f8ff;
-        --medium-text: #c9d6e6;
-        --dark-text: #051225;
-        --card-bg: rgba(255, 255, 255, 0.05);
-        --card-border: rgba(255, 255, 255, 0.1);
-        --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        --event-bg: #1e1e3f;
-      }
-
-      body {
-        background: linear-gradient(180deg, #0a1a2d 0%, #1a2b3c 60%);
-        color: var(--light-text);
-        line-height: 1.6;
-        min-height: 100vh;
-        overflow-x: hidden;
-        -webkit-tap-highlight-color: transparent;
-        
-      }
-
-      .container {
-        width: 100%;
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 20px;
-      }
-
-      /* ========== HEADER (fixed, responsive) ========== */
-      header {
-        background: linear-gradient(
-          180deg,
-          rgba(10, 26, 45, 0.98) 0%,
-          rgba(26, 43, 60, 0.97) 100%
-        );
-        color: var(--light-text);
-        padding: 20px 0;
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-        position: fixed;
-        width: 100%;
-        top: 0;
-        z-index: 1000;
-        transition: all 0.4s ease;
-        border-bottom: 3px solid var(--accent-gold);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-      }
-
-      .header-container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        position: relative;
-      }
-
-      .logo-container {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-        max-width: 70%;
-      }
-
-      .logo-img {
-        height: 60px;
-        width: auto;
-        object-fit: contain;
-        filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
-        transition: all 0.3s ease;
-      }
-
-      .council-name {
-        display: flex;
-        flex-direction: column;
-      }
-
-      .council-name h1 {
-        font-size: clamp(1rem, 4vw, 1.8rem);
-        background: linear-gradient(to right, var(--accent-gold), #f0e68c);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-        letter-spacing: 0.5px;
-        line-height: 1.2;
-      }
-
-      .council-name span {
-        font-size: clamp(0.7rem, 2.5vw, 0.9rem);
-        color: var(--accent-blue);
-        line-height: 1.2;
-      }
-
-      /* Desktop Navigation */
-      nav ul {
-        display: flex;
-        list-style: none;
-        gap: 25px;
-        align-items: center;
-      }
-
-      nav a {
-        text-decoration: none;
-        color: var(--light-text);
-        font-weight: 500;
-        transition: all 0.3s;
-        padding: 5px 0;
-        position: relative;
-        white-space: nowrap;
-      }
-
-      nav a:hover {
-        color: var(--accent-gold);
-      }
-
-      nav a:after {
-        content: "";
-        position: absolute;
-        bottom: -3px;
-        left: 0;
-        width: 0;
-        height: 2px;
-        background: var(--accent-gold);
-        transition: width 0.3s;
-      }
-
-      nav a:hover:after {
-        width: 100%;
-      }
-
-      /* Mobile toggle button */
-      .mobile-toggle {
-        display: none;
-        font-size: 1.8rem;
-        cursor: pointer;
-        color: var(--accent-gold);
-        background: none;
-        border: none;
-        padding: 10px;
-        z-index: 1002;
-        transition: all 0.3s;
-      }
-
-      .mobile-toggle:hover {
-        color: #f0e68c;
-      }
-
-      .mobile-toggle i {
-        font-size: 1.8rem;
-        transition: transform 0.3s;
-      }
-
-      .header-scrolled {
-        padding: 12px 0;
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
-      }
-
-      .header-scrolled .logo-img {
-        height: 50px;
-      }
-
-      .header-scrolled .council-name h1 {
-        font-size: clamp(0.9rem, 3.5vw, 1.5rem);
-      }
-
-      /* Hero */
-      .hero {
-        background: linear-gradient(
-            rgba(10, 26, 45, 0.85),
-            rgba(26, 43, 60, 0.9)
-          ),
-          url("https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80");
-        background-size: cover;
-        background-position: center;
-        color: var(--light-text);
-        text-align: center;
-        padding: 180px 20px 100px;
-        position: relative;
-        overflow: hidden;
-        margin-top: 83px;
-      }
-
-      /* ========== TEAM SECTION – FULLY RESPONSIVE FLEXBOX ========== */
-      section {
-        padding: 80px 0;
-        position: relative;
-      }
-
-      .section-title {
-        font-size: clamp(2rem, 6vw, 3rem);
-        margin-bottom: 15px;
-        position: relative;
-        display: inline-block;
-        color: var(--accent-gold);
-        width: 100%;
-        text-align: center;
-      }
-
-      .section-title:after {
-        content: "";
-        position: absolute;
-        width: 60%;
-        height: 4px;
-        background: linear-gradient(
-          to right,
-          transparent,
-          var(--accent-gold),
-          transparent
-        );
-        bottom: -15px;
-        left: 20%;
-        border-radius: 2px;
-      }
-
-      .section-subtitle {
-        font-size: clamp(1rem, 3vw, 1.3rem);
-        color: var(--medium-text);
-        margin-bottom: 50px;
-        text-align: center;
-        max-width: 800px;
-        margin-left: auto;
-        margin-right: auto;
-        padding: 0 15px;
-      }
-
-      /* ✅ TEAM GRID – FLEXBOX WITH CENTERED CARDS */
-      .team-grid {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 30px;
-        margin-top: 40px;
-      }
-
-      .team-card {
-        background: var(--card-bg);
-        border-radius: 15px;
-        overflow: hidden;
-        box-shadow: var(--shadow);
-        text-align: center;
-        transition: all 0.3s ease;
-        border: 1px solid var(--card-border);
-        backdrop-filter: blur(10px);
-        display: flex;
-        flex-direction: column;
-        width: 280px; /* fixed width on desktop */
-        flex: 0 0 280px; /* prevents stretching */
-      }
-
-      .team-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-      }
-
-      .team-img {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: rgba(0,0,0,0.2);
-        padding: 20px 20px 0;
-      }
-
-      .team-img img {
-        height: 250px;
-        width: 238px;
-        aspect-ratio: 1/1;
-        object-fit: cover;
-        border-radius: 50px;
-        border: 3px solid var(--accent-gold);
-        transition: transform 0.3s;
-      }
-
-      .team-card:hover .team-img img {
-        transform: scale(1.02);
-      }
-
-      .team-info {
-        padding: 20px;
-      }
-
-      .team-info h3 {
-        font-size: 1.3rem;
-        margin-bottom: 5px;
-        color: var(--light-text);
-      }
-
-      .team-info p {
-        color: var(--medium-text);
-        font-size: 0.95rem;
-        margin-bottom: 5px;
-      }
-
-      .team-role {
-        color: var(--accent-gold);
-        font-weight: 600;
-        margin-top: 8px;
-        font-size: 1rem;
-        border-top: 1px solid rgba(212,175,55,0.3);
-        padding-top: 8px;
-      }
-
-      /* Buttons */
-      .tab-btn-team {
-        padding: 15px 35px;
-        font-size: 1.1rem;
-        font-weight: 600;
-        border: none;
-        border-radius: 50px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-        text-decoration: none;
-        color: #0a1f3a;
-        background-color: #b8941f;
-        margin: 10px;
-      }
-
-      .tab-btn-team:hover {
-        background-color: #d4af37;
-        transform: translateY(-3px);
-      }
-
-      /* Footer */
-      footer {
-        background: linear-gradient(
-          180deg,
-          rgba(10, 26, 45, 0.95),
-          rgba(8, 20, 36, 0.98)
-        );
-        color: var(--light-text);
-        padding: 60px 0 20px;
-        margin-top: 40px;
-        position: relative;
-        border-top: 3px solid var(--accent-gold);
-      }
-
-      .footer-content {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 30px;
-        margin-bottom: 30px;
-      }
-
-      .footer-column h3 {
-        font-size: 1.4rem;
-        margin-bottom: 20px;
-        color: var(--accent-gold);
-        position: relative;
-        padding-bottom: 10px;
-      }
-
-      .footer-column h3:after {
-        content: "";
-        position: absolute;
-        width: 60px;
-        height: 4px;
-        background-color: var(--accent-gold);
-        bottom: 0;
-        left: 0;
-        border-radius: 2px;
-      }
-
-      .contact-list {
-        list-style: none;
-      }
-
-      .contact-list li {
-        margin-bottom: 15px;
-        display: flex;
-        align-items: flex-start;
-        gap: 10px;
-      }
-
-      .contact-list i {
-        color: var(--accent-gold);
-        margin-top: 4px;
-      }
-
-      .social-links {
-        display: flex;
-        gap: 15px;
-        margin-top: 20px;
-        flex-wrap: wrap;
-      }
-
-      .social-links a {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 40px;
-        height: 40px;
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 50%;
-        color: white;
-        transition: all 0.3s;
-        text-decoration: none;
-      }
-
-      .social-links a:hover {
-        background: var(--accent-gold);
-        transform: translateY(-5px);
-      }
-
-      .copyright {
-        text-align: center;
-        padding-top: 20px;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-        font-size: 0.95rem;
-        color: rgba(255, 255, 255, 0.6);
-      }
-
-      /* ========== RESPONSIVE MEDIA QUERIES ========== */
-
-      /* Tablet: adjust card width if needed */
-      @media (max-width: 992px) {
-        .team-card {
-          width: 260px;
-          flex: 0 0 260px;
+        :root {
+            --primary-dark: #0a1a2d;
+            --secondary-dark: #1a2b3c;
+            --accent-gold: #d4af37;
+            --accent-blue: #2a8c8b;
+            --accent-red: #c53b3b;
+            --light-text: #f0f8ff;
+            --medium-text: #c9d6e6;
+            --dark-text: #051225;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --card-border: rgba(255, 255, 255, 0.1);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
 
-        .hero {
-          padding: 160px 20px 80px;
-          margin-top: 75px;
-        }
-      }
+        html { scroll-behavior: smooth; }
 
-      /* Mobile: cards stack vertically and take full width */
-      @media (max-width: 768px) {
-        /* Header adjustments */
-        .logo-container {
-          max-width: 75%;
+        body {
+            background: linear-gradient(180deg, #0a1a2d 0%, #1a2b3c 60%);
+            color: var(--light-text);
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
         }
 
+        .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        /* ===== HEADER ===== */
+        header {
+            background: linear-gradient(180deg, rgba(10,26,45,0.98) 0%, rgba(26,43,60,0.97) 100%);
+            color: var(--light-text);
+            padding: 20px 0;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+            position: fixed;
+            width: 100%; top: 0; z-index: 1000;
+            transition: all 0.4s ease;
+            border-bottom: 3px solid var(--accent-gold);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        .header-container { display: flex; justify-content: space-between; align-items: center; }
+        .logo-container { display: flex; align-items: center; gap: 15px; max-width: 70%; }
+        .logo-img { height: 60px; width: auto; object-fit: contain; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3)); transition: all 0.3s ease; }
+        .council-name { display: flex; flex-direction: column; }
         .council-name h1 {
-          font-size: 1.2rem;
+            font-size: 1.8rem;
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(to right, var(--accent-gold), #f0e68c);
+            -webkit-background-clip: text; background-clip: text; color: transparent;
+            letter-spacing: 0.5px; line-height: 1.2;
+        }
+        .council-name span { font-size: 0.9rem; color: var(--accent-blue); line-height: 1.2; }
+        nav ul { display: flex; list-style: none; gap: 25px; align-items: center; }
+        nav a { text-decoration: none; color: var(--light-text); font-weight: 500; transition: all 0.3s; padding: 5px 0; position: relative; white-space: nowrap; }
+        nav a:hover { color: var(--accent-gold); }
+        nav a:after { content: ''; position: absolute; bottom: -3px; left: 0; width: 0; height: 2px; background: var(--accent-gold); transition: width 0.3s; }
+        nav a:hover:after { width: 100%; }
+        .mobile-toggle { display: none; font-size: 1.8rem; cursor: pointer; color: var(--accent-gold); background: none; border: none; padding: 10px; z-index: 1002; transition: all 0.3s; -webkit-tap-highlight-color: transparent; -webkit-user-select: none; user-select: none; }
+        .header-scrolled { padding: 12px 0; box-shadow: 0 8px 25px rgba(0,0,0,0.5); }
+        .header-scrolled .logo-img { height: 50px; }
+        .header-scrolled .council-name h1 { font-size: 1.5rem; }
+
+        /* ===== PAGE HERO ===== */
+        .page-hero {
+            background: linear-gradient(rgba(10,26,45,0.88), rgba(26,43,60,0.93)),
+                url('https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover; background-position: center;
+            text-align: center;
+            padding: 160px 20px 90px;
+            margin-top: 83px;
+            position: relative; overflow: hidden;
+        }
+        .page-hero:before {
+            content: '';
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at center, transparent 0%, rgba(26,43,60,0.5) 100%);
+            pointer-events: none;
+        }
+        .page-hero-content { position: relative; z-index: 2; }
+        .page-hero-eyebrow {
+            font-size: 0.82rem; letter-spacing: 4px; text-transform: uppercase;
+            color: var(--accent-blue); margin-bottom: 14px; display: block;
+        }
+        .page-hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem; color: #fff;
+            text-shadow: 3px 3px 8px rgba(0,0,0,0.5);
+            margin-bottom: 16px; letter-spacing: 2px;
+        }
+        .page-hero-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem; font-weight: 400; font-style: italic;
+            color: var(--accent-gold); margin-bottom: 20px;
+        }
+        .page-hero-content p {
+            font-size: 1.15rem; max-width: 750px; margin: 0 auto;
+            color: var(--medium-text); line-height: 1.8;
         }
 
-        .council-name span {
-          font-size: 0.75rem;
+        /* ===== SHARED SECTION STYLES ===== */
+        section { padding: 80px 0 40px; position: relative; }
+        section:before {
+            content: '';
+            position: absolute; top: 0; left: 0; width: 100%; height: 5px;
+            background: linear-gradient(to right, transparent, var(--accent-gold), transparent);
         }
-
-        /* Mobile toggle visible */
-        .mobile-toggle {
-          display: block;
-        }
-
-        /* Navigation menu - slide from right */
-        nav ul {
-          position: fixed;
-          top: 0;
-          right: 0;
-          width: 80%;
-          max-width: 300px;
-          height: 100vh;
-          background: rgba(10, 26, 45, 0.98);
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          padding: 80px 20px 40px;
-          transform: translateX(100%);
-          opacity: 0;
-          transition: transform 0.4s ease, opacity 0.4s ease;
-          z-index: 1001;
-          backdrop-filter: blur(20px);
-          overflow-y: auto;
-          box-shadow: -5px 0 20px rgba(0,0,0,0.5);
-        }
-
-        nav ul.active {
-          transform: translateX(0);
-          opacity: 1;
-        }
-
-        nav ul li {
-          margin: 15px 0;
-          width: 100%;
-          text-align: center;
-        }
-
-        nav ul li a {
-          font-size: 1.2rem;
-          padding: 15px;
-          display: block;
-          white-space: normal;
-        }
-
-        nav ul li a.btn {
-          padding: 12px 25px;
-          display: inline-block;
-          width: auto;
-        }
-
-        /* Hero */
-        .hero {
-          padding: 140px 15px 60px;
-          margin-top: 70px;
-        }
-
-        .hero-content h1 {
-          font-size: 2rem;
-        }
-
-        .hero-content h2 {
-          font-size: 1.5rem;
-        }
-
-        /* Team cards: stack vertically, full width with max-width */
-        .team-grid {
-          gap: 20px;
-        }
-
-        .team-card {
-          width: 100%;
-          max-width: 350px;
-          flex: 0 0 auto; /* allow shrinking */
-          margin: 0 auto; /* center the card itself */
-        }
-
-        .team-img img {
-          max-width: 200px;
-        }
-
-        /* Buttons full width on small screens */
-        .tab-btn-team {
-          width: 90%;
-          padding: 12px 20px;
-          font-size: 1rem;
-        }
-
-        /* Footer columns stacked */
-        .footer-content {
-          grid-template-columns: 1fr;
-          text-align: center;
-        }
-
-        .footer-column h3:after {
-          left: 50%;
-          transform: translateX(-50%);
-        }
-
-        .contact-list li {
-          justify-content: center;
-        }
-
-        .social-links {
-          justify-content: center;
-        }
-      }
-
-      /* Small mobile */
-      @media (max-width: 480px) {
-        .hero-content h1 {
-          font-size: 1.8rem;
-        }
-
-        .hero-content h2 {
-          font-size: 1.3rem;
-        }
-
-        .logo-img {
-          height: 45px;
-        }
-
-        .council-name h1 {
-          font-size: 1rem;
-        }
-
-        .council-name span {
-          font-size: 0.7rem;
-        }
-
         .section-title {
-          font-size: 1.8rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem; margin-bottom: 15px;
+            color: var(--accent-gold); text-align: center; width: 100%;
+            position: relative; display: inline-block;
+        }
+        .section-title:after {
+            content: ''; position: absolute; width: 60%; height: 4px;
+            background: linear-gradient(to right, transparent, var(--accent-gold), transparent);
+            bottom: -15px; left: 20%; border-radius: 2px;
+        }
+        .section-subtitle {
+            font-size: 1.1rem; color: var(--medium-text); margin-bottom: 50px;
+            text-align: center; max-width: 800px; margin-left: auto; margin-right: auto;
+        }
+        .eyebrow {
+            font-size: 0.82rem; letter-spacing: 3px; text-transform: uppercase;
+            color: var(--accent-gold); margin-bottom: 12px; display: block;
         }
 
+        /* ===== GROUP HEADING ===== */
+        .group-heading {
+            text-align: center;
+            margin: 50px 0 36px;
+            position: relative;
+        }
+        .group-heading:first-child { margin-top: 0; }
+        .group-label {
+            display: inline-block;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--light-text);
+            position: relative;
+            padding: 0 24px;
+        }
+        .group-label:before,
+        .group-label:after {
+            content: '';
+            position: absolute;
+            top: 50%; transform: translateY(-50%);
+            width: 50px; height: 2px;
+            background: linear-gradient(to right, transparent, var(--accent-gold));
+        }
+        .group-label:before { right: 100%; }
+        .group-label:after { left: 100%; background: linear-gradient(to left, transparent, var(--accent-gold)); }
+
+        /* ===== TEAM GRID ===== */
+        .team-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 28px;
+            margin-bottom: 20px;
+        }
+
+        /* ===== TEAM CARD ===== */
         .team-card {
-          max-width: 300px;
+            background: var(--card-bg);
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: all 0.35s ease;
+            border: 1px solid var(--card-border);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            display: flex;
+            flex-direction: column;
+            width: 240px;
+            flex: 0 0 240px;
+            position: relative;
         }
-      }
-
-      /* Landscape mode adjustments */
-      @media (max-height: 600px) and (orientation: landscape) {
-        .hero {
-          padding: 120px 20px 50px;
+        .team-card:before {
+            content: '';
+            position: absolute; top: 0; left: 0; width: 100%; height: 4px;
+            background: linear-gradient(to right, var(--accent-gold), var(--accent-blue));
+        }
+        .team-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 24px 50px rgba(0,0,0,0.45);
+            border-color: rgba(212,175,55,0.35);
         }
 
-        nav ul {
-          padding: 40px 20px;
-          justify-content: flex-start;
+        .team-img {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 28px 20px 16px;
+            background: rgba(0,0,0,0.15);
+        }
+        .team-img img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid var(--accent-gold);
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+            box-shadow: 0 0 0 6px rgba(212,175,55,0.12);
+        }
+        .team-card:hover .team-img img {
+            transform: scale(1.05);
+            box-shadow: 0 0 0 8px rgba(212,175,55,0.22);
         }
 
-        nav ul li {
-          margin: 8px 0;
+        .team-img .avatar-placeholder {
+            width: 150px; height: 150px;
+            border-radius: 50%;
+            border: 3px solid var(--accent-gold);
+            background: rgba(212,175,55,0.1);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 3.5rem; color: var(--accent-gold);
         }
-      }
 
-      /* ========== UTILITY CLASSES ========== */
-      .fade-in {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: opacity 0.8s, transform 0.8s;
-      }
-
-      .fade-in.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      .btn:active {
-        animation: buttonClick 0.2s ease;
-      }
-
-      @keyframes buttonClick {
-        0% { transform: scale(1); }
-        50% { transform: scale(0.95); }
-        100% { transform: scale(1); }
-      }
-
-      /* Modal (unchanged) */
-      .modal {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(10, 26, 45, 0.95);
-        z-index: 2000;
-        justify-content: center;
-        align-items: center;
-        animation: fadeIn 0.3s ease;
-      }
-
-      .modal-content {
-        background: linear-gradient(180deg, #0a1f3a 0%, #1a2b3c 100%);
-        padding: 40px;
-        border-radius: 15px;
-        max-width: 700px;
-        width: 90%;
-        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-        border: 2px solid var(--accent-gold);
-        position: relative;
-        animation: slideUp 0.4s ease;
-      }
-
-      .close-modal {
-        position: absolute;
-        top: 20px;
-        right: 25px;
-        font-size: 2.5rem;
-        color: var(--accent-gold);
-        cursor: pointer;
-        background: none;
-        border: none;
-        z-index: 1001;
-      }
-
-      @keyframes fadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
-      }
-
-      @keyframes slideUp {
-        from {
-          opacity: 0;
-          transform: translateY(50px);
+        .team-info {
+            padding: 16px 18px 22px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
         }
-        to {
-          opacity: 1;
-          transform: translateY(0);
+        .team-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            color: var(--light-text);
+            line-height: 1.3;
+            margin-bottom: 2px;
         }
-      }
+        .team-info .team-dept {
+            font-size: 0.85rem;
+            color: var(--medium-text);
+        }
+        .team-info .team-role-badge {
+            display: inline-block;
+            margin-top: 8px;
+            background: rgba(212,175,55,0.12);
+            border: 1px solid rgba(212,175,55,0.3);
+            color: var(--accent-gold);
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            padding: 4px 14px;
+            border-radius: 20px;
+        }
+        .team-info .team-phone {
+            margin-top: 10px;
+        }
+        .team-info .team-phone a {
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 36px; height: 36px;
+            background: rgba(212,175,55,0.1);
+            border: 1px solid rgba(212,175,55,0.3);
+            border-radius: 50%;
+            color: var(--accent-gold);
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+        .team-info .team-phone a:hover {
+            background: var(--accent-gold);
+            color: var(--dark-text);
+            transform: scale(1.1);
+        }
+
+        /* ===== CTA BUTTONS ===== */
+        .cta-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 30px 20px 60px;
+        }
+        .btn {
+            padding: 14px 32px;
+            font-size: 1rem; font-weight: 600;
+            border: none; border-radius: 50px;
+            cursor: pointer; transition: all 0.3s ease;
+            display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            position: relative; overflow: hidden;
+            text-decoration: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .btn:after { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent); transition: left 0.7s; }
+        .btn:hover:after { left: 100%; }
+        .btn-primary { background: linear-gradient(to right, var(--accent-gold), #b8941f); color: var(--dark-text); border: 2px solid var(--accent-gold); }
+        .btn-primary:hover { transform: translateY(-5px) scale(1.04); box-shadow: 0 14px 30px rgba(212,175,55,0.4); }
+        .btn-secondary { background: transparent; color: var(--accent-gold); border: 2px solid var(--accent-gold); }
+        .btn-secondary:hover { background: rgba(212,175,55,0.1); transform: translateY(-5px); }
+        .btn:active { transform: scale(0.97); }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: linear-gradient(180deg, rgba(10,26,45,0.95), rgba(8,20,36,0.98));
+            color: var(--light-text);
+            padding: 60px 0 20px;
+            margin-top: 40px;
+            position: relative;
+            border-top: 3px solid var(--accent-gold);
+        }
+        footer:before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 10px; background: linear-gradient(to right, transparent, var(--accent-gold), transparent); }
+        .footer-content { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 30px; margin-bottom: 30px; }
+        .footer-column { flex: 1; min-width: 250px; }
+        .footer-column h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; margin-bottom: 20px; color: var(--accent-gold); position: relative; padding-bottom: 10px; }
+        .footer-column h3:after { content: ''; position: absolute; width: 60px; height: 4px; background-color: var(--accent-gold); bottom: 0; left: 0; border-radius: 2px; }
+        .footer-column p { color: var(--medium-text); line-height: 1.7; font-size: 0.95rem; }
+        .contact-list { list-style: none; }
+        .contact-list li { margin-bottom: 15px; display: flex; align-items: flex-start; gap: 10px; color: var(--medium-text); font-size: 0.95rem; }
+        .contact-list i { color: var(--accent-gold); margin-top: 3px; flex-shrink: 0; }
+        .social-links { display: flex; gap: 15px; margin-top: 20px; flex-wrap: wrap; }
+        .social-links a { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: rgba(255,255,255,0.1); border-radius: 50%; color: white; transition: all 0.3s; text-decoration: none; }
+        .social-links a:hover { background: var(--accent-gold); transform: translateY(-5px); }
+        .copyright { text-align: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.95rem; color: rgba(255,255,255,0.6); }
+
+        /* ===== MODAL (minimal, kept for consistency) ===== */
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(10,26,45,0.95); z-index: 2000; justify-content: center; align-items: center; animation: fadeIn 0.3s ease; }
+        .modal-content { background: linear-gradient(180deg, #0a1f3a 0%, #1a2b3c 100%); padding: 40px; border-radius: 18px; max-width: 700px; width: 90%; box-shadow: 0 20px 50px rgba(0,0,0,0.5); border: 2px solid var(--accent-gold); position: relative; animation: slideUp 0.4s ease; }
+        .close-modal { position: absolute; top: 20px; right: 25px; font-size: 2.5rem; color: var(--accent-gold); cursor: pointer; transition: all 0.3s ease; background: none; border: none; z-index: 1001; }
+        .close-modal:hover { color: #f0e68c; transform: rotate(90deg); }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* ===== SHIMMER & FADE ===== */
+        @keyframes shimmer { 0% { background-position: -500px 0; } 100% { background-position: 500px 0; } }
+        .shimmer-effect {
+            background: linear-gradient(90deg, var(--accent-gold) 0%, #f0d36e 25%, var(--accent-gold) 50%, #f0d36e 75%, var(--accent-gold) 100%);
+            background-size: 1000px 100%;
+            animation: shimmer 3s infinite linear;
+            -webkit-background-clip: text; background-clip: text; color: transparent;
+        }
+        .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s, transform 0.8s; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .page-hero-content h1 { font-size: 3.2rem; }
+            .section-title { font-size: 2.6rem; }
+            nav ul { gap: 20px; }
+            .council-name h1 { font-size: 1.6rem; }
+            .team-card { width: 220px; flex: 0 0 220px; }
+        }
+        @media (max-width: 768px) {
+            .header-container { padding: 0 15px; }
+            .logo-container { max-width: 80%; }
+            .council-name h1 { font-size: 1.3rem; line-height: 1.1; }
+            .council-name span { font-size: 0.8rem; line-height: 1.1; }
+            .mobile-toggle { display: block; position: relative; z-index: 1003; }
+            nav ul {
+                position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+                background: rgba(10,26,45,0.98);
+                flex-direction: column; align-items: center; justify-content: center;
+                padding: 80px 20px 40px;
+                transform: translateX(100%); opacity: 0;
+                transition: transform 0.4s ease, opacity 0.4s ease;
+                z-index: 1001; backdrop-filter: blur(20px); overflow-y: auto;
+            }
+            nav ul.active { transform: translateX(0); opacity: 1; }
+            nav ul li { margin: 15px 0; width: 100%; text-align: center; }
+            nav ul li a { font-size: 1.2rem; padding: 15px; display: block; width: 100%; }
+            .page-hero { padding: 140px 15px 70px; margin-top: 70px; }
+            .page-hero-content h1 { font-size: 2.4rem; }
+            .page-hero-content h2 { font-size: 1.4rem; }
+            section { padding: 60px 0 30px; }
+            .section-title { font-size: 2rem; }
+            .team-card { width: 100%; max-width: 320px; flex: 0 0 auto; }
+            .team-grid { gap: 20px; }
+            .cta-row { flex-direction: column; align-items: center; }
+            .btn { width: 90%; max-width: 360px; }
+            .footer-content { flex-direction: column; gap: 30px; }
+            .group-label:before, .group-label:after { width: 24px; }
+        }
+        @media (max-width: 480px) {
+            .page-hero-content h1 { font-size: 1.9rem; }
+            .logo-img { height: 45px; }
+            .council-name h1 { font-size: 1.1rem; }
+            .team-card { max-width: 280px; }
+        }
     </style>
-  </head>
-  <body>
-    <!-- Header -->
-    <header id="mainHeader">
-      <div class="container header-container">
+</head>
+<body>
+
+<header id="mainHeader">
+    <div class="container header-container">
         <div class="logo-container">
-          <img src="IMG\IMG CULTURAL\logo ISAC 1.png" alt="ISAC Logo" class="logo-img" />
-          <div class="council-name">
-            <h1>Institute Student Activity Council</h1>
-            <span>Government Institute of Technology Baun, Uttarkashi</span>
-          </div>
+            <img src="IMG/logo/logo ISAC 1.png" alt="ISAC Logo" class="logo-img">
+            <div class="council-name">
+                <h1>Institute Student Activity Council</h1>
+                <span>Government Institute of Technology Baun, Uttarkashi</span>
+            </div>
         </div>
-
-        <button
-          class="mobile-toggle"
-          id="mobileToggle"
-          aria-label="Toggle navigation menu"
-        >
-          <i class="fas fa-bars"></i>
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation menu">
+            <i class="fas fa-bars"></i>
         </button>
-
         <nav>
-          <ul id="navMenu">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="society.html">Societies</a></li>
-            <li><a href="event.html">Events</a></li>
-            <li><a href="gallery.html">Gallery</a></li>
-            <li><a href="team.html">Team</a></li>
-            <li></li>
-          </ul>
+            <ul id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="society.html">Societies</a></li>
+                <li><a href="event.html">Events</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="team.html">Team</a></li>
+            </ul>
         </nav>
-      </div>
-    </header>
+    </div>
+</header>
 
-    <br><br>
+<div class="page-hero">
+    <div class="container page-hero-content fade-in">
+        <span class="page-hero-eyebrow">INTER-SOCIETY EVENTS TASK FORCE</span>
+        <h1 class="shimmer-effect">Organizational Team</h1>
+        <h2>Student & Faculty Leadership for Campus Events</h2>
+        <p>Meet the dedicated committee of faculty advisors and student coordinators who drive cultural, technical & literary fests, media coverage, and event management at GIT Baun.</p>
+    </div>
+</div>
 
-    <!-- Team Section (content exactly as before) -->
-    <section id="team">
-      <div class="container">
-        <h2 class="section-title fade-in">Meet the Organizational Team of Inter-Society Events</h2>
-        <p class="section-subtitle fade-in">who make campus Events more vibrant.</p>
+<section id="organization-team">
+    <div class="container">
+        <span class="eyebrow" style="text-align:center;display:block;">Event Governance</span>
+        <h2 class="section-title fade-in">Organizational Structure</h2>
+        <p class="section-subtitle fade-in">Core committees responsible for inter‑society fests, technical meets, cultural nights and student welfare events</p>
 
-        <h6 class="section-title fade-in">Chief Student Coordinators: (taken from student members of the governing committee) </h6>
-        <div class="team-grid">
-
-          <div class="team-card fade-in">
-            <div class="team-img">
-              <img src="IMG\IMG Technical\AnkitPanwar.jpeg" alt="img" />
-            </div>
-            <div class="team-info">
-              <h3>Ankit Panwar</h3>
-              <p>(3rd Year CSE)</p>
-              <a href="tel:+919528305579"><i class="fas fa-phone" style="color: #b8941f;"></i></a>
-            </div>
-          </div>
-
-          <div class="team-card fade-in">
-            <div class="team-img">
-              <img src="IMG\Team\priyanshu pandey.jpeg" alt="jpeg" />
-            </div>
-            <div class="team-info">
-              <h3>Priyanshu Pandey</h3>
-              <p>(2nd Year CSE)</p>
-              <a href="tel:+911111111"><i class="fas fa-phone" style="color: #b8941f;"></i></a>
-              
-            </div>
-          </div>
-
-          <div class="team-card fade-in">
-            <div class="team-img">
-              <img src="IMG\Team\piyush.jpeg" alt="img" />
-            </div>
-            <div class="team-info">
-              <h3>Piyush Nautiyal</h3>
-              <p>(2nd Year CSE)</p>
-              <a href="tel:+918218954143"><i class="fas fa-phone" style="color: #b8941f;"></i></a>
-             
-            </div>
-          </div>
-        </div>
-
-
-        <h6 class="section-title fade-in">Cultural part: ( S-i-C and secretary Cultural Society) </h6>
-        <div class="team-grid">
-          <div class="team-card fade-in">
-            <div class="team-img">
-              <img src="IMG\Team\Srishti.jpeg" alt="jpeg" />
-            </div>
-            <div class="team-info">
-              <h3>Shristi Aswal</h3>
-              <p>(2nd Year BCA)</p>
-              <a href="tel:+918533885952"><i class="fas fa-phone" style="color: #b8941f;"></i></a>
-              
-            </div>
-          </div>
-
-          <div class="team-card fade-in">
-            <div class="team-img">
-              <img src="IMG\IMG CULTURAL\sumit.jpeg" alt="img" />
-            </div>
-            <div class="team-info">
-              <h3>Sumit</h3>
-              <p>(1st Year CSE(AI&ML))</p>
-              <a href="tel:+918534044114"><i class="fas fa-phone" style="color: #b8941f;"></i></a>
-             
-            </div>
-          </div>
-        </div>
-
-        <!-- 3 -->
-        <h6 class="section-title fade-in">Technical Support(flyers, digital media etc)</h6>
         
-          <div class="team-grid">
+
+        <!-- CHIEF STUDENT COORDINATORS -->
+        <div class="group-heading fade-in"><span class="group-label">Chief Student Coordinators</span></div>
+        <div class="team-grid">
+            <div class="team-card fade-in"><div class="team-img"><img src="IMG/IMG Technical/AnkitPanwar.jpeg" alt="Ankit Panwar" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="avatar-placeholder" style="display:none"><i class="fas fa-user"></i></div></div><div class="team-info"><h3>Ankit Panwar</h3><span class="team-dept">3rd Year CSE</span><span class="team-role-badge">Chief Coordinator</span><div class="team-phone"><a href="tel:+919528305579"><i class="fas fa-phone"></i></a></div></div></div>
+            <div class="team-card fade-in"><div class="team-img"><img src="IMG/Team/priyanshu pandey.jpeg" alt="Priyanshu Pandey" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="avatar-placeholder" style="display:none"><i class="fas fa-user"></i></div></div><div class="team-info"><h3>Priyanshu Pandey</h3><span class="team-dept">2nd Year CSE</span><span class="team-role-badge">Chief Coordinator</span><div class="team-phone"><a href="tel:+911111111"><i class="fas fa-phone"></i></a></div></div></div>
+            <div class="team-card fade-in"><div class="team-img"><img src="IMG/Team/piyush.jpeg" alt="Piyush Nautiyal" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="avatar-placeholder" style="display:none"><i class="fas fa-user"></i></div></div><div class="team-info"><h3>Piyush Nautiyal</h3><span class="team-dept">2nd Year CSE</span><span class="team-role-badge">Chief Coordinator</span><div class="team-phone"><a href="tel:+918218954143"><i class="fas fa-phone"></i></a></div></div></div>
+        </div>
+
+        <!-- CULTURAL COMMITTEE -->
+        <div class="group-heading fade-in"><span class="group-label">Cultural Committee</span></div>
+        <div class="team-grid">
+            <div class="team-card fade-in"><div class="team-img"><img src="IMG/Team/Srishti.jpeg" alt="Srishti Aswal" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="avatar-placeholder" style="display:none"><i class="fas fa-music"></i></div></div><div class="team-info"><h3>Srishti Aswal</h3><span class="team-dept">2nd Year BCA</span><span class="team-role-badge">Student-in-Charge</span><div class="team-phone"><a href="tel:+918533885952"><i class="fas fa-phone"></i></a></div></div></div>
+            <div class="team-card fade-in"><div class="team-img"><img src="IMG/IMG CULTURAL/sumit.jpeg" alt="Sumit" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="avatar-placeholder" style="display:none"><i class="fas fa-mask"></i></div></div><div class="team-info"><h3>Sumit</h3><span class="team-dept">1st Year CSE(AI&ML)</span><span class="team-role-badge">Cultural Secretary</span><div class="team-phone"><a href="tel:+918534044114"><i class="fas fa-phone"></i></a></div></div></div>
+        </div>
+
+        <!-- TECHNICAL SUPPORT (FLYERS, DIGITAL MEDIA) -->
+        <div class="group-heading fade-in"><span class="group-label">Technical Support (Design & Media)</span></div>
+        <div class="team-grid">
+            <div class="team-card fade-in"><div class="team-img"><img src="IMG/IMG Technical/AnkitPanwar.jpeg" alt="Ankit Panwar" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="avatar-placeholder" style="display:none"><i class="fas fa-laptop-code"></i></div></div><div class="team-info"><h3>Ankit Panwar</h3><span class="team-dept">3rd Year CSE</span><span class="team-role-badge">Student-in-Charge</span><div class="team-phone"><a href="tel:+919528305579"><i class="fas fa-phone"></i></a></div></div></div>
+            <div class="team-card fade-in"><div class="team-img"><img src="IMG/IMG Technical/utkarsh.png" alt="Utkarsh Singh" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="avatar-placeholder" style="display:none"><i class="fas fa-paintbrush"></i></div></div><div class="team-info"><h3>Utkarsh Singh</h3><span class="team-dept">1st Year CSE</span><span class="team-role-badge">Technical Secretary</span><div class="team-phone"><a href="tel:+919453756580"><i class="fas fa-phone"></i></a></div></div></div>
+        </div>
+
+        <!-- PRESS, ANCHORING, PHOTOGRAPHY & VIDEOGRAPHY -->
+        <div class="group-heading fade-in"><span class="group-label">Press, Anchoring & Media Team</span></div>
+        <div class="team-grid">
+            <div class="team-card fade-in"><div class="team-img"><img src="IMG/Team/vaibhav.jpeg" alt="Vaibhav Kandpal" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="avatar-placeholder" style="display:none"><i class="fas fa-camera"></i></div></div><div class="team-info"><h3>Vaibhav Kandpal</h3><span class="team-dept">2nd Year CSE(AI&ML)</span><span class="team-role-badge">Student-in-Charge</span><div class="team-phone"><a href="tel:+919259592636"><i class="fas fa-phone"></i></a></div></div></div>
+            <div class="team-card fade-in"><div class="team-img"><img src="IMG/IMG CULTURAL/varsha.jpeg" alt="Varsha Bhatt" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="avatar-placeholder" style="display:none"><i class="fas fa-newspaper"></i></div></div><div class="team-info"><h3>Varsha Bhatt</h3><span class="team-dept">1st Year CSE(AI&ML)</span><span class="team-role-badge">Secretary</span><div class="team-phone"><a href="tel:+918439681424"><i class="fas fa-phone"></i></a></div></div></div>
+        </div>
+
+        <!-- FOOD COMMITTEE (temporary) -->
+        <div class="group-heading fade-in"><span class="group-label">Food Committee</span></div>
+        <div class="team-grid">
+            <div class="team-card fade-in"><div class="team-img"><div class="avatar-placeholder" style="display:flex"><i class="fas fa-utensils"></i></div></div><div class="team-info"><h3>To be announced</h3><span class="team-dept">Student Representatives</span><span class="team-role-badge">Hospitality Head</span></div></div>
+            <div class="team-card fade-in"><div class="team-img"><div class="avatar-placeholder" style="display:flex"><i class="fas fa-mug-hot"></i></div></div><div class="team-info"><h3>To be announced</h3><span class="team-dept">Community & SDGs Society</span><span class="team-role-badge">Food & Refreshment</span></div></div>
+        </div>
+
+
+        <!-- PATRON & CHAIRPERSON -->
+        <div class="group-heading fade-in"><span class="group-label">Patron & Chairperson</span></div>
+        <div class="team-grid">
             <div class="team-card fade-in">
-              <div class="team-img">
-                <img src="IMG\IMG Technical\AnkitPanwar.jpeg" alt="img" />
-              </div>
-              <div class="team-info">
-                <h3>Ankit Panwar</h3>
-                <p>(3rd Year CSE)</p>
-                <a href="tel:+919528305579"><i class="fas fa-phone" style="color: #b8941f;"></i></a>
-              </div>
+                <div class="team-img"><img src="director.jpeg" alt="Dr. H. S. Bhadauriya" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="avatar-placeholder" style="display:none"><i class="fas fa-user-tie"></i></div></div>
+                <div class="team-info"><h3>Dr. H. S. Bhadauriya</h3><span class="team-dept">Hon'ble Director</span><span class="team-role-badge">Patron</span></div>
             </div>
-          
-
-          <div class="team-card fade-in">
-            <div class="team-img">
-              <img src="IMG\IMG Technical\utkarsh.png" alt="img" />
+            <div class="team-card fade-in">
+                <div class="team-img"><img src="IMG/Team/mr. Rakesh Chandra Sir.jpeg" alt="Mr. Rakesh Chandra" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="avatar-placeholder" style="display:none"><i class="fas fa-chalkboard-user"></i></div></div>
+                <div class="team-info"><h3>Mr. Rakesh Chandra</h3><span class="team-dept">Assistant Professor</span><span class="team-role-badge">Chairperson</span></div>
             </div>
-            <div class="team-info">
-              <h3>Utkarsh Singh</h3>
-              <p>(1st Year CSE)</p>
-              <a href="tel:+919453756580"><i class="fas fa-phone" style="color: #b8941f;"></i></a>
-             
-            </div>
-          </div>
         </div>
-<!-- 4 -->
-<h6 class="section-title fade-in">Press Report, Anchoring, Photography& videography etc</h6>
-<div class="team-grid">
-  <div class="team-card fade-in">
-    <div class="team-img">
-      <img src="IMG\Team\vaibhav.jpeg" alt="jpeg" />
-    </div>
-    <div class="team-info">
-      <h3>Vaibhav Kandpal</h3>
-      <p>(2nd Year CSE(AI&ML))</p>
-      <a href="tel:+919259592636"><i class="fas fa-phone" style="color: #b8941f;"></i></a>
-      
-    </div>
-  </div>
 
-  <div class="team-card fade-in">
-    <div class="team-img">
-      <img src="IMG\IMG CULTURAL\varsha.jpeg" alt="img" />
-    </div>
-    <div class="team-info">
-      <h3>Varsha Bhatt </h3>
-      <p>1st Year CSE(AI&ML)</p>
-      <a href="tel:+918439681424"><i class="fas fa-phone" style="color: #b8941f;"></i></a>
-     
-    </div>
-  </div>
-</div>
-<!-- 5 -->
-<h6 class="section-title fade-in">Food Committee: ( Students from Community and SDGs Society)</h6>
+        <!-- FACULTY IN-CHARGE (O-i-C) -->
+        <div class="group-heading fade-in"><span class="group-label">Officers In-Charge (Societies)</span></div>
         <div class="team-grid">
-          <div class="team-card fade-in">
-            <div class="team-img">
-              <img src="IMG\IMG CULTURAL\img.png" alt="jpeg" />
-            </div>
-            <div class="team-info">
-              <h3> To be announced </h3>
-              <p>(xyz Year Students)</p>
-              
-            </div>
-          </div>
-
-          <div class="team-card fade-in">
-            <div class="team-img">
-              <img src="IMG\IMG CULTURAL\img.png" alt="img" />
-            </div>
-            <div class="team-info">
-              <h3>To be announced </h3>
-              <p>(xyz Year Students)</p>
-             
-            </div>
-          </div>
+            <div class="team-card fade-in"><div class="team-img"><img src="IMG/Team/SPANA.jpeg" alt="Dr. Sapna" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="avatar-placeholder" style="display:none"><i class="fas fa-female"></i></div></div><div class="team-info"><h3>Dr. Sapna</h3><span class="team-dept">Assistant Professor</span><span class="team-role-badge">O-i-C Cultural</span></div></div>
+            <div class="team-card fade-in"><div class="team-img"><img src="IMG/Team/himani ma'am.png" alt="Ms. Himani Kala" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="avatar-placeholder" style="display:none"><i class="fas fa-book"></i></div></div><div class="team-info"><h3>Ms. Himani Kala</h3><span class="team-dept">Assistant Professor</span><span class="team-role-badge">O-i-C Literary</span></div></div>
+            <div class="team-card fade-in"><div class="team-img"><img src="IMG/IMG Technical/ashu sir.jpg" alt="Dr. Ashutosh Kumar" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="avatar-placeholder" style="display:none"><i class="fas fa-microchip"></i></div></div><div class="team-info"><h3>Dr. Ashutosh Kumar</h3><span class="team-dept">Assistant Professor</span><span class="team-role-badge">O-i-C Technical</span></div></div>
         </div>
-<!-- 6 -->
-<h6 class="section-title fade-in">Faculty members: Patron, Chairman , O-i-Cs cultural, Literary, and Technical Societies. </h6>
-<div class="team-grid">
-  <div class="team-card fade-in">
-    <div class="team-img">
-      <img src="director.jpeg" alt="jpeg" />
-    </div>
-    <div class="team-info">
-      <h3>Dr. H. S. Bhadauriya</h3>
-      <p>hon'ble Director</p>
-      
-    </div>
-  </div>
 
-  <div class="team-card fade-in">
-    <div class="team-img">
-      <img src="IMG\Team\mr. Rakesh Chandra Sir.jpeg" alt="img" />
-    </div>
-    <div class="team-info">
-      <h3>Mr. Rakesh Chandra</h3>
-      <p>(Assistant Professor)</p>
-      <p>Chairman ISAC</p>
-     
-    </div>
-  </div>
-  <div class="team-card fade-in">
-    <div class="team-img">
-      <img src="IMG\Team\SPANA.jpeg" alt="jpeg" />
-    </div>
-    <div class="team-info">
-      <h3>Dr. Sapna</h3>
-      <p>(Assistant Professor)</p>
-      <p>O-i-C Cultural</p>
-      
-    </div>
-  </div>
 
- 
 
-  <div class="team-card fade-in">
-    <div class="team-img">
-      <img src="IMG\Team\himani ma'am.png" alt="jpeg" />
+        <p class="section-subtitle fade-in" style="margin-top: 40px;">Along with dozens of student volunteers, these committees ensure seamless coordination, creativity, and successful execution of every inter‑society event at GIT Baun.</p>
     </div>
-    <div class="team-info">
-      <h3>Ms. Himani Kala</h3>
-      <p>(Assistant Professor)</p>
-      <p>O-i-C Literary</p>
-      
-    </div>
-  </div>
-  
-  <div class="team-card fade-in">
-    <div class="team-img">
-      <img src="IMG\IMG Technical\ashu sir.jpg" alt="jpeg" />
-    </div>
-    <div class="team-info">
-      <h3>Dr. Ashutosh Kumar</h3>
-      <p>(Assistant Professor)</p>
-      <p>O-i-C Technical</p>
-      
-    </div>
-  </div>
-  
-  
+</section>
 
+<!-- DOWNLOAD BUTTON & EXTRAS -->
+<div class="cta-row fade-in">
+    <a href="team.html" class="btn btn-secondary"><i class="fas fa-users"></i> View Main Governing Body</a>
+    <a href="ISAC.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-primary"><i class="fas fa-download"></i> Download Org Structure (PDF)</a>
 </div>
 
-
-       
-
-        
-        
-      </div>
-    </section>
-
-    <br><br>
-    <center>
-      <a href="ISAC.pdf" target="_blank" rel="noopener noreferrer">
-        <button class="tab-btn-team" data-tab="projects">Download the Organizational Structure of ISAC</button>
-      </a>
-    </center>
-
-    <!-- Footer -->
-    <footer>
-      <div class="container">
-        
-        <div class="copyright">
-          <p>&copy; 2026 Institute Student Activity Council, Government Institute of Technology Baun, Uttarkashi. All Rights Reserved.</p>
-          <p style="margin-top: 5px">
-            Developed with ❤️ and ☕ by <span style="color: var(--accent-gold)">Digital Media Club</span>
-          </p>
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>ISAC</h3>
+                <p>Institute Student Activity Council<br>Government Institute of Technology Baun, Uttarkashi<br>A Campus Institute of Veer Madho Singh Bhandari Uttarakhand Technical University</p>
+                <p style="margin-top:12px;">Fostering holistic development through extracurricular activities and student leadership.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="contact-list">
+                    <li><i class="fas fa-arrow-right"></i><span><a href="index.html" style="color:var(--light-text);text-decoration:none;">Home</a></span></li>
+                    <li><i class="fas fa-arrow-right"></i><span><a href="about.html" style="color:var(--light-text);text-decoration:none;">About ISAC</a></span></li>
+                    <li><i class="fas fa-arrow-right"></i><span><a href="event.html" style="color:var(--light-text);text-decoration:none;">Events Calendar</a></span></li>
+                    <li><i class="fas fa-arrow-right"></i><span><a href="society.html" style="color:var(--light-text);text-decoration:none;">Student Societies</a></span></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <ul class="contact-list">
+                    <li><i class="fas fa-map-marker-alt"></i><span>A207, Block A, GIT Baun, Uttarkashi</span></li>
+                    <li><i class="fas fa-envelope"></i><span>isac@itbaun.ac.in</span></li>
+                    <li><i class="fas fa-phone"></i><span>+91 8439540299</span></li>
+                    <li><i class="fas fa-clock"></i><span>Mon–Sat: 9:00 AM – 5:00 PM</span></li>
+                </ul>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/isacofficial2023" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/channel/UCIRE5u6YlgdjrPeHBdvl0zQ" target="_blank"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
         </div>
-      </div>
-    </footer>
-
-    <!-- Modal -->
-    <div id="eventModal" class="modal">
-      <div class="modal-content">
-        <button class="close-modal" id="closeModal">&times;</button>
-        <h2 id="modalTitle" style="color: var(--accent-gold); margin-bottom: 20px"></h2>
-        <div id="modalContent" style="color: var(--medium-text); line-height: 1.8; font-size: 1.1rem"></div>
-      </div>
+        <div class="copyright">
+            <p>&copy; 2026 Institute Student Activity Council, Government Institute of Technology Baun, Uttarkashi. All Rights Reserved.</p>
+            <p style="margin-top:5px;">Developed with ❤️ and ☕ by <span style="color:var(--accent-gold);">Digital Media Club</span></p>
+        </div>
     </div>
+</footer>
 
-    <script>
-      // Mobile Navigation Toggle
-      const mobileToggle = document.getElementById("mobileToggle");
-      const navMenu = document.getElementById("navMenu");
+<div id="eventModal" class="modal">
+    <div class="modal-content">
+        <button class="close-modal" id="closeModal">&times;</button>
+        <h2 id="modalTitle" style="color:var(--accent-gold);margin-bottom:20px;font-family:'Playfair Display',serif;"></h2>
+        <div id="modalContent" style="color:var(--medium-text);line-height:1.8;"></div>
+    </div>
+</div>
 
-      function toggleMobileMenu() {
-        navMenu.classList.toggle("active");
-        const icon = mobileToggle.querySelector("i");
-
-        if (navMenu.classList.contains("active")) {
-          icon.classList.remove("fa-bars");
-          icon.classList.add("fa-times");
-          document.body.style.overflow = "hidden";
+<script>
+    // Mobile toggle
+    const mobileToggle = document.getElementById('mobileToggle');
+    const navMenu = document.getElementById('navMenu');
+    function toggleMobileMenu() {
+        navMenu.classList.toggle('active');
+        const icon = mobileToggle.querySelector('i');
+        if (navMenu.classList.contains('active')) {
+            icon.classList.replace('fa-bars', 'fa-times');
+            document.body.style.overflow = 'hidden';
         } else {
-          icon.classList.remove("fa-times");
-          icon.classList.add("fa-bars");
-          document.body.style.overflow = "";
+            icon.classList.replace('fa-times', 'fa-bars');
+            document.body.style.overflow = '';
         }
-      }
-
-      mobileToggle.addEventListener("click", toggleMobileMenu);
-      mobileToggle.addEventListener("touchstart", function (e) {
-        e.preventDefault();
-        toggleMobileMenu();
-      });
-
-      document.querySelectorAll("#navMenu a").forEach((link) => {
-        link.addEventListener("click", () => {
-          navMenu.classList.remove("active");
-          mobileToggle.querySelector("i").classList.remove("fa-times");
-          mobileToggle.querySelector("i").classList.add("fa-bars");
-          document.body.style.overflow = "";
+    }
+    mobileToggle.addEventListener('click', toggleMobileMenu);
+    mobileToggle.addEventListener('touchstart', e => { e.preventDefault(); toggleMobileMenu(); });
+    document.querySelectorAll('#navMenu a').forEach(link => {
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+            const icon = mobileToggle.querySelector('i');
+            if(icon.classList.contains('fa-times')) icon.classList.replace('fa-times', 'fa-bars');
+            document.body.style.overflow = '';
         });
-      });
+    });
+    document.addEventListener('click', e => {
+        if (window.innerWidth <= 768 && !navMenu.contains(e.target) && !mobileToggle.contains(e.target) && navMenu.classList.contains('active')) toggleMobileMenu();
+    });
 
-      document.addEventListener("click", (event) => {
-        if (window.innerWidth <= 768) {
-          const isClickInsideMenu = navMenu.contains(event.target);
-          const isClickOnToggle = mobileToggle.contains(event.target);
+    // header scroll
+    const header = document.getElementById('mainHeader');
+    window.addEventListener('scroll', () => header.classList.toggle('header-scrolled', window.scrollY > 100));
 
-          if (
-            !isClickInsideMenu &&
-            !isClickOnToggle &&
-            navMenu.classList.contains("active")
-          ) {
-            toggleMobileMenu();
-          }
-        }
-      });
-
-      // Header scroll effect
-      const header = document.getElementById("mainHeader");
-      window.addEventListener("scroll", function () {
-        if (window.scrollY > 100) {
-          header.classList.add("header-scrolled");
-        } else {
-          header.classList.remove("header-scrolled");
-        }
-      });
-
-      // Fade-in animation
-      const fadeElements = document.querySelectorAll(".fade-in");
-      const fadeInOnScroll = () => {
-        fadeElements.forEach((element) => {
-          const elementTop = element.getBoundingClientRect().top;
-          const windowHeight = window.innerHeight;
-          if (elementTop < windowHeight - 100) {
-            element.classList.add("visible");
-          }
+    // fade-in
+    const fadeEls = document.querySelectorAll('.fade-in');
+    const fadeObserver = () => {
+        fadeEls.forEach(el => {
+            if (el.getBoundingClientRect().top < window.innerHeight - 80) el.classList.add('visible');
         });
-      };
-      window.addEventListener("load", fadeInOnScroll);
-      window.addEventListener("scroll", fadeInOnScroll);
+    };
+    window.addEventListener('load', fadeObserver);
+    window.addEventListener('scroll', fadeObserver);
 
-      // Modal functionality
-      const eventModal = document.getElementById("eventModal");
-      const modalTitle = document.getElementById("modalTitle");
-      const modalContent = document.getElementById("modalContent");
-      const closeModalBtn = document.getElementById("closeModal");
+    // modal (unused but kept as in team.html)
+    const modal = document.getElementById('eventModal');
+    const closeModalBtn = document.getElementById('closeModal');
+    if(closeModalBtn) closeModalBtn.addEventListener('click', () => { modal.style.display = 'none'; document.body.style.overflow = ''; });
+    window.addEventListener('click', e => { if(e.target === modal) { modal.style.display = 'none'; document.body.style.overflow = ''; } });
 
-      function showEventModal(title, content) {
-        modalTitle.textContent = title;
-        modalContent.innerHTML = content;
-        eventModal.style.display = "flex";
-        document.body.style.overflow = "hidden";
-      }
-
-      if (closeModalBtn) {
-        closeModalBtn.addEventListener("click", () => {
-          eventModal.style.display = "none";
-          document.body.style.overflow = "";
-        });
-      }
-
-      window.addEventListener("click", (event) => {
-        if (event.target === eventModal) {
-          eventModal.style.display = "none";
-          document.body.style.overflow = "";
-        }
-      });
-
-      // Dynamic year in footer
-      document.addEventListener("DOMContentLoaded", function () {
-        const year = new Date().getFullYear();
-        const copyrightText = document.querySelector(".copyright p");
-        if (copyrightText) {
-          copyrightText.innerHTML = copyrightText.innerHTML.replace("2026", year);
-        }
-      });
-    </script>
-  </body>
+    // dynamic copyright year
+    document.addEventListener('DOMContentLoaded', () => {
+        const copyPara = document.querySelector('.copyright p');
+        if(copyPara) copyPara.innerHTML = copyPara.innerHTML.replace('2026', new Date().getFullYear());
+    });
+</script>
+</body>
 </html>
