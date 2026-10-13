@@ -1,471 +1,920 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
-  <title>Gallery | ISAC | Government Institute of Technology Baun, Uttarkashi</title>
-  <link rel="icon" type="image/png" href="IMG/logo/logo ISAC 1.png" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'DM Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-
-    :root {
-      --primary-dark: #0a1a2d;
-      --secondary-dark: #1a2b3c;
-      --accent-gold: #d4af37;
-      --accent-blue: #2a8c8b;
-      --accent-red: #c53b3b;
-      --light-text: #f0f8ff;
-      --medium-text: #c9d6e6;
-      --dark-text: #051225;
-      --card-bg: rgba(255, 255, 255, 0.05);
-      --card-border: rgba(255, 255, 255, 0.1);
-      --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: linear-gradient(180deg, #0a1a2d 0%, #1a2b3c 60%);
-      color: var(--light-text);
-      line-height: 1.6;
-      min-height: 100vh;
-      overflow-x: hidden;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-
-    /* ===== HEADER ===== */
-    header {
-      background: linear-gradient(180deg, rgba(10,26,45,0.98) 0%, rgba(26,43,60,0.97) 100%);
-      color: var(--light-text);
-      padding: 20px 0;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.4);
-      position: fixed;
-      width: 100%; top: 0; z-index: 1000;
-      transition: all 0.4s ease;
-      border-bottom: 3px solid var(--accent-gold);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-    }
-    .header-container { display: flex; justify-content: space-between; align-items: center; }
-    .logo-container { display: flex; align-items: center; gap: 15px; max-width: 70%; }
-    .logo-img { height: 60px; width: auto; object-fit: contain; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3)); transition: all 0.3s ease; }
-    .council-name { display: flex; flex-direction: column; }
-    .council-name h1 {
-      font-size: 1.8rem;
-      font-family: 'Playfair Display', serif;
-      background: linear-gradient(to right, var(--accent-gold), #f0e68c);
-      -webkit-background-clip: text; background-clip: text; color: transparent;
-      letter-spacing: 0.5px; line-height: 1.2;
-    }
-    .council-name span { font-size: 0.9rem; color: var(--accent-blue); line-height: 1.2; }
-    nav ul { display: flex; list-style: none; gap: 25px; align-items: center; }
-    nav a { text-decoration: none; color: var(--light-text); font-weight: 500; transition: all 0.3s; padding: 5px 0; position: relative; white-space: nowrap; }
-    nav a:hover { color: var(--accent-gold); }
-    nav a:after { content: ''; position: absolute; bottom: -3px; left: 0; width: 0; height: 2px; background: var(--accent-gold); transition: width 0.3s; }
-    nav a:hover:after { width: 100%; }
-    .mobile-toggle { display: none; font-size: 1.8rem; cursor: pointer; color: var(--accent-gold); background: none; border: none; padding: 10px; z-index: 1002; transition: all 0.3s; -webkit-tap-highlight-color: transparent; -webkit-user-select: none; user-select: none; }
-    .header-scrolled { padding: 12px 0; box-shadow: 0 8px 25px rgba(0,0,0,0.5); }
-    .header-scrolled .logo-img { height: 50px; }
-    .header-scrolled .council-name h1 { font-size: 1.5rem; }
-
-    /* ===== PAGE HERO ===== */
-    .page-hero {
-      background: linear-gradient(rgba(10,26,45,0.88), rgba(26,43,60,0.93)),
-        url('https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
-      background-size: cover; background-position: center;
-      text-align: center;
-      padding: 160px 20px 90px;
-      margin-top: 83px;
-      position: relative; overflow: hidden;
-    }
-    .page-hero:before {
-      content: '';
-      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-      background: radial-gradient(circle at center, transparent 0%, rgba(26,43,60,0.5) 100%);
-      pointer-events: none;
-    }
-    .page-hero-content { position: relative; z-index: 2; }
-    .page-hero-eyebrow {
-      font-size: 0.82rem; letter-spacing: 4px; text-transform: uppercase;
-      color: var(--accent-blue); margin-bottom: 14px; display: block;
-    }
-    .page-hero-content h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 4rem; color: #fff;
-      text-shadow: 3px 3px 8px rgba(0,0,0,0.5);
-      margin-bottom: 16px; letter-spacing: 2px;
-    }
-    .page-hero-content h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.8rem; font-weight: 400; font-style: italic;
-      color: var(--accent-gold); margin-bottom: 20px;
-    }
-    .page-hero-content p {
-      font-size: 1.15rem; max-width: 750px; margin: 0 auto;
-      color: var(--medium-text); line-height: 1.8;
-    }
-
-    /* ===== SECTIONS ===== */
-    section { padding: 80px 0; position: relative; }
-    section:before {
-      content: '';
-      position: absolute; top: 0; left: 0; width: 100%; height: 5px;
-      background: linear-gradient(to right, transparent, var(--accent-gold), transparent);
-    }
-
-    /* ===== GALLERY EVENT GROUP HEADING ===== */
-    .gallery-group {
-      margin-bottom: 60px;
-    }
-    .gallery-group:last-child { margin-bottom: 0; }
-
-    .group-heading {
-      text-align: center;
-      margin: 0 0 32px;
-      position: relative;
-    }
-    .group-label {
-      display: inline-block;
-      font-family: 'Playfair Display', serif;
-      font-size: 1.9rem;
-      color: var(--accent-gold);
-      position: relative;
-      padding: 0 28px;
-    }
-    .group-label:before, .group-label:after {
-      content: '';
-      position: absolute;
-      top: 50%; transform: translateY(-50%);
-      width: 60px; height: 2px;
-      background: linear-gradient(to right, transparent, var(--accent-gold));
-    }
-    .group-label:before { right: 100%; }
-    .group-label:after { left: 100%; background: linear-gradient(to left, transparent, var(--accent-gold)); }
-
-    .section-header {
-      text-align: center;
-      margin-bottom: 56px;
-    }
-    .section-header .eyebrow {
-      font-size: 0.82rem; letter-spacing: 3px; text-transform: uppercase;
-      color: var(--accent-blue); margin-bottom: 12px; display: block;
-    }
-    .section-header h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 3rem; color: var(--accent-gold);
-      margin-bottom: 14px;
-      position: relative; display: inline-block;
-    }
-    .section-header h2:after {
-      content: '';
-      position: absolute;
-      width: 60%; height: 4px;
-      background: linear-gradient(to right, transparent, var(--accent-gold), transparent);
-      bottom: -14px; left: 20%; border-radius: 2px;
-    }
-    .section-header p { color: var(--medium-text); font-size: 1.05rem; margin-top: 24px; }
-
-    /* ===== GALLERY GRID ===== */
-    .gallery-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 20px;
-    }
-    .gallery-item {
-      border-radius: 14px;
-      overflow: hidden;
-      height: 220px;
-      position: relative;
-      cursor: pointer;
-      border: 1px solid var(--card-border);
-      box-shadow: var(--shadow);
-      transition: transform 0.35s ease, box-shadow 0.35s ease;
-    }
-    .gallery-item:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-    }
-    .gallery-item img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s ease;
-      display: block;
-    }
-    .gallery-item:hover img { transform: scale(1.08); }
-    .gallery-overlay {
-      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-      background: linear-gradient(to top, rgba(10,26,45,0.85) 0%, rgba(10,26,45,0.2) 100%);
-      display: flex; align-items: flex-end; justify-content: flex-start;
-      padding: 18px;
-      opacity: 0;
-      transition: opacity 0.35s ease;
-    }
-    .gallery-item:hover .gallery-overlay { opacity: 1; }
-    .gallery-overlay h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1rem; color: #fff;
-      text-shadow: 0 2px 6px rgba(0,0,0,0.5);
-    }
-
-    /* ===== FADE IN ===== */
-    .fade-in { opacity: 0; transform: translateY(28px); transition: opacity 0.8s, transform 0.8s; }
-    .fade-in.visible { opacity: 1; transform: translateY(0); }
-
-    /* ===== FOOTER ===== */
-    footer {
-      background: linear-gradient(180deg, rgba(10,26,45,0.95), rgba(8,20,36,0.98));
-      color: var(--light-text);
-      padding: 60px 0 20px;
-      margin-top: 40px;
-      position: relative;
-      border-top: 3px solid var(--accent-gold);
-    }
-    footer:before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 10px; background: linear-gradient(to right, transparent, var(--accent-gold), transparent); }
-    .footer-content { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 30px; margin-bottom: 30px; }
-    .footer-column { flex: 1; min-width: 250px; }
-    .footer-column h3 { font-size: 1.4rem; margin-bottom: 20px; color: var(--accent-gold); position: relative; padding-bottom: 10px; }
-    .footer-column h3:after { content: ''; position: absolute; width: 60px; height: 4px; background-color: var(--accent-gold); bottom: 0; left: 0; border-radius: 2px; }
-    .footer-column p { color: var(--medium-text); font-size: 0.95rem; line-height: 1.7; }
-    .contact-list { list-style: none; }
-    .contact-list li { margin-bottom: 12px; display: flex; align-items: flex-start; gap: 10px; color: var(--medium-text); font-size: 0.95rem; }
-    .contact-list i { color: var(--accent-gold); margin-top: 3px; flex-shrink: 0; }
-    .contact-list a { color: var(--light-text); text-decoration: none; }
-    .social-links { display: flex; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
-    .social-links a { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: rgba(255,255,255,0.1); border-radius: 50%; color: white; transition: all 0.3s; text-decoration: none; }
-    .social-links a:hover { background: var(--accent-gold); transform: translateY(-5px); }
-    .copyright { text-align: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.95rem; color: rgba(255,255,255,0.6); }
-
-    /* ===== MODAL ===== */
-    .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(10,26,45,0.95); z-index: 2000; justify-content: center; align-items: center; animation: fadeIn 0.3s ease; }
-    .modal-content { background: linear-gradient(180deg, #0a1f3a 0%, #1a2b3c 100%); padding: 40px; border-radius: 15px; max-width: 700px; width: 90%; box-shadow: 0 20px 50px rgba(0,0,0,0.5); border: 2px solid var(--accent-gold); position: relative; animation: slideUp 0.4s ease; }
-    .close-modal { position: absolute; top: 20px; right: 25px; font-size: 2.5rem; color: var(--accent-gold); cursor: pointer; transition: all 0.3s ease; background: none; border: none; z-index: 1001; }
-    .close-modal:hover { color: #f0e68c; transform: rotate(90deg); }
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-    @keyframes slideUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
-
-    /* ===== RESPONSIVE ===== */
-    @media (max-width: 992px) {
-      .page-hero-content h1 { font-size: 3rem; }
-    }
-    @media (max-width: 768px) {
-      .header-container { padding: 0 15px; }
-      .logo-container { max-width: 80%; }
-      .council-name h1 { font-size: 1.3rem; line-height: 1.1; }
-      .council-name span { font-size: 0.8rem; }
-      .mobile-toggle { display: block; }
-      nav ul {
-        position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
-        background: rgba(10,26,45,0.98); flex-direction: column;
-        align-items: center; justify-content: center;
-        padding: 80px 20px 40px;
-        transform: translateX(100%); opacity: 0;
-        transition: transform 0.4s ease, opacity 0.4s ease;
-        z-index: 1001; backdrop-filter: blur(20px); overflow-y: auto;
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes"
+    />
+    <title>
+      Gallery | ISAC | Government Institute of Technology Baun, Uttarkashi
+    </title>
+    <link rel="icon" type="image/png" href="IMG/logo/logo ISAC 1.png" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "DM Sans", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
       }
-      nav ul.active { transform: translateX(0); opacity: 1; }
-      nav ul li { margin: 15px 0; width: 100%; text-align: center; }
-      nav ul li a { font-size: 1.2rem; padding: 15px; display: block; width: 100%; }
-      .page-hero { padding: 140px 15px 70px; margin-top: 70px; }
-      .page-hero-content h1 { font-size: 2.4rem; }
-      .page-hero-content h2 { font-size: 1.5rem; }
-      .group-label { font-size: 1.5rem; }
-      .gallery-container { grid-template-columns: repeat(2, 1fr); gap: 14px; }
-      .gallery-item { height: 180px; }
-      .section-header h2 { font-size: 2.4rem; }
-      .footer-content { flex-direction: column; }
-    }
-    @media (max-width: 480px) {
-      .page-hero-content h1 { font-size: 1.9rem; }
-      .gallery-container { grid-template-columns: 1fr; }
-      .gallery-item { height: 200px; }
-      .group-label { font-size: 1.25rem; }
-      .logo-img { height: 48px; }
-      .council-name h1 { font-size: 1.1rem; }
-    }
-  </style>
-</head>
-<body>
 
-  <!-- ===== HEADER ===== -->
-  <header id="mainHeader">
-    <div class="container header-container">
-      <div class="logo-container">
-        <img src="IMG/IMG CULTURAL/logo ISAC 1.png" alt="ISAC Logo" class="logo-img" />
-        <div class="council-name">
-          <h1>Institute Student Activity Council</h1>
-          <span>Government Institute of Technology Baun, Uttarkashi</span>
+      :root {
+        --primary-dark: #0a1a2d;
+        --secondary-dark: #1a2b3c;
+        --accent-gold: #d4af37;
+        --accent-blue: #2a8c8b;
+        --accent-red: #c53b3b;
+        --light-text: #f0f8ff;
+        --medium-text: #c9d6e6;
+        --dark-text: #051225;
+        --card-bg: rgba(255, 255, 255, 0.05);
+        --card-border: rgba(255, 255, 255, 0.1);
+        --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background: linear-gradient(180deg, #0a1a2d 0%, #1a2b3c 60%);
+        color: var(--light-text);
+        line-height: 1.6;
+        min-height: 100vh;
+        overflow-x: hidden;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* ===== HEADER ===== */
+      header {
+        background: linear-gradient(
+          180deg,
+          rgba(10, 26, 45, 0.98) 0%,
+          rgba(26, 43, 60, 0.97) 100%
+        );
+        color: var(--light-text);
+        padding: 20px 0;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        transition: all 0.4s ease;
+        border-bottom: 3px solid var(--accent-gold);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+      }
+      .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .logo-container {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        max-width: 70%;
+      }
+      .logo-img {
+        height: 60px;
+        width: auto;
+        object-fit: contain;
+        filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+        transition: all 0.3s ease;
+      }
+      .council-name {
+        display: flex;
+        flex-direction: column;
+      }
+      .council-name h1 {
+        font-size: 1.8rem;
+        font-family: "Playfair Display", serif;
+        background: linear-gradient(to right, var(--accent-gold), #f0e68c);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        letter-spacing: 0.5px;
+        line-height: 1.2;
+      }
+      .council-name span {
+        font-size: 0.9rem;
+        color: var(--accent-blue);
+        line-height: 1.2;
+      }
+      nav ul {
+        display: flex;
+        list-style: none;
+        gap: 25px;
+        align-items: center;
+      }
+      nav a {
+        text-decoration: none;
+        color: var(--light-text);
+        font-weight: 500;
+        transition: all 0.3s;
+        padding: 5px 0;
+        position: relative;
+        white-space: nowrap;
+      }
+      nav a:hover {
+        color: var(--accent-gold);
+      }
+      nav a:after {
+        content: "";
+        position: absolute;
+        bottom: -3px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--accent-gold);
+        transition: width 0.3s;
+      }
+      nav a:hover:after {
+        width: 100%;
+      }
+      .mobile-toggle {
+        display: none;
+        font-size: 1.8rem;
+        cursor: pointer;
+        color: var(--accent-gold);
+        background: none;
+        border: none;
+        padding: 10px;
+        z-index: 1002;
+        transition: all 0.3s;
+        -webkit-tap-highlight-color: transparent;
+        -webkit-user-select: none;
+        user-select: none;
+      }
+      .header-scrolled {
+        padding: 12px 0;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+      }
+      .header-scrolled .logo-img {
+        height: 50px;
+      }
+      .header-scrolled .council-name h1 {
+        font-size: 1.5rem;
+      }
+
+      /* ===== PAGE HERO ===== */
+      .page-hero {
+        background: linear-gradient(
+            rgba(10, 26, 45, 0.88),
+            rgba(26, 43, 60, 0.93)
+          ),
+          url("https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80");
+        background-size: cover;
+        background-position: center;
+        text-align: center;
+        padding: 160px 20px 90px;
+        margin-top: 83px;
+        position: relative;
+        overflow: hidden;
+      }
+      .page-hero:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(
+          circle at center,
+          transparent 0%,
+          rgba(26, 43, 60, 0.5) 100%
+        );
+        pointer-events: none;
+      }
+      .page-hero-content {
+        position: relative;
+        z-index: 2;
+      }
+      .page-hero-eyebrow {
+        font-size: 0.82rem;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: var(--accent-blue);
+        margin-bottom: 14px;
+        display: block;
+      }
+      .page-hero-content h1 {
+        font-family: "Playfair Display", serif;
+        font-size: 4rem;
+        color: #fff;
+        text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.5);
+        margin-bottom: 16px;
+        letter-spacing: 2px;
+      }
+      .page-hero-content h2 {
+        font-family: "Playfair Display", serif;
+        font-size: 1.8rem;
+        font-weight: 400;
+        font-style: italic;
+        color: var(--accent-gold);
+        margin-bottom: 20px;
+      }
+      .page-hero-content p {
+        font-size: 1.15rem;
+        max-width: 750px;
+        margin: 0 auto;
+        color: var(--medium-text);
+        line-height: 1.8;
+      }
+
+      /* ===== SECTIONS ===== */
+      section {
+        padding: 80px 0;
+        position: relative;
+      }
+      section:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: linear-gradient(
+          to right,
+          transparent,
+          var(--accent-gold),
+          transparent
+        );
+      }
+
+      /* ===== GALLERY EVENT GROUP HEADING ===== */
+      .gallery-group {
+        margin-bottom: 60px;
+      }
+      .gallery-group:last-child {
+        margin-bottom: 0;
+      }
+
+      .group-heading {
+        text-align: center;
+        margin: 0 0 32px;
+        position: relative;
+      }
+      .group-label {
+        display: inline-block;
+        font-family: "Playfair Display", serif;
+        font-size: 1.9rem;
+        color: var(--accent-gold);
+        position: relative;
+        padding: 0 28px;
+      }
+      .group-label:before,
+      .group-label:after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 60px;
+        height: 2px;
+        background: linear-gradient(to right, transparent, var(--accent-gold));
+      }
+      .group-label:before {
+        right: 100%;
+      }
+      .group-label:after {
+        left: 100%;
+        background: linear-gradient(to left, transparent, var(--accent-gold));
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: 56px;
+      }
+      .section-header .eyebrow {
+        font-size: 0.82rem;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--accent-blue);
+        margin-bottom: 12px;
+        display: block;
+      }
+      .section-header h2 {
+        font-family: "Playfair Display", serif;
+        font-size: 3rem;
+        color: var(--accent-gold);
+        margin-bottom: 14px;
+        position: relative;
+        display: inline-block;
+      }
+      .section-header h2:after {
+        content: "";
+        position: absolute;
+        width: 60%;
+        height: 4px;
+        background: linear-gradient(
+          to right,
+          transparent,
+          var(--accent-gold),
+          transparent
+        );
+        bottom: -14px;
+        left: 20%;
+        border-radius: 2px;
+      }
+      .section-header p {
+        color: var(--medium-text);
+        font-size: 1.05rem;
+        margin-top: 24px;
+      }
+
+      /* ===== GALLERY GRID ===== */
+      .gallery-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: 20px;
+      }
+      .gallery-item {
+        border-radius: 14px;
+        overflow: hidden;
+        height: 220px;
+        position: relative;
+        cursor: pointer;
+        border: 1px solid var(--card-border);
+        box-shadow: var(--shadow);
+        transition: transform 0.35s ease, box-shadow 0.35s ease;
+      }
+      .gallery-item:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+      }
+      .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+        display: block;
+      }
+      .gallery-item:hover img {
+        transform: scale(1.08);
+      }
+      .gallery-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          to top,
+          rgba(10, 26, 45, 0.85) 0%,
+          rgba(10, 26, 45, 0.2) 100%
+        );
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-start;
+        padding: 18px;
+        opacity: 0;
+        transition: opacity 0.35s ease;
+      }
+      .gallery-item:hover .gallery-overlay {
+        opacity: 1;
+      }
+      .gallery-overlay h3 {
+        font-family: "Playfair Display", serif;
+        font-size: 1rem;
+        color: #fff;
+        text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+      }
+
+      /* ===== FADE IN ===== */
+      .fade-in {
+        opacity: 0;
+        transform: translateY(28px);
+        transition: opacity 0.8s, transform 0.8s;
+      }
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* ===== FOOTER ===== */
+      footer {
+        background: linear-gradient(
+          180deg,
+          rgba(10, 26, 45, 0.95),
+          rgba(8, 20, 36, 0.98)
+        );
+        color: var(--light-text);
+        padding: 60px 0 20px;
+        margin-top: 40px;
+        position: relative;
+        border-top: 3px solid var(--accent-gold);
+      }
+      footer:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 10px;
+        background: linear-gradient(
+          to right,
+          transparent,
+          var(--accent-gold),
+          transparent
+        );
+      }
+      .footer-content {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 30px;
+        margin-bottom: 30px;
+      }
+      .footer-column {
+        flex: 1;
+        min-width: 250px;
+      }
+      .footer-column h3 {
+        font-size: 1.4rem;
+        margin-bottom: 20px;
+        color: var(--accent-gold);
+        position: relative;
+        padding-bottom: 10px;
+      }
+      .footer-column h3:after {
+        content: "";
+        position: absolute;
+        width: 60px;
+        height: 4px;
+        background-color: var(--accent-gold);
+        bottom: 0;
+        left: 0;
+        border-radius: 2px;
+      }
+      .footer-column p {
+        color: var(--medium-text);
+        font-size: 0.95rem;
+        line-height: 1.7;
+      }
+      .contact-list {
+        list-style: none;
+      }
+      .contact-list li {
+        margin-bottom: 12px;
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        color: var(--medium-text);
+        font-size: 0.95rem;
+      }
+      .contact-list i {
+        color: var(--accent-gold);
+        margin-top: 3px;
+        flex-shrink: 0;
+      }
+      .contact-list a {
+        color: var(--light-text);
+        text-decoration: none;
+      }
+      .social-links {
+        display: flex;
+        gap: 12px;
+        margin-top: 20px;
+        flex-wrap: wrap;
+      }
+      .social-links a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        color: white;
+        transition: all 0.3s;
+        text-decoration: none;
+      }
+      .social-links a:hover {
+        background: var(--accent-gold);
+        transform: translateY(-5px);
+      }
+      .copyright {
+        text-align: center;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        font-size: 0.95rem;
+        color: rgba(255, 255, 255, 0.6);
+      }
+
+      /* ===== MODAL ===== */
+      .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(10, 26, 45, 0.95);
+        z-index: 2000;
+        justify-content: center;
+        align-items: center;
+        animation: fadeIn 0.3s ease;
+      }
+      .modal-content {
+        background: linear-gradient(180deg, #0a1f3a 0%, #1a2b3c 100%);
+        padding: 40px;
+        border-radius: 15px;
+        max-width: 700px;
+        width: 90%;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        border: 2px solid var(--accent-gold);
+        position: relative;
+        animation: slideUp 0.4s ease;
+      }
+      .close-modal {
+        position: absolute;
+        top: 20px;
+        right: 25px;
+        font-size: 2.5rem;
+        color: var(--accent-gold);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        background: none;
+        border: none;
+        z-index: 1001;
+      }
+      .close-modal:hover {
+        color: #f0e68c;
+        transform: rotate(90deg);
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* ===== RESPONSIVE ===== */
+      @media (max-width: 992px) {
+        .page-hero-content h1 {
+          font-size: 3rem;
+        }
+      }
+      @media (max-width: 768px) {
+        .header-container {
+          padding: 0 15px;
+        }
+        .logo-container {
+          max-width: 80%;
+        }
+        .council-name h1 {
+          font-size: 1.3rem;
+          line-height: 1.1;
+        }
+        .council-name span {
+          font-size: 0.8rem;
+        }
+        .mobile-toggle {
+          display: block;
+        }
+        nav ul {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100vh;
+          background: rgba(10, 26, 45, 0.98);
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          padding: 80px 20px 40px;
+          transform: translateX(100%);
+          opacity: 0;
+          transition: transform 0.4s ease, opacity 0.4s ease;
+          z-index: 1001;
+          backdrop-filter: blur(20px);
+          overflow-y: auto;
+        }
+        nav ul.active {
+          transform: translateX(0);
+          opacity: 1;
+        }
+        nav ul li {
+          margin: 15px 0;
+          width: 100%;
+          text-align: center;
+        }
+        nav ul li a {
+          font-size: 1.2rem;
+          padding: 15px;
+          display: block;
+          width: 100%;
+        }
+        .page-hero {
+          padding: 140px 15px 70px;
+          margin-top: 70px;
+        }
+        .page-hero-content h1 {
+          font-size: 2.4rem;
+        }
+        .page-hero-content h2 {
+          font-size: 1.5rem;
+        }
+        .group-label {
+          font-size: 1.5rem;
+        }
+        .gallery-container {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 14px;
+        }
+        .gallery-item {
+          height: 180px;
+        }
+        .section-header h2 {
+          font-size: 2.4rem;
+        }
+        .footer-content {
+          flex-direction: column;
+        }
+      }
+      @media (max-width: 480px) {
+        .page-hero-content h1 {
+          font-size: 1.9rem;
+        }
+        .gallery-container {
+          grid-template-columns: 1fr;
+        }
+        .gallery-item {
+          height: 200px;
+        }
+        .group-label {
+          font-size: 1.25rem;
+        }
+        .logo-img {
+          height: 48px;
+        }
+        .council-name h1 {
+          font-size: 1.1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ===== HEADER ===== -->
+    <header id="mainHeader">
+      <div class="container header-container">
+        <div class="logo-container">
+          <img
+            src="IMG/IMG CULTURAL/logo ISAC 1.png"
+            alt="ISAC Logo"
+            class="logo-img"
+          />
+          <div class="council-name">
+            <h1>Institute Student Activity Council</h1>
+            <span>Government Institute of Technology Baun, Uttarkashi</span>
+          </div>
         </div>
+        <button
+          class="mobile-toggle"
+          id="mobileToggle"
+          aria-label="Toggle navigation menu"
+        >
+          <i class="fas fa-bars"></i>
+        </button>
+        <nav>
+          <ul id="navMenu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="society.html">Societies</a></li>
+            <li><a href="event.html">Events</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="team.html">Team</a></li>
+          </ul>
+        </nav>
       </div>
-      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation menu">
-        <i class="fas fa-bars"></i>
-      </button>
-      <nav>
-        <ul id="navMenu">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="society.html">Societies</a></li>
-          <li><a href="event.html">Events</a></li>
-          <li><a href="gallery.html">Gallery</a></li>
-          <li><a href="team.html">Team</a></li>
-        </ul>
-      </nav>
+    </header>
+
+    <!-- ===== PAGE HERO ===== -->
+    <div class="page-hero">
+      <div class="page-hero-content">
+        <span class="page-hero-eyebrow">ISAC · GIT Baun, Uttarkashi</span>
+        <h1>Campus Gallery</h1>
+        <h2>Moments Worth Remembering</h2>
+        <p>
+          A visual journey through our events, activities, and vibrant campus
+          life
+        </p>
+      </div>
     </div>
-  </header>
 
-  <!-- ===== PAGE HERO ===== -->
-  <div class="page-hero">
-    <div class="page-hero-content">
-      <span class="page-hero-eyebrow">ISAC · GIT Baun, Uttarkashi</span>
-      <h1>Campus Gallery</h1>
-      <h2>Moments Worth Remembering</h2>
-      <p>A visual journey through our events, activities, and vibrant campus life</p>
-    </div>
-  </div>
-
-  <!-- ===== GALLERY SECTION ===== -->
-  <section id="gallery">
-    <div class="container">
-
-      <div class="section-header fade-in">
-        <span class="eyebrow">Our Events</span>
-        <h2>Event Highlights</h2>
-        <p>Snapshots from competitions, workshops, celebrations, and more</p>
-      </div>
-      <!-- Workshop -->
-      <div class="gallery-group fade-in">
-        <div class="group-heading">
-          <span class="group-label">Workshop on n8n &amp; LangGraph</span>
+    <!-- ===== GALLERY SECTION ===== -->
+    <section id="gallery">
+      <div class="container">
+        <div class="section-header fade-in">
+          <span class="eyebrow">Our Events</span>
+          <h2>Event Highlights</h2>
+          <p>Snapshots from competitions, workshops, celebrations, and more</p>
         </div>
-        <div class="gallery-container">
-          <div class="gallery-item fade-in">
-            <img src="IMG\events\workshop\ai1.jpeg" alt="Soft Skills Workshop" />
-            <div class="gallery-overlay"><h3>n8n</h3></div>
+        <!-- Workshop -->
+        <div class="gallery-group fade-in">
+          <div class="group-heading">
+            <span class="group-label">Workshop on n8n &amp; LangGraph</span>
           </div>
-          <div class="gallery-item fade-in">
-            <img src="IMG\events\workshop\ai2.jpeg" alt="Job READINESS" />
-            <div class="gallery-overlay"><h3> LangGraph</h3></div>
-          </div>
-          <div class="gallery-item fade-in">
-            <img src="IMG\events\workshop\ai3.jpeg" alt="linkedin Profiling" />
-            <div class="gallery-overlay"><h3>AI Agent</h3></div>
-          </div>
-          <div class="gallery-item fade-in">
-            <img src="IMG\events\workshop\ai4.jpeg" alt="GD & PI skills" />
-            <div class="gallery-overlay"><h3>AI</h3></div>
-          </div>
-        </div>
-      </div>
-
-
-
-
-      <!-- Induction Program 2025 -->
-      <div class="gallery-group fade-in">
-        <div class="group-heading">
-          <span class="group-label">Induction Program 2026</span>
-        </div>
-        <div class="group-heading">
-          <span class="group-label">Day 1- A Vibrant Beginning</span>
-        </div>
-        <div class="gallery-container">
-          <div class="gallery-item fade-in">
-            <img src="IMG\events\INDUCTION\induction26\DAY 1\ONE.jpeg" alt="Induction Program 2026" />
-            <div class="gallery-overlay"><h3>Induction Program 2026</h3></div>
-          </div>
-          <div class="gallery-item fade-in">
-            <img src="IMG\events\INDUCTION\induction26\DAY 1\TWO.jpeg" alt="Induction Program 2026" />
-            <div class="gallery-overlay"><h3>Induction Program 2026</h3></div>
-          </div>
-          <div class="gallery-item fade-in">
-            <img src="IMG\events\INDUCTION\induction26\DAY 1\THREE.jpeg" alt="Induction Program 2026" />
-            <div class="gallery-overlay"><h3>Induction Program 2026</h3></div>
-          </div>
-          <div class="gallery-item fade-in">
-            <img src="IMG\events\INDUCTION\induction26\DAY 1\FOUR.jpeg" alt="Induction Program 2026" />
-            <div class="gallery-overlay"><h3>Induction Program 2026</h3></div>
+          <div class="gallery-container">
+            <div class="gallery-item fade-in">
+              <img
+                src="IMG\events\workshop\ai1.jpeg"
+                alt="Soft Skills Workshop"
+              />
+              <div class="gallery-overlay"><h3>n8n</h3></div>
+            </div>
+            <div class="gallery-item fade-in">
+              <img src="IMG\events\workshop\ai2.jpeg" alt="Job READINESS" />
+              <div class="gallery-overlay"><h3>LangGraph</h3></div>
+            </div>
+            <div class="gallery-item fade-in">
+              <img
+                src="IMG\events\workshop\ai3.jpeg"
+                alt="linkedin Profiling"
+              />
+              <div class="gallery-overlay"><h3>AI Agent</h3></div>
+            </div>
+            <div class="gallery-item fade-in">
+              <img src="IMG\events\workshop\ai4.jpeg" alt="GD & PI skills" />
+              <div class="gallery-overlay"><h3>AI</h3></div>
+            </div>
           </div>
         </div>
 
+        <!-- Induction Program 2025 -->
+        <div class="gallery-group fade-in">
+          <div class="group-heading">
+            <span class="group-label">Induction Program 2026</span>
+          </div>
+          <div class="group-heading">
+            <span class="group-label">Day 1- A Vibrant Beginning</span>
+          </div>
+          <div class="gallery-container">
+            <div class="gallery-item fade-in">
+              <img
+                src="IMG\events\INDUCTION\induction26\DAY 1\ONE.jpeg"
+                alt="Induction Program 2026"
+              />
+              <div class="gallery-overlay"><h3>Induction Program 2026</h3></div>
+            </div>
+            <div class="gallery-item fade-in">
+              <img
+                src="IMG\events\INDUCTION\induction26\DAY 1\TWO.jpeg"
+                alt="Induction Program 2026"
+              />
+              <div class="gallery-overlay"><h3>Induction Program 2026</h3></div>
+            </div>
+            <div class="gallery-item fade-in">
+              <img
+                src="IMG\events\INDUCTION\induction26\DAY 1\THREE.jpeg"
+                alt="Induction Program 2026"
+              />
+              <div class="gallery-overlay"><h3>Induction Program 2026</h3></div>
+            </div>
+            <div class="gallery-item fade-in">
+              <img
+                src="IMG\events\INDUCTION\induction26\DAY 1\FOUR.jpeg"
+                alt="Induction Program 2026"
+              />
+              <div class="gallery-overlay"><h3>Induction Program 2026</h3></div>
+            </div>
+          </div>
 
+          <div class="group-heading">
+            <span class="group-label"
+              >Day 2- A Celebration of Ideas & Skill</span
+            >
+          </div>
+          <div class="gallery-container">
+            <div class="gallery-item fade-in">
+              <img
+                src="IMG\events\INDUCTION\induction26\DAY 2\ONE.jpeg"
+                alt="Induction - NIM"
+              />
+              <div class="gallery-overlay"><h3>Induction Program 2026</h3></div>
+            </div>
+            <div class="gallery-item fade-in">
+              <img
+                src="IMG\events\INDUCTION\induction26\DAY 2\TWO.jpeg"
+                alt="Induction - View"
+              />
+              <div class="gallery-overlay"><h3>Induction Program 2026</h3></div>
+            </div>
+            <div class="gallery-item fade-in">
+              <img
+                src="IMG\events\INDUCTION\induction26\DAY 2\THREE.jpeg"
+                alt="Induction - Tour"
+              />
+              <div class="gallery-overlay"><h3>Induction Program 2026</h3></div>
+            </div>
+            <div class="gallery-item fade-in">
+              <img
+                src="IMG\events\INDUCTION\induction26\DAY 2\FOUR.jpeg"
+                alt="Induction - New Batch"
+              />
+              <div class="gallery-overlay"><h3>Induction Program 2026</h3></div>
+            </div>
+          </div>
 
-        <div class="group-heading">
-          <span class="group-label">Day 2- A Celebration of Ideas & Skill</span>
-        </div>
-        <div class="gallery-container">
-          <div class="gallery-item fade-in">
-            <img src="IMG\events\INDUCTION\induction26\DAY 2\ONE.jpeg" alt="Induction - NIM" />
-            <div class="gallery-overlay"><h3>Induction Program 2026</h3></div>
-          </div>
-          <div class="gallery-item fade-in">
-            <img src="IMG\events\INDUCTION\induction26\DAY 2\TWO.jpeg" alt="Induction - View" />
-            <div class="gallery-overlay"><h3>Induction Program 2026</h3></div>
-          </div>
-          <div class="gallery-item fade-in">
-            <img src="IMG\events\INDUCTION\induction26\DAY 2\THREE.jpeg" alt="Induction - Tour" />
-            <div class="gallery-overlay"><h3>Induction Program 2026</h3></div>
-          </div>
-          <div class="gallery-item fade-in">
-            <img src="IMG\events\INDUCTION\induction26\DAY 2\FOUR.jpeg" alt="Induction - New Batch" />
-            <div class="gallery-overlay"><h3>Induction Program 2026</h3></div>
-          </div>
-          </div>
-          
           <div class="group-heading">
             <span class="group-label">Day 3- The Grand Orientation</span>
           </div>
 
           <div class="gallery-container">
             <div class="gallery-item fade-in">
-              <img src="IMG\events\INDUCTION\induction26\DAY 3\ONE.jpeg" alt="Induction - NIM" />
+              <img
+                src="IMG\events\INDUCTION\induction26\DAY 3\ONE.jpeg"
+                alt="Induction - NIM"
+              />
               <div class="gallery-overlay"><h3>Induction Program 2026</h3></div>
             </div>
             <div class="gallery-item fade-in">
-              <img src="IMG\events\INDUCTION\induction26\DAY 3\TWO.jpeg" alt="Induction - View" />
+              <img
+                src="IMG\events\INDUCTION\induction26\DAY 3\TWO.jpeg"
+                alt="Induction - View"
+              />
               <div class="gallery-overlay"><h3>Induction Program 2026</h3></div>
             </div>
             <div class="gallery-item fade-in">
-              <img src="IMG\events\INDUCTION\induction26\DAY 3\THREE.jpeg" alt="Induction - Tour" />
+              <img
+                src="IMG\events\INDUCTION\induction26\DAY 3\THREE.jpeg"
+                alt="Induction - Tour"
+              />
               <div class="gallery-overlay"><h3>Induction Program 2026</h3></div>
             </div>
             <div class="gallery-item fade-in">
-              <img src="IMG\events\INDUCTION\induction26\DAY 3\FOUR.jpeg" alt="Induction - New Batch" />
+              <img
+                src="IMG\events\INDUCTION\induction26\DAY 3\FOUR.jpeg"
+                alt="Induction - New Batch"
+              />
               <div class="gallery-overlay"><h3>Induction Program 2026</h3></div>
             </div>
-            
-            
-            
           </div>
 
           <div class="group-heading">
-            <span class="group-label">Day 4- Knowledge &Competitive Spirit</span>
+            <span class="group-label"
+              >Day 4- Knowledge &Competitive Spirit</span
+            >
           </div>
 
           <div class="gallery-container">
             <div class="gallery-item fade-in">
-              <img src="IMG\events\INDUCTION\induction26\DAY 4\ONE.jpeg" alt="Induction - NIM" />
+              <img
+                src="IMG\events\INDUCTION\induction26\DAY 4\ONE.jpeg"
+                alt="Induction - NIM"
+              />
               <div class="gallery-overlay"><h3>Induction Program 2026</h3></div>
             </div>
             <div class="gallery-item fade-in">
-              <img src="IMG\events\INDUCTION\induction26\DAY 4\TWO.jpeg" alt="Induction - View" />
+              <img
+                src="IMG\events\INDUCTION\induction26\DAY 4\TWO.jpeg"
+                alt="Induction - View"
+              />
               <div class="gallery-overlay"><h3>Induction Program 2026</h3></div>
             </div>
             <div class="gallery-item fade-in">
-              <img src="IMG\events\INDUCTION\induction26\DAY 4\THREE.jpeg" alt="Induction - Tour" />
+              <img
+                src="IMG\events\INDUCTION\induction26\DAY 4\THREE.jpeg"
+                alt="Induction - Tour"
+              />
               <div class="gallery-overlay"><h3>Induction Program 2026</h3></div>
             </div>
             <div class="gallery-item fade-in">
-              <img src="IMG\events\INDUCTION\induction26\DAY 4\FOUR.jpeg" alt="Induction - New Batch" />
+              <img
+                src="IMG\events\INDUCTION\induction26\DAY 4\FOUR.jpeg"
+                alt="Induction - New Batch"
+              />
               <div class="gallery-overlay"><h3>Induction Program 2026</h3></div>
             </div>
-            
-            
-            
           </div>
 
           <div class="group-heading">
@@ -474,26 +923,34 @@
 
           <div class="gallery-container">
             <div class="gallery-item fade-in">
-              <img src="IMG\events\INDUCTION\induction26\DAY 5\ONE.jpeg" alt="Induction - NIM" />
+              <img
+                src="IMG\events\INDUCTION\induction26\DAY 5\ONE.jpeg"
+                alt="Induction - NIM"
+              />
               <div class="gallery-overlay"><h3>Induction Program 2026</h3></div>
             </div>
             <div class="gallery-item fade-in">
-              <img src="IMG\events\INDUCTION\induction26\DAY 5\TWO.jpeg" alt="Induction - View" />
+              <img
+                src="IMG\events\INDUCTION\induction26\DAY 5\TWO.jpeg"
+                alt="Induction - View"
+              />
               <div class="gallery-overlay"><h3>Induction Program 2026</h3></div>
             </div>
             <div class="gallery-item fade-in">
-              <img src="IMG\events\INDUCTION\induction26\DAY 5\THREE.jpeg" alt="Induction - Tour" />
+              <img
+                src="IMG\events\INDUCTION\induction26\DAY 5\THREE.jpeg"
+                alt="Induction - Tour"
+              />
               <div class="gallery-overlay"><h3>Induction Program 2026</h3></div>
             </div>
             <div class="gallery-item fade-in">
-              <img src="IMG\events\INDUCTION\induction26\DAY 5\FOUR.jpeg" alt="Induction - New Batch" />
+              <img
+                src="IMG\events\INDUCTION\induction26\DAY 5\FOUR.jpeg"
+                alt="Induction - New Batch"
+              />
               <div class="gallery-overlay"><h3>Induction Program 2026</h3></div>
             </div>
-            
-            
-            
           </div>
-
 
           <div class="group-heading">
             <span class="group-label">Day 6 - </span>
@@ -501,518 +958,718 @@
 
           <div class="gallery-container">
             <div class="gallery-item fade-in">
-              <img src="IMG\events\INDUCTION\induction26\DAY 6\ONE.jpeg" alt="Induction - NIM" />
+              <img
+                src="IMG\events\INDUCTION\induction26\DAY 6\ONE.jpeg"
+                alt="Induction - NIM"
+              />
               <div class="gallery-overlay"><h3>Induction Program 2026</h3></div>
             </div>
             <div class="gallery-item fade-in">
-              <img src="IMG\events\INDUCTION\induction26\DAY 6\TWO.jpeg" alt="Induction - View" />
+              <img
+                src="IMG\events\INDUCTION\induction26\DAY 6\TWO.jpeg"
+                alt="Induction - View"
+              />
               <div class="gallery-overlay"><h3>Induction Program 2026</h3></div>
             </div>
             <div class="gallery-item fade-in">
-              <img src="IMG\events\INDUCTION\induction26\DAY 6\THREE.jpeg" alt="Induction - Tour" />
+              <img
+                src="IMG\events\INDUCTION\induction26\DAY 6\THREE.jpeg"
+                alt="Induction - Tour"
+              />
               <div class="gallery-overlay"><h3>Induction Program 2026</h3></div>
             </div>
             <div class="gallery-item fade-in">
-              <img src="IMG\events\INDUCTION\induction26\DAY 6\FOUR.jpeg" alt="Induction - New Batch" />
+              <img
+                src="IMG\events\INDUCTION\induction26\DAY 6\FOUR.jpeg"
+                alt="Induction - New Batch"
+              />
               <div class="gallery-overlay"><h3>Induction Program 2026</h3></div>
             </div>
-            
-            
-            
           </div>
           <div class="group-heading">
-            <span class="group-label">Day 7 - Robotics 
-              Workshop</span>
+            <span class="group-label">Day 7 - Robotics Workshop</span>
           </div>
 
           <div class="gallery-container">
             <div class="gallery-item fade-in">
-              <img src="IMG\events\INDUCTION\induction26\DAY 7\ONE.jpeg" alt="Induction - NIM" />
+              <img
+                src="IMG\events\INDUCTION\induction26\DAY 7\ONE.jpeg"
+                alt="Induction - NIM"
+              />
               <div class="gallery-overlay"><h3>Induction Program 2026</h3></div>
             </div>
             <div class="gallery-item fade-in">
-              <img src="IMG\events\INDUCTION\induction26\DAY 7\TWO.jpeg" alt="Induction - View" />
+              <img
+                src="IMG\events\INDUCTION\induction26\DAY 7\TWO.jpeg"
+                alt="Induction - View"
+              />
               <div class="gallery-overlay"><h3>Induction Program 2026</h3></div>
             </div>
             <div class="gallery-item fade-in">
-              <img src="IMG\events\INDUCTION\induction26\DAY 7\THREE.jpeg" alt="Induction - Tour" />
+              <img
+                src="IMG\events\INDUCTION\induction26\DAY 7\THREE.jpeg"
+                alt="Induction - Tour"
+              />
               <div class="gallery-overlay"><h3>Induction Program 2026</h3></div>
             </div>
             <div class="gallery-item fade-in">
-              <img src="IMG\events\INDUCTION\induction26\DAY 7\FOUR.jpeg" alt="Induction - New Batch" />
+              <img
+                src="IMG\events\INDUCTION\induction26\DAY 7\FOUR.jpeg"
+                alt="Induction - New Batch"
+              />
               <div class="gallery-overlay"><h3>Induction Program 2026</h3></div>
             </div>
-            
-            
-            
           </div>
 
           <div class="group-heading">
-            <span class="group-label">Day 8- A Roadmap cum Orientation of CSE</span>
+            <span class="group-label"
+              >Day 8- A Roadmap cum Orientation of CSE</span
+            >
           </div>
 
           <div class="gallery-container">
             <div class="gallery-item fade-in">
-              <img src="IMG\events\INDUCTION\induction26\DAY 8\ONE.jpeg" alt="Induction - NIM" />
+              <img
+                src="IMG\events\INDUCTION\induction26\DAY 8\ONE.jpeg"
+                alt="Induction - NIM"
+              />
               <div class="gallery-overlay"><h3>Induction Program 2026</h3></div>
             </div>
             <div class="gallery-item fade-in">
-              <img src="IMG\events\INDUCTION\induction26\DAY 8\TWO.jpeg" alt="Induction - View" />
+              <img
+                src="IMG\events\INDUCTION\induction26\DAY 8\TWO.jpeg"
+                alt="Induction - View"
+              />
               <div class="gallery-overlay"><h3>Induction Program 2026</h3></div>
             </div>
             <div class="gallery-item fade-in">
-              <img src="IMG\events\INDUCTION\induction26\DAY 8\THREE.jpeg" alt="Induction - Tour" />
+              <img
+                src="IMG\events\INDUCTION\induction26\DAY 8\THREE.jpeg"
+                alt="Induction - Tour"
+              />
               <div class="gallery-overlay"><h3>Induction Program 2026</h3></div>
             </div>
             <div class="gallery-item fade-in">
-              <img src="IMG\events\INDUCTION\induction26\DAY 8\FOUR.jpeg" alt="Induction - New Batch" />
+              <img
+                src="IMG\events\INDUCTION\induction26\DAY 8\FOUR.jpeg"
+                alt="Induction - New Batch"
+              />
               <div class="gallery-overlay"><h3>Induction Program 2026</h3></div>
             </div>
-            
-            
-            
           </div>
+        </div>
+
+        <!-- 15 aug -->
+        <div class="gallery-group fade-in">
+          <div class="group-heading">
+            <span class="group-label">80th Independence Day Celebration</span>
+          </div>
+          <div class="gallery-container">
+            <div class="gallery-item fade-in">
+              <img
+                src="IMG\events\15 AUG\ONE.jpeg"
+                alt="Independence Day Celebration"
+              />
+              <div class="gallery-overlay">
+                <h3>Independence Day Celebration</h3>
+              </div>
+            </div>
+            <div class="gallery-item fade-in">
+              <img
+                src="IMG\events\15 AUG\two.jpeg"
+                alt="Independence Day Celebration"
+              />
+              <div class="gallery-overlay">
+                <h3>Independence Day Celebration</h3>
+              </div>
+            </div>
+            <div class="gallery-item fade-in">
+              <img
+                src="IMG\events\15 AUG\three.jpeg"
+                alt="Independence Day Celebration"
+              />
+              <div class="gallery-overlay">
+                <h3>Independence Day Celebration</h3>
+              </div>
+            </div>
+            <div class="gallery-item fade-in">
+              <img
+                src="IMG\events\15 AUG\four.jpeg"
+                alt="Independence Day Celebration"
+              />
+              <div class="gallery-overlay"><h3>Cultural Event</h3></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Workshop -->
+        <div class="gallery-group fade-in">
+          <div class="group-heading">
+            <span class="group-label"
+              >Soft Skills &amp; Job Readyness Training</span
+            >
+          </div>
+          <div class="gallery-container">
+            <div class="gallery-item fade-in">
+              <img
+                src="IMG\events\workshop\JOB READINESS 1.jpeg"
+                alt="Soft Skills Workshop"
+              />
+              <div class="gallery-overlay"><h3>Soft Skills</h3></div>
+            </div>
+            <div class="gallery-item fade-in">
+              <img
+                src="IMG\events\workshop\JOB READINESS 2.jpeg"
+                alt="Job READINESS"
+              />
+              <div class="gallery-overlay"><h3>GD & PI skills</h3></div>
+            </div>
+            <div class="gallery-item fade-in">
+              <img
+                src="IMG\events\workshop\JOB READINESS 3.jpeg"
+                alt="linkedin Profiling"
+              />
+              <div class="gallery-overlay"><h3>linkedin Profiling</h3></div>
+            </div>
+            <div class="gallery-item fade-in">
+              <img
+                src="IMG\events\workshop\JOB READINESS 4.jpeg"
+                alt="GD & PI skills"
+              />
+              <div class="gallery-overlay"><h3>Job Readyness Training</h3></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Debate Competition -->
+        <div class="gallery-group fade-in">
+          <div class="group-heading">
+            <span class="group-label">Debate Competition</span>
+          </div>
+          <div class="gallery-container">
+            <div class="gallery-item fade-in">
+              <img
+                src="IMG/events/literary/debate 1.jpeg"
+                alt="Debate Competition"
+              />
+              <div class="gallery-overlay"><h3>Debate Competition</h3></div>
+            </div>
+            <div class="gallery-item fade-in">
+              <img src="IMG/events/literary/2.jpeg" alt="Debate Competition" />
+              <div class="gallery-overlay"><h3>Debate Competition</h3></div>
+            </div>
+            <div class="gallery-item fade-in">
+              <img src="IMG/events/literary/3.jpeg" alt="Debate Competition" />
+              <div class="gallery-overlay"><h3>Debate Competition</h3></div>
+            </div>
+            <div class="gallery-item fade-in">
+              <img src="IMG/events/literary/4.jpeg" alt="Debate Competition" />
+              <div class="gallery-overlay"><h3>Debate Competition</h3></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Guest Lecture -->
+        <div class="gallery-group fade-in">
+          <div class="group-heading">
+            <span class="group-label">Guest Lecture</span>
+          </div>
+          <div class="gallery-container">
+            <div class="gallery-item fade-in">
+              <img src="IMG/events/workshop/R 3.jpeg" alt="R Lecture" />
+              <div class="gallery-overlay"><h3>R Programming Lecture</h3></div>
+            </div>
+            <div class="gallery-item fade-in">
+              <img src="IMG/events/workshop/R4.jpeg" alt="R Lecture" />
+              <div class="gallery-overlay"><h3>R Programming Lecture</h3></div>
+            </div>
+            <div class="gallery-item fade-in">
+              <img src="IMG/events/workshop/R 2.jpeg" alt="R Lecture" />
+              <div class="gallery-overlay"><h3>R Programming Lecture</h3></div>
+            </div>
+            <div class="gallery-item fade-in">
+              <img
+                src="IMG/events/workshop/R programming.jpeg"
+                alt="R Programming"
+              />
+              <div class="gallery-overlay"><h3>R Programming Lecture</h3></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Indoor Sports -->
+        <div class="gallery-group fade-in">
+          <div class="group-heading">
+            <span class="group-label">Indoor Sports</span>
+          </div>
+          <div class="gallery-container">
+            <div class="gallery-item fade-in">
+              <img src="IMG/events/indoor/badminton.jpeg" alt="Badminton" />
+              <div class="gallery-overlay"><h3>Badminton</h3></div>
+            </div>
+            <div class="gallery-item fade-in">
+              <img src="IMG/events/indoor/carrom.jpeg" alt="Carrom" />
+              <div class="gallery-overlay"><h3>Carrom</h3></div>
+            </div>
+            <div class="gallery-item fade-in">
+              <img src="IMG/events/indoor/cess.jpeg" alt="Chess" />
+              <div class="gallery-overlay"><h3>Chess</h3></div>
+            </div>
+            <div class="gallery-item fade-in">
+              <img src="IMG/events/indoor/sportgroup.jpeg" alt="Sports Event" />
+              <div class="gallery-overlay"><h3>Sports Event</h3></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dr. B. R. Ambedkar Day -->
+        <div class="gallery-group fade-in">
+          <div class="group-heading">
+            <span class="group-label"
+              >A Special Day Dedicated to Dr. B. R. Ambedkar</span
+            >
+          </div>
+          <div class="gallery-container">
+            <div class="gallery-item fade-in">
+              <img
+                src="IMG/events/Ambedkar/ambedkarji (1).png"
+                alt="Ambedkar Day"
+              />
+              <div class="gallery-overlay"><h3>Cultural Tribute</h3></div>
+            </div>
+            <div class="gallery-item fade-in">
+              <img
+                src="IMG/events/Ambedkar/ambedkarji (2).png"
+                alt="Ambedkar Day"
+              />
+              <div class="gallery-overlay"><h3>Cultural Event</h3></div>
+            </div>
+            <div class="gallery-item fade-in">
+              <img
+                src="IMG/events/Ambedkar/ambedkarji (3).png"
+                alt="Ambedkar Day"
+              />
+              <div class="gallery-overlay"><h3>Cultural Event</h3></div>
+            </div>
+            <div class="gallery-item fade-in">
+              <img
+                src="IMG/events/Ambedkar/ambedkarji (4).png"
+                alt="Ambedkar Day"
+              />
+              <div class="gallery-overlay"><h3>Cultural Event</h3></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- E-Sports Championship -->
+        <div class="gallery-group fade-in">
+          <div class="group-heading">
+            <span class="group-label"
+              >E-Sports Championship – BGMI &amp; Free Fire</span
+            >
+          </div>
+          <div class="gallery-container">
+            <div class="gallery-item fade-in">
+              <img
+                src="IMG/events/esports/img (1).jpeg"
+                alt="E-Sports Tournament"
+              />
+              <div class="gallery-overlay"><h3>E-Sports Tournament</h3></div>
+            </div>
+            <div class="gallery-item fade-in">
+              <img
+                src="IMG/events/esports/img (2).jpeg"
+                alt="E-Sports Tournament"
+              />
+              <div class="gallery-overlay"><h3>E-Sports Tournament</h3></div>
+            </div>
+            <div class="gallery-item fade-in">
+              <img src="IMG/events/esports/img (3).jpeg" alt="FreeFire" />
+              <div class="gallery-overlay"><h3>Free Fire</h3></div>
+            </div>
+            <div class="gallery-item fade-in">
+              <img src="IMG/events/esports/img (4).jpeg" alt="BGMI" />
+              <div class="gallery-overlay"><h3>BGMI</h3></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Workshop -->
+        <div class="gallery-group fade-in">
+          <div class="group-heading">
+            <span class="group-label">Technical Workshop</span>
+          </div>
+          <div class="gallery-container">
+            <div class="gallery-item fade-in">
+              <img
+                src="IMG/events/workshop/ml.jpeg"
+                alt="Machine Learning Workshop"
+              />
+              <div class="gallery-overlay"><h3>Machine Learning</h3></div>
+            </div>
+            <div class="gallery-item fade-in">
+              <img src="IMG/events/workshop/4.jpeg" alt="Arduino Workshop" />
+              <div class="gallery-overlay"><h3>Arduino</h3></div>
+            </div>
+            <div class="gallery-item fade-in">
+              <img src="IMG\events\workshop\3.jpeg" alt="Arduino Workshop" />
+              <div class="gallery-overlay"><h3>Arduino</h3></div>
+            </div>
+            <div class="gallery-item fade-in">
+              <img src="IMG\events\workshop\ml.jpeg" alt="Arduino Workshop" />
+              <div class="gallery-overlay"><h3>Arduino</h3></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- International Women's Day 2026 -->
+        <div class="gallery-group fade-in">
+          <div class="group-heading">
+            <span class="group-label">International Women's Day 2026</span>
+          </div>
+          <div class="gallery-container">
+            <div class="gallery-item fade-in">
+              <img src="IMG/events/womens day/1.jpeg" alt="Women's Day" />
+              <div class="gallery-overlay"><h3>Women's Day</h3></div>
+            </div>
+            <div class="gallery-item fade-in">
+              <img src="IMG/events/womens day/2.jpeg" alt="Women's Day" />
+              <div class="gallery-overlay"><h3>Women's Day</h3></div>
+            </div>
+            <div class="gallery-item fade-in">
+              <img src="IMG/events/womens day/3.jpeg" alt="Women's Day" />
+              <div class="gallery-overlay"><h3>Women's Day</h3></div>
+            </div>
+            <div class="gallery-item fade-in">
+              <img src="IMG/events/womens day/4.jpeg" alt="Women's Day" />
+              <div class="gallery-overlay"><h3>Women's Day</h3></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- National Science Day 2026 -->
+        <div class="gallery-group fade-in">
+          <div class="group-heading">
+            <span class="group-label"
+              >National Science Day Celebration 2026</span
+            >
+          </div>
+          <div class="gallery-container">
+            <div class="gallery-item fade-in">
+              <img
+                src="IMG/events/science day/1.jpeg"
+                alt="National Science Day"
+              />
+              <div class="gallery-overlay"><h3>National Science Day</h3></div>
+            </div>
+            <div class="gallery-item fade-in">
+              <img
+                src="IMG/events/science day/2.jpeg"
+                alt="National Science Day"
+              />
+              <div class="gallery-overlay"><h3>National Science Day</h3></div>
+            </div>
+            <div class="gallery-item fade-in">
+              <img
+                src="IMG/events/science day/3.jpeg"
+                alt="National Science Day"
+              />
+              <div class="gallery-overlay"><h3>National Science Day</h3></div>
+            </div>
+            <div class="gallery-item fade-in">
+              <img
+                src="IMG/events/science day/4.jpeg"
+                alt="National Science Day"
+              />
+              <div class="gallery-overlay"><h3>National Science Day</h3></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SPARK 1.0 -->
+        <div class="gallery-group fade-in">
+          <div class="group-heading">
+            <span class="group-label">SPARK 1.0</span>
+          </div>
+          <div class="gallery-container">
+            <div class="gallery-item fade-in">
+              <img src="IMG/events/spark 1.0/SPARK 1.0.jpeg" alt="SPARK 1.0" />
+              <div class="gallery-overlay"><h3>SPARK 1.0</h3></div>
+            </div>
+            <div class="gallery-item fade-in">
+              <img src="IMG/events/spark 1.0/SPARK 1.0.jpeg" alt="SPARK 1.0" />
+              <div class="gallery-overlay"><h3>SPARK 1.0</h3></div>
+            </div>
+            <div class="gallery-item fade-in">
+              <img src="IMG/events/spark 1.0/SPARK 1.0.jpeg" alt="SPARK 1.0" />
+              <div class="gallery-overlay"><h3>SPARK 1.0</h3></div>
+            </div>
+            <div class="gallery-item fade-in">
+              <img src="IMG/events/spark 1.0/SPARK 1.0.jpeg" alt="SPARK 1.0" />
+              <div class="gallery-overlay"><h3>SPARK 1.0</h3></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Induction Program 2025 -->
+        <div class="gallery-group fade-in">
+          <div class="group-heading">
+            <span class="group-label">Induction Program 2025</span>
+          </div>
+          <div class="gallery-container">
+            <div class="gallery-item fade-in">
+              <img src="IMG/events/INDUCTION/NIM3.jpeg" alt="Induction - NIM" />
+              <div class="gallery-overlay"><h3>NIM</h3></div>
+            </div>
+            <div class="gallery-item fade-in">
+              <img
+                src="IMG/events/INDUCTION/NIM2.jpeg"
+                alt="Induction - View"
+              />
+              <div class="gallery-overlay"><h3>Campus View</h3></div>
+            </div>
+            <div class="gallery-item fade-in">
+              <img src="IMG/events/INDUCTION/3.jpeg" alt="Induction - Tour" />
+              <div class="gallery-overlay"><h3>Campus Tour</h3></div>
+            </div>
+            <div class="gallery-item fade-in">
+              <img
+                src="IMG/events/INDUCTION/4.jpeg"
+                alt="Induction - New Batch"
+              />
+              <div class="gallery-overlay"><h3>New Batch</h3></div>
+            </div>
+            <div class="gallery-item fade-in">
+              <img
+                src="IMG/events/INDUCTION/5.jpeg"
+                alt="Induction - Technical Event"
+              />
+              <div class="gallery-overlay"><h3>Technical Event</h3></div>
+            </div>
+            <div class="gallery-item fade-in">
+              <img
+                src="IMG/events/INDUCTION/6.jpeg"
+                alt="Induction - Workshop"
+              />
+              <div class="gallery-overlay"><h3>Workshop</h3></div>
+            </div>
+            <div class="gallery-item fade-in">
+              <img
+                src="IMG/events/INDUCTION/7.jpeg"
+                alt="Induction - Tech Workshop"
+              />
+              <div class="gallery-overlay"><h3>Tech Workshop</h3></div>
+            </div>
+            <div class="gallery-item fade-in">
+              <img
+                src="IMG/events/INDUCTION/8.jpeg"
+                alt="Induction - Leadership Summit"
+              />
+              <div class="gallery-overlay"><h3>Leadership Summit</h3></div>
+            </div>
+          </div>
+        </div>
       </div>
+    </section>
 
-
-      <!-- 15 aug -->
-      <div class="gallery-group fade-in">
-        <div class="group-heading">
-          <span class="group-label">80th Independence Day Celebration</span>
+    <!-- ===== FOOTER ===== -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-column">
+            <h3>ISAC</h3>
+            <p>
+              Institute Student Activity Council<br />
+              Government Institute of Technology Baun, Uttarkashi<br />
+              A Campus Institute of Veer Madho Singh Bhandari Uttarakhand
+              Technical University
+            </p>
+            <p style="margin-top: 12px">
+              Fostering holistic development through extracurricular activities
+              and student leadership.
+            </p>
+          </div>
+          <div class="footer-column">
+            <h3>Quick Links</h3>
+            <ul class="contact-list">
+              <li>
+                <i class="fas fa-arrow-right"></i
+                ><span><a href="index.html">Home</a></span>
+              </li>
+              <li>
+                <i class="fas fa-arrow-right"></i
+                ><span><a href="about.html">About ISAC</a></span>
+              </li>
+              <li>
+                <i class="fas fa-arrow-right"></i
+                ><span><a href="event.html">Events Calendar</a></span>
+              </li>
+              <li>
+                <i class="fas fa-arrow-right"></i
+                ><span><a href="society.html">Student Societies</a></span>
+              </li>
+              <li>
+                <i class="fas fa-arrow-right"></i
+                ><span><a href="index.html#contact">Contact</a></span>
+              </li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>Contact Us</h3>
+            <ul class="contact-list">
+              <li>
+                <i class="fas fa-map-marker-alt"></i
+                ><span>A207, Block A, GIT Baun, Uttarkashi</span>
+              </li>
+              <li>
+                <i class="fas fa-envelope"></i><span>isac@itbaun.ac.in</span>
+              </li>
+              <li><i class="fas fa-phone"></i><span>+91 8439540299</span></li>
+              <li>
+                <i class="fas fa-clock"></i
+                ><span>Mon–Sat: 9:00 AM – 5:00 PM</span>
+              </li>
+            </ul>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a
+                href="https://www.instagram.com/isacofficial2023"
+                target="_blank"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a
+                href="https://www.youtube.com/channel/UCIRE5u6YlgdjrPeHBdvl0zQ"
+                target="_blank"
+                ><i class="fab fa-youtube"></i
+              ></a>
+              <a href="#"><i class="fab fa-telegram"></i></a>
+            </div>
+          </div>
         </div>
-        <div class="gallery-container">
-          <div class="gallery-item fade-in">
-            <img src="IMG\events\15 AUG\ONE.jpeg" alt="Independence Day Celebration" />
-            <div class="gallery-overlay"><h3>Independence Day Celebration</h3></div>
-          </div>
-          <div class="gallery-item fade-in">
-            <img src="IMG\events\15 AUG\two.jpeg" alt="Independence Day Celebration" />
-            <div class="gallery-overlay"><h3>Independence Day Celebration</h3></div>
-          </div>
-          <div class="gallery-item fade-in">
-            <img src="IMG\events\15 AUG\three.jpeg" alt="Independence Day Celebration" />
-            <div class="gallery-overlay"><h3>Independence Day Celebration</h3></div>
-          </div>
-          <div class="gallery-item fade-in">
-            <img src="IMG\events\15 AUG\four.jpeg" alt="Independence Day Celebration" />
-            <div class="gallery-overlay"><h3>Cultural Event</h3></div>
-          </div>
+        <div class="copyright">
+          <p>
+            &copy; 2026 Institute Student Activity Council, Government Institute
+            of Technology Baun, Uttarkashi. All Rights Reserved.
+          </p>
+          <p style="margin-top: 5px">
+            Developed with ❤️ and ☕ by
+            <span style="color: var(--accent-gold)">Digital Media Club</span>
+          </p>
         </div>
       </div>
+    </footer>
 
-      <!-- Workshop -->
-      <div class="gallery-group fade-in">
-        <div class="group-heading">
-          <span class="group-label">Soft Skills &amp; Job Readyness Training</span>
-        </div>
-        <div class="gallery-container">
-          <div class="gallery-item fade-in">
-            <img src="IMG\events\workshop\JOB READINESS 1.jpeg" alt="Soft Skills Workshop" />
-            <div class="gallery-overlay"><h3>Soft Skills</h3></div>
-          </div>
-          <div class="gallery-item fade-in">
-            <img src="IMG\events\workshop\JOB READINESS 2.jpeg" alt="Job READINESS" />
-            <div class="gallery-overlay"><h3>GD & PI skills</h3></div>
-          </div>
-          <div class="gallery-item fade-in">
-            <img src="IMG\events\workshop\JOB READINESS 3.jpeg" alt="linkedin Profiling" />
-            <div class="gallery-overlay"><h3>linkedin Profiling</h3></div>
-          </div>
-          <div class="gallery-item fade-in">
-            <img src="IMG\events\workshop\JOB READINESS 4.jpeg" alt="GD & PI skills" />
-            <div class="gallery-overlay"><h3>Job Readyness Training</h3></div>
-          </div>
-        </div>
+    <!-- ===== MODAL ===== -->
+    <div id="eventModal" class="modal">
+      <div class="modal-content">
+        <button class="close-modal" id="closeModal">&times;</button>
+        <h2
+          id="modalTitle"
+          style="
+            color: var(--accent-gold);
+            margin-bottom: 20px;
+            font-family: 'Playfair Display', serif;
+          "
+        ></h2>
+        <div
+          id="modalContent"
+          style="color: var(--medium-text); line-height: 1.8; font-size: 1.1rem"
+        ></div>
       </div>
-
-
-
-      <!-- Debate Competition -->
-      <div class="gallery-group fade-in">
-        <div class="group-heading">
-          <span class="group-label">Debate Competition</span>
-        </div>
-        <div class="gallery-container">
-          <div class="gallery-item fade-in">
-            <img src="IMG/events/literary/debate 1.jpeg" alt="Debate Competition" />
-            <div class="gallery-overlay"><h3>Debate Competition</h3></div>
-          </div>
-          <div class="gallery-item fade-in">
-            <img src="IMG/events/literary/2.jpeg" alt="Debate Competition" />
-            <div class="gallery-overlay"><h3>Debate Competition</h3></div>
-          </div>
-          <div class="gallery-item fade-in">
-            <img src="IMG/events/literary/3.jpeg" alt="Debate Competition" />
-            <div class="gallery-overlay"><h3>Debate Competition</h3></div>
-          </div>
-          <div class="gallery-item fade-in">
-            <img src="IMG/events/literary/4.jpeg" alt="Debate Competition" />
-            <div class="gallery-overlay"><h3>Debate Competition</h3></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Guest Lecture -->
-      <div class="gallery-group fade-in">
-        <div class="group-heading">
-          <span class="group-label">Guest Lecture</span>
-        </div>
-        <div class="gallery-container">
-          <div class="gallery-item fade-in">
-            <img src="IMG/events/workshop/R 3.jpeg" alt="R Lecture" />
-            <div class="gallery-overlay"><h3>R Programming Lecture</h3></div>
-          </div>
-          <div class="gallery-item fade-in">
-            <img src="IMG/events/workshop/R4.jpeg" alt="R Lecture" />
-            <div class="gallery-overlay"><h3>R Programming Lecture</h3></div>
-          </div>
-          <div class="gallery-item fade-in">
-            <img src="IMG/events/workshop/R 2.jpeg" alt="R Lecture" />
-            <div class="gallery-overlay"><h3>R Programming Lecture</h3></div>
-          </div>
-          <div class="gallery-item fade-in">
-            <img src="IMG/events/workshop/R programming.jpeg" alt="R Programming" />
-            <div class="gallery-overlay"><h3>R Programming Lecture</h3></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Indoor Sports -->
-      <div class="gallery-group fade-in">
-        <div class="group-heading">
-          <span class="group-label">Indoor Sports</span>
-        </div>
-        <div class="gallery-container">
-          <div class="gallery-item fade-in">
-            <img src="IMG/events/indoor/badminton.jpeg" alt="Badminton" />
-            <div class="gallery-overlay"><h3>Badminton</h3></div>
-          </div>
-          <div class="gallery-item fade-in">
-            <img src="IMG/events/indoor/carrom.jpeg" alt="Carrom" />
-            <div class="gallery-overlay"><h3>Carrom</h3></div>
-          </div>
-          <div class="gallery-item fade-in">
-            <img src="IMG/events/indoor/cess.jpeg" alt="Chess" />
-            <div class="gallery-overlay"><h3>Chess</h3></div>
-          </div>
-          <div class="gallery-item fade-in">
-            <img src="IMG/events/indoor/sportgroup.jpeg" alt="Sports Event" />
-            <div class="gallery-overlay"><h3>Sports Event</h3></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Dr. B. R. Ambedkar Day -->
-      <div class="gallery-group fade-in">
-        <div class="group-heading">
-          <span class="group-label">A Special Day Dedicated to Dr. B. R. Ambedkar</span>
-        </div>
-        <div class="gallery-container">
-          <div class="gallery-item fade-in">
-            <img src="IMG/events/Ambedkar/ambedkarji (1).png" alt="Ambedkar Day" />
-            <div class="gallery-overlay"><h3>Cultural Tribute</h3></div>
-          </div>
-          <div class="gallery-item fade-in">
-            <img src="IMG/events/Ambedkar/ambedkarji (2).png" alt="Ambedkar Day" />
-            <div class="gallery-overlay"><h3>Cultural Event</h3></div>
-          </div>
-          <div class="gallery-item fade-in">
-            <img src="IMG/events/Ambedkar/ambedkarji (3).png" alt="Ambedkar Day" />
-            <div class="gallery-overlay"><h3>Cultural Event</h3></div>
-          </div>
-          <div class="gallery-item fade-in">
-            <img src="IMG/events/Ambedkar/ambedkarji (4).png" alt="Ambedkar Day" />
-            <div class="gallery-overlay"><h3>Cultural Event</h3></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- E-Sports Championship -->
-      <div class="gallery-group fade-in">
-        <div class="group-heading">
-          <span class="group-label">E-Sports Championship – BGMI &amp; Free Fire</span>
-        </div>
-        <div class="gallery-container">
-          <div class="gallery-item fade-in">
-            <img src="IMG/events/esports/img (1).jpeg" alt="E-Sports Tournament" />
-            <div class="gallery-overlay"><h3>E-Sports Tournament</h3></div>
-          </div>
-          <div class="gallery-item fade-in">
-            <img src="IMG/events/esports/img (2).jpeg" alt="E-Sports Tournament" />
-            <div class="gallery-overlay"><h3>E-Sports Tournament</h3></div>
-          </div>
-          <div class="gallery-item fade-in">
-            <img src="IMG/events/esports/img (3).jpeg" alt="FreeFire" />
-            <div class="gallery-overlay"><h3>Free Fire</h3></div>
-          </div>
-          <div class="gallery-item fade-in">
-            <img src="IMG/events/esports/img (4).jpeg" alt="BGMI" />
-            <div class="gallery-overlay"><h3>BGMI</h3></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Workshop -->
-      <div class="gallery-group fade-in">
-        <div class="group-heading">
-          <span class="group-label">Technical Workshop</span>
-        </div>
-        <div class="gallery-container">
-          <div class="gallery-item fade-in">
-            <img src="IMG/events/workshop/ml.jpeg" alt="Machine Learning Workshop" />
-            <div class="gallery-overlay"><h3>Machine Learning</h3></div>
-          </div>
-          <div class="gallery-item fade-in">
-            <img src="IMG/events/workshop/4.jpeg" alt="Arduino Workshop" />
-            <div class="gallery-overlay"><h3>Arduino</h3></div>
-          </div>
-          <div class="gallery-item fade-in">
-            <img src="IMG\events\workshop\3.jpeg" alt="Arduino Workshop" />
-            <div class="gallery-overlay"><h3>Arduino</h3></div>
-          </div>
-          <div class="gallery-item fade-in">
-            <img src="IMG\events\workshop\ml.jpeg" alt="Arduino Workshop" />
-            <div class="gallery-overlay"><h3>Arduino</h3></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- International Women's Day 2026 -->
-      <div class="gallery-group fade-in">
-        <div class="group-heading">
-          <span class="group-label">International Women's Day 2026</span>
-        </div>
-        <div class="gallery-container">
-          <div class="gallery-item fade-in">
-            <img src="IMG/events/womens day/1.jpeg" alt="Women's Day" />
-            <div class="gallery-overlay"><h3>Women's Day</h3></div>
-          </div>
-          <div class="gallery-item fade-in">
-            <img src="IMG/events/womens day/2.jpeg" alt="Women's Day" />
-            <div class="gallery-overlay"><h3>Women's Day</h3></div>
-          </div>
-          <div class="gallery-item fade-in">
-            <img src="IMG/events/womens day/3.jpeg" alt="Women's Day" />
-            <div class="gallery-overlay"><h3>Women's Day</h3></div>
-          </div>
-          <div class="gallery-item fade-in">
-            <img src="IMG/events/womens day/4.jpeg" alt="Women's Day" />
-            <div class="gallery-overlay"><h3>Women's Day</h3></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- National Science Day 2026 -->
-      <div class="gallery-group fade-in">
-        <div class="group-heading">
-          <span class="group-label">National Science Day Celebration 2026</span>
-        </div>
-        <div class="gallery-container">
-          <div class="gallery-item fade-in">
-            <img src="IMG/events/science day/1.jpeg" alt="National Science Day" />
-            <div class="gallery-overlay"><h3>National Science Day</h3></div>
-          </div>
-          <div class="gallery-item fade-in">
-            <img src="IMG/events/science day/2.jpeg" alt="National Science Day" />
-            <div class="gallery-overlay"><h3>National Science Day</h3></div>
-          </div>
-          <div class="gallery-item fade-in">
-            <img src="IMG/events/science day/3.jpeg" alt="National Science Day" />
-            <div class="gallery-overlay"><h3>National Science Day</h3></div>
-          </div>
-          <div class="gallery-item fade-in">
-            <img src="IMG/events/science day/4.jpeg" alt="National Science Day" />
-            <div class="gallery-overlay"><h3>National Science Day</h3></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- SPARK 1.0 -->
-      <div class="gallery-group fade-in">
-        <div class="group-heading">
-          <span class="group-label">SPARK 1.0</span>
-        </div>
-        <div class="gallery-container">
-          <div class="gallery-item fade-in">
-            <img src="IMG/events/spark 1.0/SPARK 1.0.jpeg" alt="SPARK 1.0" />
-            <div class="gallery-overlay"><h3>SPARK 1.0</h3></div>
-          </div>
-          <div class="gallery-item fade-in">
-            <img src="IMG/events/spark 1.0/SPARK 1.0.jpeg" alt="SPARK 1.0" />
-            <div class="gallery-overlay"><h3>SPARK 1.0</h3></div>
-          </div>
-          <div class="gallery-item fade-in">
-            <img src="IMG/events/spark 1.0/SPARK 1.0.jpeg" alt="SPARK 1.0" />
-            <div class="gallery-overlay"><h3>SPARK 1.0</h3></div>
-          </div>
-          <div class="gallery-item fade-in">
-            <img src="IMG/events/spark 1.0/SPARK 1.0.jpeg" alt="SPARK 1.0" />
-            <div class="gallery-overlay"><h3>SPARK 1.0</h3></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Induction Program 2025 -->
-      <div class="gallery-group fade-in">
-        <div class="group-heading">
-          <span class="group-label">Induction Program 2025</span>
-        </div>
-        <div class="gallery-container">
-          <div class="gallery-item fade-in">
-            <img src="IMG/events/INDUCTION/NIM3.jpeg" alt="Induction - NIM" />
-            <div class="gallery-overlay"><h3>NIM</h3></div>
-          </div>
-          <div class="gallery-item fade-in">
-            <img src="IMG/events/INDUCTION/NIM2.jpeg" alt="Induction - View" />
-            <div class="gallery-overlay"><h3>Campus View</h3></div>
-          </div>
-          <div class="gallery-item fade-in">
-            <img src="IMG/events/INDUCTION/3.jpeg" alt="Induction - Tour" />
-            <div class="gallery-overlay"><h3>Campus Tour</h3></div>
-          </div>
-          <div class="gallery-item fade-in">
-            <img src="IMG/events/INDUCTION/4.jpeg" alt="Induction - New Batch" />
-            <div class="gallery-overlay"><h3>New Batch</h3></div>
-          </div>
-          <div class="gallery-item fade-in">
-            <img src="IMG/events/INDUCTION/5.jpeg" alt="Induction - Technical Event" />
-            <div class="gallery-overlay"><h3>Technical Event</h3></div>
-          </div>
-          <div class="gallery-item fade-in">
-            <img src="IMG/events/INDUCTION/6.jpeg" alt="Induction - Workshop" />
-            <div class="gallery-overlay"><h3>Workshop</h3></div>
-          </div>
-          <div class="gallery-item fade-in">
-            <img src="IMG/events/INDUCTION/7.jpeg" alt="Induction - Tech Workshop" />
-            <div class="gallery-overlay"><h3>Tech Workshop</h3></div>
-          </div>
-          <div class="gallery-item fade-in">
-            <img src="IMG/events/INDUCTION/8.jpeg" alt="Induction - Leadership Summit" />
-            <div class="gallery-overlay"><h3>Leadership Summit</h3></div>
-          </div>
-        </div>
-      </div>
-
     </div>
-  </section>
 
-  <!-- ===== FOOTER ===== -->
-  <footer>
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-column">
-          <h3>ISAC</h3>
-          <p>Institute Student Activity Council<br>
-          Government Institute of Technology Baun, Uttarkashi<br>
-          A Campus Institute of Veer Madho Singh Bhandari Uttarakhand Technical University</p>
-          <p style="margin-top:12px;">Fostering holistic development through extracurricular activities and student leadership.</p>
-        </div>
-        <div class="footer-column">
-          <h3>Quick Links</h3>
-          <ul class="contact-list">
-            <li><i class="fas fa-arrow-right"></i><span><a href="index.html">Home</a></span></li>
-            <li><i class="fas fa-arrow-right"></i><span><a href="about.html">About ISAC</a></span></li>
-            <li><i class="fas fa-arrow-right"></i><span><a href="event.html">Events Calendar</a></span></li>
-            <li><i class="fas fa-arrow-right"></i><span><a href="society.html">Student Societies</a></span></li>
-            <li><i class="fas fa-arrow-right"></i><span><a href="index.html#contact">Contact</a></span></li>
-          </ul>
-        </div>
-        <div class="footer-column">
-          <h3>Contact Us</h3>
-          <ul class="contact-list">
-            <li><i class="fas fa-map-marker-alt"></i><span>A207, Block A, GIT Baun, Uttarkashi</span></li>
-            <li><i class="fas fa-envelope"></i><span>isac@itbaun.ac.in</span></li>
-            <li><i class="fas fa-phone"></i><span>+91 8439540299</span></li>
-            <li><i class="fas fa-clock"></i><span>Mon–Sat: 9:00 AM – 5:00 PM</span></li>
-          </ul>
-          <div class="social-links">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="https://www.instagram.com/isacofficial2023" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.youtube.com/channel/UCIRE5u6YlgdjrPeHBdvl0zQ" target="_blank"><i class="fab fa-youtube"></i></a>
-            <a href="#"><i class="fab fa-telegram"></i></a>
-          </div>
-        </div>
-      </div>
-      <div class="copyright">
-        <p>&copy; 2026 Institute Student Activity Council, Government Institute of Technology Baun, Uttarkashi. All Rights Reserved.</p>
-        <p style="margin-top:5px;">Developed with ❤️ and ☕ by <span style="color:var(--accent-gold);">Digital Media Club</span></p>
-      </div>
-    </div>
-  </footer>
-
-  <!-- ===== MODAL ===== -->
-  <div id="eventModal" class="modal">
-    <div class="modal-content">
-      <button class="close-modal" id="closeModal">&times;</button>
-      <h2 id="modalTitle" style="color:var(--accent-gold);margin-bottom:20px;font-family:'Playfair Display',serif;"></h2>
-      <div id="modalContent" style="color:var(--medium-text);line-height:1.8;font-size:1.1rem;"></div>
-    </div>
-  </div>
-
-  <script>
-    /* ====== MOBILE NAV ====== */
-    const mobileToggle = document.getElementById('mobileToggle');
-    const navMenu = document.getElementById('navMenu');
-    function toggleMobileMenu() {
-      navMenu.classList.toggle('active');
-      const icon = mobileToggle.querySelector('i');
-      if (navMenu.classList.contains('active')) {
-        icon.classList.replace('fa-bars', 'fa-times');
-        document.body.style.overflow = 'hidden';
-      } else {
-        icon.classList.replace('fa-times', 'fa-bars');
-        document.body.style.overflow = '';
+    <script>
+      /* ====== MOBILE NAV ====== */
+      const mobileToggle = document.getElementById("mobileToggle");
+      const navMenu = document.getElementById("navMenu");
+      function toggleMobileMenu() {
+        navMenu.classList.toggle("active");
+        const icon = mobileToggle.querySelector("i");
+        if (navMenu.classList.contains("active")) {
+          icon.classList.replace("fa-bars", "fa-times");
+          document.body.style.overflow = "hidden";
+        } else {
+          icon.classList.replace("fa-times", "fa-bars");
+          document.body.style.overflow = "";
+        }
       }
-    }
-    mobileToggle.addEventListener('click', toggleMobileMenu);
-    mobileToggle.addEventListener('touchstart', e => { e.preventDefault(); toggleMobileMenu(); });
-    document.querySelectorAll('#navMenu a').forEach(link => {
-      link.addEventListener('click', () => {
-        navMenu.classList.remove('active');
-        mobileToggle.querySelector('i').classList.replace('fa-times', 'fa-bars');
-        document.body.style.overflow = '';
-      });
-    });
-    document.addEventListener('click', e => {
-      if (window.innerWidth <= 768 && !navMenu.contains(e.target) && !mobileToggle.contains(e.target) && navMenu.classList.contains('active')) {
+      mobileToggle.addEventListener("click", toggleMobileMenu);
+      mobileToggle.addEventListener("touchstart", (e) => {
+        e.preventDefault();
         toggleMobileMenu();
-      }
-    });
-
-    /* ====== STICKY HEADER ====== */
-    const header = document.getElementById('mainHeader');
-    window.addEventListener('scroll', () => header.classList.toggle('header-scrolled', window.scrollY > 100));
-
-    /* ====== FADE IN ON SCROLL ====== */
-    const fadeEls = document.querySelectorAll('.fade-in');
-    function fadeInOnScroll() {
-      fadeEls.forEach(el => {
-        if (el.getBoundingClientRect().top < window.innerHeight - 80) el.classList.add('visible');
       });
-    }
-    window.addEventListener('load', fadeInOnScroll);
-    window.addEventListener('scroll', fadeInOnScroll);
+      document.querySelectorAll("#navMenu a").forEach((link) => {
+        link.addEventListener("click", () => {
+          navMenu.classList.remove("active");
+          mobileToggle
+            .querySelector("i")
+            .classList.replace("fa-times", "fa-bars");
+          document.body.style.overflow = "";
+        });
+      });
+      document.addEventListener("click", (e) => {
+        if (
+          window.innerWidth <= 768 &&
+          !navMenu.contains(e.target) &&
+          !mobileToggle.contains(e.target) &&
+          navMenu.classList.contains("active")
+        ) {
+          toggleMobileMenu();
+        }
+      });
 
-    /* ====== MODAL ====== */
-    const eventModal = document.getElementById('eventModal');
-    const closeModalBtn = document.getElementById('closeModal');
-    if (closeModalBtn) {
-      closeModalBtn.addEventListener('click', () => { eventModal.style.display = 'none'; document.body.style.overflow = ''; });
-    }
-    window.addEventListener('click', e => {
-      if (e.target === eventModal) { eventModal.style.display = 'none'; document.body.style.overflow = ''; }
-    });
+      /* ====== STICKY HEADER ====== */
+      const header = document.getElementById("mainHeader");
+      window.addEventListener("scroll", () =>
+        header.classList.toggle("header-scrolled", window.scrollY > 100)
+      );
 
-    /* ====== INIT ====== */
-    document.addEventListener('DOMContentLoaded', function() {
-      const copy = document.querySelector('.copyright p');
-      if (copy) copy.innerHTML = copy.innerHTML.replace('2026', new Date().getFullYear());
-      function setVH() { document.documentElement.style.setProperty('--vh', (window.innerHeight * 0.01) + 'px'); }
-      setVH();
-      window.addEventListener('resize', setVH);
-      window.addEventListener('orientationchange', setVH);
-    });
-  </script>
-</body>
+      /* ====== FADE IN ON SCROLL ====== */
+      const fadeEls = document.querySelectorAll(".fade-in");
+      function fadeInOnScroll() {
+        fadeEls.forEach((el) => {
+          if (el.getBoundingClientRect().top < window.innerHeight - 80)
+            el.classList.add("visible");
+        });
+      }
+      window.addEventListener("load", fadeInOnScroll);
+      window.addEventListener("scroll", fadeInOnScroll);
+
+      /* ====== MODAL ====== */
+      const eventModal = document.getElementById("eventModal");
+      const closeModalBtn = document.getElementById("closeModal");
+      if (closeModalBtn) {
+        closeModalBtn.addEventListener("click", () => {
+          eventModal.style.display = "none";
+          document.body.style.overflow = "";
+        });
+      }
+      window.addEventListener("click", (e) => {
+        if (e.target === eventModal) {
+          eventModal.style.display = "none";
+          document.body.style.overflow = "";
+        }
+      });
+
+      /* ====== INIT ====== */
+      document.addEventListener("DOMContentLoaded", function () {
+        const copy = document.querySelector(".copyright p");
+        if (copy)
+          copy.innerHTML = copy.innerHTML.replace(
+            "2026",
+            new Date().getFullYear()
+          );
+        function setVH() {
+          document.documentElement.style.setProperty(
+            "--vh",
+            window.innerHeight * 0.01 + "px"
+          );
+        }
+        setVH();
+        window.addEventListener("resize", setVH);
+        window.addEventListener("orientationchange", setVH);
+      });
+    </script>
+  </body>
 </html>
